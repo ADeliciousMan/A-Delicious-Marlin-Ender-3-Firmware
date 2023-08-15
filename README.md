@@ -1,6 +1,6 @@
 # A-Delicious-Marlin-Ender-3-Pro-Firmware
 
-Date of Latest Build .bin: 2023-08-15 - V1.0.1
+Date of Latest Build .bin: 2023-08-15 - V1.1.0
 Latest Marlin Version: 2.1.2.1
 
 **ABOUT**
@@ -31,7 +31,7 @@ List of Features:
 
 **CHANGELOG:**
 
-**2023-08-15 - V1.1.0 - Initial build**
+**2023-08-15 - V1.1.0**
 
 * Enabled auto creation of Config.ini for people that prefer that, will be included in release packages going forward!
 * Default PLA heating settings:
