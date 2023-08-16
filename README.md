@@ -1,6 +1,6 @@
 # A-Delicious-Marlin-Ender-3-Pro-Firmware
 
-Date of Latest Build .bin: 2023-08-15 - V1.1.0
+Date of Latest Build .bin: 2023-08-15 - V1.2.0
 Latest Marlin Version: 2.1.2.1
 
 **ABOUT**
@@ -30,6 +30,12 @@ List of Features:
 * Lower min temp for extrusion, 170C
 
 **CHANGELOG:**
+
+**2023-08-15 - V1.2.0**
+
+* Changed default E/Steps to 97 from 93 (I've observed that most Ender 3 steppers are set way too low by default and generally end up somewhere between 96-98). I would still **HIGHLY** recommend for everyone to calibrate their E/Steps correctly, just changing this default gives an easier and smoother out of the box experience.
+* PREHEAT BED LEVEL was miss configured, should be correctly set now
+* Enabled DISTINCT_E_FACTORS, should now be able to configure X, Y, Z and E Steps directly on the printer
 
 **2023-08-15 - V1.1.0**
 
