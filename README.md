@@ -1,6 +1,6 @@
 # A-Delicious-Marlin-Ender-3-Pro-Firmware
 
-Date of Latest Build .bin: 2023-08-15 - V1.2.0
+Date of Latest Build .bin: 2023-08-17 - V1.3.0
 Latest Marlin Version: 2.1.2.1
 
 **ABOUT**
@@ -20,6 +20,7 @@ List of Features:
 * Built in Extruder PID tests and ability to adjust on screen directly
 * Built in Bed PID tests and ability to adjust on screen directly
 * Input shaping and ability to adjust on screen directly
+* Linear Advance and ability to adjust on screen directly
 * Alphabetize SD card contents
 * Long Texts Auto Scrolls
 * Mesh leveling, 9 points (BILINEAR)
@@ -27,9 +28,47 @@ List of Features:
 * Thermal runaway protection
 * Probe offset to align nozzle with center of bed after homing
 * Additional BED LEVEL preheat setting
-* Lower min temp for extrusion, 170C
+* Power loss recovery
+* And much much more!
 
 **CHANGELOG:**
+
+**2023-08-17 - V1.3.0**
+
+**Had to turn off NOZZLE_TO_PROBE_OFFSET for now as with it, it refused to compile, will have to investigate**
+
+* Custom 'DELICIOUS MARLIN' bootscreen!!! (I gotta rep myself!)
+* Added LCD_BED_TRAMMING (Assisted manual leveling) as a menu item, as well as BED_TRAMMING_INCLUDE_CENTER to return the nozzle to the center once done tramming
+  - Set BED_TRAMMING_HEIGHT (Z height) to 0.2 mm, the standard and recommended Ender 3 print height
+  - Added BED_TRAMMING_VERIFY_RAISED for the probe to verify after tramming
+  - Added BED_TRAMMING_USE_PROBE
+* Added HOST_ACTION_COMMANDS (So Octoprint and other software knows when the printer has paused/stopped when using the printer controls)
+* Added POWER_LOSS_RECOVERY
+* Added LIN_ADVANCE
+* Added ASSISTED_TRAMMING
+* Added ASSISTED_TRAMMING_WIZARD
+* Added Z_MIN_PROBE_REPEATABILITY_TEST
+* TRAMMING_SCREW_THREAD set to 40 instead of default 30, so should be set to M4
+*  Cleaned up more of Configuration_adv.h, removed functions listed:
+  - THERMAL_PROTECTION_COOLER > Laser related
+  - THERMAL_PROTECTION_COOLER_PERIOD > Laser related
+  - THERMAL_PROTECTION_COOLER_HYSTERESIS > Laser related
+  - WATCH_COOLER_TEMP_PERIOD > Laser related
+  - WATCH_COOLER_TEMP_INCREASE > Laser related
+  - THERMAL_PROTECTION_CHAMBER
+  - THERMAL_PROTECTION_CHAMBER_PERIOD
+  - THERMAL_PROTECTION_CHAMBER_HYSTERESIS
+  - WATCH_CHAMBER_TEMP_PERIOD
+  - WATCH_CHAMBER_TEMP_INCREASE
+  - CNC_COORDINATE_SYSTEMS
+  - WIFISUPPORT
+  - ESP3D_WIFISUPPORT
+  - Entire CASE_LIGHT_ENABLE section
+  - Entire DUAL_X_CARRIAGE
+  - Entire SPINDLE_FEATURE section
+  - Entire LASER_FEATURE section
+  - Entire multi-material section
+  - Z_PROBE_ALLEN_KEY
 
 **2023-08-15 - V1.2.0**
 
