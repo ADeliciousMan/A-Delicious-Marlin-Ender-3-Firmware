@@ -1,57 +1,75 @@
-# A-Delicious-Marlin-Ender-3-Pro-Firmware
+# A Delicious Marlin Ender 3/Pro Firmware
 
-Date of Latest Build .bin: 2023-08-20 - V1.4.1
-Latest Marlin Version: 2.1.2.1
+#### Date of Latest Build: 2023-08-20 - V1.4.1
+#### Latest Marlin Version: 2.1.2.1
 
-**ABOUT**
+## ABOUT
 
-Constantly being built off the latest version of Marlin (Stable), this firmware includes plenty of useful functions that are turned off by default on Ender 3 boards from Creality.
+Constantly being built off the latest version of Marlin (Stable), this firmware includes plenty of useful functions that are turned off by default on Ender 3 boards from Creality. It is specifically for people who have an Ender 3 printer with a 4.2.7 board and a BL/CR Touch probe.
 
-I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board (though should function on a 256k board as well), so it is the only .bin I will compile as it's the only one I can actually test properly; however user compiled and submitted .bins are more than welcome!
+###### Note
+I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board (though should function on a 256k board as well and I have not seen a 4.3.7 board that isn't 512k), so it is the only .bin I will compile as it's the only one I can actually test properly; however user compiled and submitted .bins are more than welcome!
 
-**One important note, I use a CR Touch instead of the Z Switch. I do not know if it homes correctly on just a Z Switch**
-Besides that, a normal Ender 3 4.2.7 printer should work great with this firmware!
-
-List of Features:
+## List of Features:
 
 * Newest Marlin Build
 * BL/CR Touch support
-* Custom menu with custom easy to access PID settings
-* Ability to silence beeps in menu
-* Built in Extruder PID tests and ability to adjust on screen directly
-* Built in Bed PID tests and ability to adjust on screen directly
+* Marlins PID Tuning
+* Custom menu with custom easy to access PID settings for Extruder and Bed
+  - Extruder PID Presets, 10 cycles, 180C, 190C, 200C
+  - Bed PID Presets, 10 cycles, 50C, 60C, 170C
+  - These do not reapply a default PID setting, but instead actual run a full PID tune so it is unique to your machine (extruder, heading block, nozzle, cooling fan, specific temperature)
+* More accurate defaults for easier instant setup (I highly recommend you to do your own calibrations to get the most out of your printer, this firmware just helps to get you started faster and easier with more tools to calibrate easily)
+* Mesh leveling, 9 points (BILINEAR)
 * Input shaping and ability to adjust on screen directly
 * Linear Advance and ability to adjust on screen directly
 * Alphabetize SD card contents
+* Ability to silence beeps in menu
 * Long Texts Auto Scrolls
-* Mesh leveling, 9 points (BILINEAR)
 * Z Probe Wizard
+* Tramming Wizard
 * Thermal runaway protection
-* Probe offset to align nozzle with center of bed after homing
 * Power loss recovery
-* And much much more!
+* Probe offset to align nozzle with center of bed after homing (instead of probe)
+* Lower min temp for extrusion, 170C
+* Host actions (EX: You use Octoprint but stop the print on the printer directly, it will inform Octoprint of this)
+* And much, much more!
 
-**What Steps To Take After installing The Firmware**
-* CALIBRATE YOUR PRINTER SETTINGS
-  - E Steps
-  - Flow Rate
-  - Extruder PID
-  - Bed PID
+## What Steps To Take After installing This Firmware
+* Reset your EEPROM on your printer, this is to ensure that previous settings are not messing with the new firmware. Yes it does Happen, happened to me plenty of times in testing
+  - It would be a good idea to write down settings that you have already calibrated for, like E/Steps so you don't have to do it again
+* **CALIBRATE YOUR PRINTER SETTINGS**
+  - [E Steps](https://letsprint3d.net/how-to-calibrate-the-extruder-steps-ender-3-5-cr-10/#EEPROM_Settings)
+  - [Flow Rate](https://3dprintbeginner.com/flow-rate-calibration/)
+  - Extruder and BED PID (3 options)
+    - Go to Configuration > DELICIOUS COMMANDS > Select PID setting you want to use
+    - Go to Configuration > Advanced Settings > Temperature and use the Marlin tools
+    - Use GCode by following this [link](https://my3dlife.com/how-to-do-a-pid-autotune-on-an-ender-3-step-by-step-guide/)
+  * Either manually level your bed using a peice of paper or shim, or use the tramming settings in Motion > Tramming Wizard
+  * Z Probe Wizard, Motion > Z Probe Wizard
+  * Level Bed for a mesh level, Motion > Level Bed
   - Linear Advance
-  - Input Shaping
+    * [Read this](https://marlinfw.org/docs/features/lin_advance.html)
+    * [Use this tool](https://marlinfw.org/tools/lin_advance/k-factor.html)
+  - [Input Shaping](https://marlinfw.org/docs/gcode/M593.html)
+* Calibration tests
+  * [Stringing Test](https://www.thingiverse.com/thing:2080224)
+  * [XYZ Cube](https://www.thingiverse.com/thing:1278865/comments)
+  * [Benchy Boat](https://www.thingiverse.com/thing:763622)
 
-**TO DO:**
+## TO DO:
 * Leveling/Tramming is off to the side a little, still trying to figure it out
+* Disable Steppers once a print is finished
 
-**CHANGELOG:**
+## CHANGELOG:
 
-**2023-08-20 - V1.4.1**
+#### 2023-08-20 - V1.4.1
 * Changed X_MAX_POS (X_BED_SIZE + 49) to X_MAX_POS (X_BED_SIZE), again (no longer goes off the edge of the bed)
 * Changed Y_MAX_POS (Y_BED_SIZE + 7) to Y_MAX_POS (Y_BED_SIZE), again (no longer goes off the edge of the bed)
 * Changed BED_TRAMMING_PROBE_TOLERANCE from 0.1mm to 0.04mm (0.1mm is a huge gap when your initial layer is 0.2mm, we're talking 50% off!)
 * Changed #define NOZZLE_TO_PROBE_OFFSET { -44, -7, 0 } to #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 } (Still figuring this out)
 
-**2023-08-19 - V1.4.0**
+#### 2023-08-19 - V1.4.0
 
 * Set default LIN_ADVANCE to 0.1 instead of 0.22 (Seems to be at least more accurate than the default, but please do your own LIN_ADVANCE tests! Each machine is different)
 * Added back in NOZZLE_TO_PROBE_OFFSET, required setting: #define BED_TRAMMING_INSET_LFRB { 30, 30, 49, 30 }
@@ -70,9 +88,7 @@ List of Features:
 * Removed these functions from Configuration_adv.h:
   - LED_CONTROL_MENU
 
-**2023-08-17 - V1.3.0**
-
-**Had to turn off NOZZLE_TO_PROBE_OFFSET for now as with it, it refused to compile, will have to investigate**
+#### 2023-08-17 - V1.3.0
 
 * Custom 'DELICIOUS MARLIN' bootscreen!!! (I gotta rep myself!)
 * Added LCD_BED_TRAMMING (Assisted manual leveling) as a menu item, as well as BED_TRAMMING_INCLUDE_CENTER to return the nozzle to the center once done tramming
@@ -85,6 +101,7 @@ List of Features:
 * Added ASSISTED_TRAMMING
 * Added ASSISTED_TRAMMING_WIZARD
 * Added Z_MIN_PROBE_REPEATABILITY_TEST
+* Turned off NOZZLE_TO_PROBE_OFFSET for now as with it, it refused to compile, will have to investigate
 * TRAMMING_SCREW_THREAD set to 40 instead of default 30, so should be set to M4
 *  Cleaned up more of Configuration_adv.h, removed functions listed:
   - THERMAL_PROTECTION_COOLER > Laser related
@@ -107,13 +124,13 @@ List of Features:
   - Entire multi-material section
   - Z_PROBE_ALLEN_KEY
 
-**2023-08-15 - V1.2.0**
+#### 2023-08-15 - V1.2.0
 
 * Changed default E/Steps to 97 from 93 (I've observed that most Ender 3 steppers are set way too low by default and generally end up somewhere between 96-98). I would still **HIGHLY** recommend for everyone to calibrate their E/Steps correctly, just changing this default gives an easier and smoother out of the box experience.
 * PREHEAT BED LEVEL was miss configured, should be correctly set now
 * Enabled DISTINCT_E_FACTORS, should now be able to configure X, Y, Z and E Steps directly on the printer
 
-**2023-08-15 - V1.1.0**
+#### 2023-08-15 - V1.1.0
 
 * Enabled auto creation of Config.ini for people that prefer that, will be included in release packages going forward!
 * Default PLA heating settings:
@@ -163,7 +180,7 @@ List of Features:
     - PCA9533
     - NEOPIXEL_LED
 
-**2023-08-14 - V1.0.0 - Initial build**
+#### 2023-08-14 - V1.0.0 - Initial build
 
 First build (of hopefully many), plenty of features included in this build!
 
