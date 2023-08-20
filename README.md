@@ -1,6 +1,6 @@
 # A-Delicious-Marlin-Ender-3-Pro-Firmware
 
-Date of Latest Build .bin: 2023-08-17 - V1.3.0
+Date of Latest Build .bin: 2023-08-19 - V1.4.0
 Latest Marlin Version: 2.1.2.1
 
 **ABOUT**
@@ -16,6 +16,7 @@ List of Features:
 
 * Newest Marlin Build
 * BL/CR Touch support
+* Custom menu with custom easy to access PID settings
 * Ability to silence beeps in menu
 * Built in Extruder PID tests and ability to adjust on screen directly
 * Built in Bed PID tests and ability to adjust on screen directly
@@ -27,9 +28,39 @@ List of Features:
 * Z Probe Wizard
 * Thermal runaway protection
 * Probe offset to align nozzle with center of bed after homing
-* Additional BED LEVEL preheat setting
 * Power loss recovery
 * And much much more!
+
+**What Steps To Take After installing The Firmware**
+* CALIBRATE YOUR PRINTER SETTINGS
+  - E Steps
+  - Flow Rate
+  - Extruder PID
+  - Bed PID
+  - Linear Advance
+  - Input Shaping
+
+**TO DO:**
+- Feel free to put in user requests!
+
+**2023-08-19 - V1.4.0**
+
+* Set default LIN_ADVANCE to 0.1 instead of 0.22 (Seems to be at least more accurate than the default, but please do your own LIN_ADVANCE tests! Each machine is different)
+* Added back in NOZZLE_TO_PROBE_OFFSET, required setting: #define BED_TRAMMING_INSET_LFRB { 30, 30, 49, 30 }
+* Changed #define NOZZLE_TO_PROBE_OFFSET { -44, -7, 0 } to #define NOZZLE_TO_PROBE_OFFSET { -49, -7, 0 }, more accurate for the CR Touch
+* Changed X_MAX_POS X_BED_SIZE to X_MAX_POS (X_BED_SIZE + 49)
+* hanged Y_MAX_POS Y_BED_SIZE to Y_MAX_POS (Y_BED_SIZE + 7)
+* Added CUSTOM_MENU_CONFIG, in 'Configuration' there is a custom menu called 'DELICIOUS COMMANDS' that will run these commands in GCode
+  - Custom PID E settings, PID E C10  TEMP 180, part cooling fan at 100%
+  - Custom PID E settings, PID E C10  TEMP 190, part cooling fan at 100%
+  - Custom PID E settings, PID E C10  TEMP 200, part cooling fan at 100%
+  - Custom PID Bed, PID BED C10  TEMP 50
+  - Custom PID Bed, PID BED C10  TEMP 60
+  - Custom PID Bed, PID BED C10  TEMP 70
+* Turned off PRINTJOB_TIMER_AUTOSTART
+* Turned off DOUBLECLICK_FOR_Z_BABYSTEPPING (That was a little frustrating with it on)
+* Removed these functions from Configuration_adv.h:
+  - LED_CONTROL_MENU
 
 **CHANGELOG:**
 
@@ -85,7 +116,7 @@ List of Features:
 * Default ABS heating settings:
   - Hot End: 240C
   - Bed: 70C
-* Added Default Bed Level heating settings (in times when you want to tinker with something but have the hot end and bed set to the right temp so you can instantly start printing after):
+* Added Default Bed Level heating settings (in times when you want to tinker with something but have the hot end and bed set to the right temp so you can instantly start leveling after):
   - Hot End: 150C
   - Bed: 50C
 * Cleaned up Configuration.h and Configuration_adv.h

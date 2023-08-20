@@ -1342,6 +1342,32 @@
   // Show the E position (filament used) during printing
   //#define LCD_SHOW_E_TOTAL
 
+  /**
+   * LED Control Menu
+   * Add LED Control to the LCD menu
+   */
+  //#define LED_CONTROL_MENU
+  #if ENABLED(LED_CONTROL_MENU)
+    #define LED_COLOR_PRESETS                 // Enable the Preset Color menu option
+    //#define NEO2_COLOR_PRESETS              // Enable a second NeoPixel Preset Color menu option
+    #if ENABLED(LED_COLOR_PRESETS)
+      #define LED_USER_PRESET_RED        255  // User defined RED value
+      #define LED_USER_PRESET_GREEN      128  // User defined GREEN value
+      #define LED_USER_PRESET_BLUE         0  // User defined BLUE value
+      #define LED_USER_PRESET_WHITE      255  // User defined WHITE value
+      #define LED_USER_PRESET_BRIGHTNESS 255  // User defined intensity
+      //#define LED_USER_PRESET_STARTUP       // Have the printer display the user preset color on startup
+    #endif
+    #if ENABLED(NEO2_COLOR_PRESETS)
+      #define NEO2_USER_PRESET_RED        255 // User defined RED value
+      #define NEO2_USER_PRESET_GREEN      128 // User defined GREEN value
+      #define NEO2_USER_PRESET_BLUE         0 // User defined BLUE value
+      #define NEO2_USER_PRESET_WHITE      255 // User defined WHITE value
+      #define NEO2_USER_PRESET_BRIGHTNESS 255 // User defined intensity
+      //#define NEO2_USER_PRESET_STARTUP      // Have the printer display the user preset color on startup for the second strip
+    #endif
+  #endif
+
 #endif // HAS_DISPLAY || DWIN_LCD_PROUI
 
 // Add 'M73' to set print job progress, overrides Marlin's built-in estimate
@@ -1935,7 +1961,7 @@
   #define BABYSTEP_MULTIPLICATOR_Z  1       // (steps or mm) Steps or millimeter distance for each Z babystep
   #define BABYSTEP_MULTIPLICATOR_XY 1       // (steps or mm) Steps or millimeter distance for each XY babystep
 
-  //#define DOUBLECLICK_FOR_Z_BABYSTEPPING    // Double-click on the Status Screen for Z Babystepping.
+  #define DOUBLECLICK_FOR_Z_BABYSTEPPING    // Double-click on the Status Screen for Z Babystepping.
   #if ENABLED(DOUBLECLICK_FOR_Z_BABYSTEPPING)
     #define DOUBLECLICK_MAX_INTERVAL 1250   // Maximum interval between clicks, in milliseconds.
                                             // Note: Extra time may be added to mitigate controller latency.
@@ -1976,8 +2002,7 @@
   #if ENABLED(DISTINCT_E_FACTORS)
     #define ADVANCE_K { 0.22 }    // (mm) Compression length per 1mm/s extruder speed, per extruder
   #else
-    // Default is 0.22, but at elast 0.1 is closer to what I ahve observed - DELICIOUS
-    #define ADVANCE_K 0.1        // (mm) Compression length applying to all extruders
+    #define ADVANCE_K 0.22        // (mm) Compression length applying to all extruders
   #endif
   //#define ADVANCE_K_EXTRA       // Add a second linear advance constant, configurable with M900 L.
   //#define LA_DEBUG              // Print debug information to serial during operation. Disable for production use.
@@ -3448,37 +3473,33 @@
 // @section custom config menu
 
 // Custom Menu: Configuration Menu
-#define CUSTOM_MENU_CONFIG
+//#define CUSTOM_MENU_CONFIG
 #if ENABLED(CUSTOM_MENU_CONFIG)
-  #define CUSTOM_MENU_CONFIG_TITLE "DELICIOUS COMMANDS"
-  #define CUSTOM_MENU_CONFIG_SCRIPT_DONE "Script Done"
+  //#define CUSTOM_MENU_CONFIG_TITLE "Custom Commands"
+  #define CUSTOM_MENU_CONFIG_SCRIPT_DONE "M117 Wireless Script Done"
   #define CUSTOM_MENU_CONFIG_SCRIPT_AUDIBLE_FEEDBACK
-  #define CUSTOM_MENU_CONFIG_SCRIPT_RETURN  // Return to status screen after a script
+  //#define CUSTOM_MENU_CONFIG_SCRIPT_RETURN  // Return to status screen after a script
   #define CUSTOM_MENU_CONFIG_ONLY_IDLE        // Only show custom menu when the machine is idle
 
-  #define CONFIG_MENU_ITEM_1_DESC "PID E C10  TEMP 180"
-  #define CONFIG_MENU_ITEM_1_GCODE "M106\nM303 E0 C10 S180 U\nM500\nM117 [PID E TEMP 180 DONE]"
-  #define CONFIG_MENU_ITEM_1_CONFIRM        // Show a confirmation dialog before this action
+  #define CONFIG_MENU_ITEM_1_DESC "Wifi ON"
+  #define CONFIG_MENU_ITEM_1_GCODE "M118 [ESP110] WIFI-STA pwd=12345678"
+  //#define CONFIG_MENU_ITEM_1_CONFIRM        // Show a confirmation dialog before this action
 
-  #define CONFIG_MENU_ITEM_2_DESC "PID E C10  TEMP 190"
-  #define CONFIG_MENU_ITEM_2_GCODE "M106\nM303 E0 C10 S190 U\nM500\nM117 [PID E TEMP 190 DONE]"
-  #define CONFIG_MENU_ITEM_2_CONFIRM        // Show a confirmation dialog before this action
+  #define CONFIG_MENU_ITEM_2_DESC "Bluetooth ON"
+  #define CONFIG_MENU_ITEM_2_GCODE "M118 [ESP110] BT pwd=12345678"
+  //#define CONFIG_MENU_ITEM_2_CONFIRM
 
-  #define CONFIG_MENU_ITEM_3_DESC "PID E C10  TEMP 200"
-  #define CONFIG_MENU_ITEM_3_GCODE "M106\nM303 E0 C10 S200 U\nM500\nM117 [PID E TEMP 200 DONE]"
-  #define CONFIG_MENU_ITEM_3_CONFIRM        // Show a confirmation dialog before this action
+  //#define CONFIG_MENU_ITEM_3_DESC "Radio OFF"
+  //#define CONFIG_MENU_ITEM_3_GCODE "M118 [ESP110] OFF pwd=12345678"
+  //#define CONFIG_MENU_ITEM_3_CONFIRM
 
-  #define CONFIG_MENU_ITEM_4_DESC "PID BED C10  TEMP 50"
-  #define CONFIG_MENU_ITEM_4_GCODE "M303 E-1 C10 S50 U\nM500\nM117 [PID BED TEMP 50 DONE]"
-  #define CONFIG_MENU_ITEM_4_CONFIRM
+  //#define CONFIG_MENU_ITEM_4_DESC "Wifi ????"
+  //#define CONFIG_MENU_ITEM_4_GCODE "M118 ????"
+  //#define CONFIG_MENU_ITEM_4_CONFIRM
 
-  #define CONFIG_MENU_ITEM_5_DESC "PID BED C10  TEMP 60"
-  #define CONFIG_MENU_ITEM_5_GCODE "M303 E-1 C10 S60 U\nM500\nM117 [PID BED TEMP 60 DONE]"
-  #define CONFIG_MENU_ITEM_5_CONFIRM
-
-  #define CONFIG_MENU_ITEM_6_DESC "PID BED C10  TEMP 70"
-  #define CONFIG_MENU_ITEM_6_GCODE "M303 E-1 C10 S70 U\nM500\nM117 [PID BED TEMP 70 DONE]"
-  #define CONFIG_MENU_ITEM_6_CONFIRM
+  //#define CONFIG_MENU_ITEM_5_DESC "Wifi ????"
+  //#define CONFIG_MENU_ITEM_5_GCODE "M118 ????"
+  //#define CONFIG_MENU_ITEM_5_CONFIRM
 #endif
 
 // @section custom buttons
