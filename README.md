@@ -1,6 +1,6 @@
 # A-Delicious-Marlin-Ender-3-Pro-Firmware
 
-Date of Latest Build .bin: 2023-08-19 - V1.4.0
+Date of Latest Build .bin: 2023-08-20 - V1.4.1
 Latest Marlin Version: 2.1.2.1
 
 **ABOUT**
@@ -41,7 +41,15 @@ List of Features:
   - Input Shaping
 
 **TO DO:**
-- Feel free to put in user requests!
+* Leveling/Tramming is off to the side a little, still trying to figure it out
+
+**CHANGELOG:**
+
+**2023-08-20 - V1.4.1**
+* Changed X_MAX_POS (X_BED_SIZE + 49) to X_MAX_POS (X_BED_SIZE), again (no longer goes off the edge of the bed)
+* Changed Y_MAX_POS (Y_BED_SIZE + 7) to Y_MAX_POS (Y_BED_SIZE), again (no longer goes off the edge of the bed)
+* Changed BED_TRAMMING_PROBE_TOLERANCE from 0.1mm to 0.04mm (0.1mm is a huge gap when your initial layer is 0.2mm, we're talking 50% off!)
+* Changed #define NOZZLE_TO_PROBE_OFFSET { -44, -7, 0 } to #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 } (Still figuring this out)
 
 **2023-08-19 - V1.4.0**
 
@@ -49,7 +57,7 @@ List of Features:
 * Added back in NOZZLE_TO_PROBE_OFFSET, required setting: #define BED_TRAMMING_INSET_LFRB { 30, 30, 49, 30 }
 * Changed #define NOZZLE_TO_PROBE_OFFSET { -44, -7, 0 } to #define NOZZLE_TO_PROBE_OFFSET { -49, -7, 0 }, more accurate for the CR Touch
 * Changed X_MAX_POS X_BED_SIZE to X_MAX_POS (X_BED_SIZE + 49)
-* hanged Y_MAX_POS Y_BED_SIZE to Y_MAX_POS (Y_BED_SIZE + 7)
+* Changed Y_MAX_POS Y_BED_SIZE to Y_MAX_POS (Y_BED_SIZE + 7)
 * Added CUSTOM_MENU_CONFIG, in 'Configuration' there is a custom menu called 'DELICIOUS COMMANDS' that will run these commands in GCode
   - Custom PID E settings, PID E C10  TEMP 180, part cooling fan at 100%
   - Custom PID E settings, PID E C10  TEMP 190, part cooling fan at 100%
@@ -61,8 +69,6 @@ List of Features:
 * Turned off DOUBLECLICK_FOR_Z_BABYSTEPPING (That was a little frustrating with it on)
 * Removed these functions from Configuration_adv.h:
   - LED_CONTROL_MENU
-
-**CHANGELOG:**
 
 **2023-08-17 - V1.3.0**
 

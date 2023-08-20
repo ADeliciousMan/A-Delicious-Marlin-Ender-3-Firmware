@@ -1036,7 +1036,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
+#define NOZZLE_TO_PROBE_OFFSET { -49, -7, 0 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1247,7 +1247,6 @@
 // @section geometry
 
 // The size of the printable area
-//Defaults - DELICIOUS
 #define X_BED_SIZE 235
 #define Y_BED_SIZE 235
 
@@ -1256,8 +1255,8 @@
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
 // Default, #define X_MAX_POS X_BED_SIZE - DELICIOUS
-#define X_MAX_POS (X_BED_SIZE)
-#define Y_MAX_POS (Y_BED_SIZE)
+#define X_MAX_POS (X_BED_SIZE + 49)
+#define Y_MAX_POS (Y_BED_SIZE + 7)
 #define Z_MAX_POS 250
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
@@ -1591,7 +1590,7 @@
   #define BED_TRAMMING_INCLUDE_CENTER       // Move to the center after the last corner
   #define BED_TRAMMING_USE_PROBE
   #if ENABLED(BED_TRAMMING_USE_PROBE)
-    #define BED_TRAMMING_PROBE_TOLERANCE 0.04  // (mm)
+    #define BED_TRAMMING_PROBE_TOLERANCE 0.1  // (mm)
     #define BED_TRAMMING_VERIFY_RAISED        // After adjustment triggers the probe, re-probe to verify
     //#define BED_TRAMMING_AUDIO_FEEDBACK
   #endif
