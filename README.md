@@ -17,7 +17,7 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board (though should function on 
 * Marlins PID Tuning
 * Custom menu with custom easy to access PID settings for Extruder and Bed
   - Extruder PID Presets, 10 cycles, 180C, 190C, 200C
-  - Bed PID Presets, 10 cycles, 50C, 60C, 170C
+  - Bed PID Presets, 10 cycles, 50C, 60C, 70C
   - These do not reapply a default PID setting, but instead actual run a full PID tune so it is unique to your machine (extruder, heading block, nozzle, cooling fan, specific temperature)
 * More accurate defaults for easier instant setup (I highly recommend you to do your own calibrations to get the most out of your printer, this firmware just helps to get you started faster and easier with more tools to calibrate easily)
 * Mesh leveling, 9 points (BILINEAR)
