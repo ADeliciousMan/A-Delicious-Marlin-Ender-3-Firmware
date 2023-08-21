@@ -60,6 +60,7 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board (though should function on 
 ## TO DO:
 * Leveling/Tramming is off to the side a little, still trying to figure it out
 * Disable Steppers once a print is finished
+* Turn off fans after custom PID tune
 
 ## CHANGELOG:
 
