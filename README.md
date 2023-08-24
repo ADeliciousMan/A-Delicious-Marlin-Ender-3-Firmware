@@ -1,6 +1,6 @@
 # A Delicious Marlin Ender 3/Pro Firmware
 
-#### Date of Latest Build: 2023-08-20 - V1.4.1
+#### Date of Latest Build: 2023-08-23 - V1.5.0
 #### Latest Marlin Version: 2.1.2.1
 
 ## ABOUT
@@ -13,6 +13,7 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board (though should function on 
 ## List of Features:
 
 * Newest Marlin Build
+* Faster prints
 * BL/CR Touch support
 * Marlins PID Tuning
 * Custom menu with custom easy to access PID settings for Extruder and Bed
@@ -22,13 +23,12 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board (though should function on 
 * More accurate defaults for easier instant setup (I highly recommend you to do your own calibrations to get the most out of your printer, this firmware just helps to get you started faster and easier with more tools to calibrate easily)
 * Mesh leveling, 9 points (BILINEAR)
 * Input shaping and ability to adjust on screen directly
-* Linear Advance and ability to adjust on screen directly
-* Alphabetize SD card contents
-* Ability to silence beeps in menu
-* Long Texts Auto Scrolls
 * Z Probe Wizard
 * Tramming Wizard
 * Thermal runaway protection
+* Alphabetize SD card contents
+* Ability to silence beeps in menu
+* Long Texts Auto Scrolls
 * Power loss recovery
 * Probe offset to align nozzle with center of bed after homing (instead of probe)
 * Lower min temp for extrusion, 170C
@@ -48,21 +48,50 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board (though should function on 
   * Either manually level your bed using a peice of paper or shim, or use the tramming settings in Motion > Tramming Wizard
   * Z Probe Wizard, Motion > Z Probe Wizard
   * Level Bed for a mesh level, Motion > Level Bed
-  - Linear Advance
-    * [Read this](https://marlinfw.org/docs/features/lin_advance.html)
-    * [Use this tool](https://marlinfw.org/tools/lin_advance/k-factor.html)
+  - ~~Linear Advance~~ **4.2.7 BAORD DOES NOT SUPPORT LINEAR ADVANCE**
+    * ~~[Read this](https://marlinfw.org/docs/features/lin_advance.html)~~
+    * ~~[Use this tool](https://marlinfw.org/tools/lin_advance/k-factor.html)~~
   - [Input Shaping](https://marlinfw.org/docs/gcode/M593.html)
-* Calibration tests
+    - [TH3D Guide](https://support.th3dstudio.com/helpcenter/unified-marlin-input-shaping-tuning-guide/)
+    - [TH3D Calculator](https://www.th3dstudio.com/marlin-input-shaping-calculator/)
+  * [General Overall Calibration Guides from 'Teaching Tech'](https://teachingtechyt.github.io/calibration.html)
+* **Calibration tests**
   * [Stringing Test](https://www.thingiverse.com/thing:2080224)
   * [XYZ Cube](https://www.thingiverse.com/thing:1278865/comments)
   * [Benchy Boat](https://www.thingiverse.com/thing:763622)
 
 ## TO DO:
 * Leveling/Tramming is off to the side a little, still trying to figure it out
-* Disable Steppers once a print is finished
-* Turn off fans after custom PID tune
+* Trying to decide between AUTO_BED_LEVELING_BILINEAR (using this ATM) or AUTO_BED_LEVELING_UBL
 
 ## CHANGELOG:
+
+#### 2023-08-23 - V1.5.0
+
+* Turned off LIN_ADVANCE (Not supported on the 4.2.7 board, I did a dumb)
+* Custom 'DELICIOUS COMMANDS' PID Tuning now turns the fan off once PID tuning is done
+* Changed PREHEAT_1_TEMP_HOTEND (PLA) from 180 to 190
+* Changed DEFAULT_MAX_ACCELERATION from { 500, 500, 100, 5000 } to { 2000, 2000, 100, 10000 } (More speed is more good 😉)
+* Changed DEFAULT_ACCELERATION from 500 to 1000
+* Changed DEFAULT_TRAVEL_ACCELERATION from 500 to 2000
+* Updated Bootscreen for a nicer image!
+* Removed these functions to clean up configuration.h and Configuration_adv.h:
+  - THERMAL_PROTECTION_CHAMBER
+  - THERMAL_PROTECTION_COOLER
+  - TEMP_SENSOR_COOLER
+  - STATUS_CHAMBER_ANIM
+  - STATUS_CUTTER_ANIM
+  - STATUS_COOLER_ANIM
+  - STATUS_FLOWMETER_ANIM
+  - REALTIME_REPORTING_COMMANDS
+  - FULL_REPORT_TO_HOST_FEATURE
+  - EMERGENCY_PARSER
+  - RX_BUFFER_MONITOR
+  - LASER_SYNCHRONOUS_M106_M107
+  - COOLANT_CONTROL
+  - G0_FEEDRATE
+  - GCODE_MOTION_MODES
+  - PAREN_COMMENTS
 
 #### 2023-08-20 - V1.4.1
 * Changed X_MAX_POS (X_BED_SIZE + 49) to X_MAX_POS (X_BED_SIZE), again (no longer goes off the edge of the bed)

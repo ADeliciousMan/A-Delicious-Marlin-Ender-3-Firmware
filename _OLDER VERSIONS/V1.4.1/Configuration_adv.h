@@ -244,6 +244,25 @@
 #endif
 
 //
+// Laser Cooler options
+//
+#if TEMP_SENSOR_COOLER
+  #define COOLER_MINTEMP           8  // (°C)
+  #define COOLER_MAXTEMP          26  // (°C)
+  #define COOLER_DEFAULT_TEMP     16  // (°C)
+  #define TEMP_COOLER_HYSTERESIS   1  // (°C) Temperature proximity considered "close enough" to the target
+  #define COOLER_PIN               8  // Laser cooler on/off pin used to control power to the cooling element (e.g., TEC, External chiller via relay)
+  #define COOLER_INVERTING     false
+  #define TEMP_COOLER_PIN         15  // Laser/Cooler temperature sensor pin. ADC is required.
+  #define COOLER_FAN                  // Enable a fan on the cooler, Fan# 0,1,2,3 etc.
+  #define COOLER_FAN_INDEX         0  // FAN number 0, 1, 2 etc. e.g.
+  #if ENABLED(COOLER_FAN)
+    #define COOLER_FAN_BASE      100  // Base Cooler fan PWM (0-255); turns on when Cooler temperature is above the target
+    #define COOLER_FAN_FACTOR     25  // PWM increase per °C above target
+  #endif
+#endif
+
+//
 // Motherboard Sensor options
 //
 #if TEMP_SENSOR_BOARD
@@ -1676,6 +1695,10 @@
   #define STATUS_HOTEND_INVERTED      // Show solid nozzle bitmaps when heating (Requires STATUS_HOTEND_ANIM for numbered hotends)
   #define STATUS_HOTEND_ANIM          // Use a second bitmap to indicate hotend heating
   #define STATUS_BED_ANIM             // Use a second bitmap to indicate bed heating
+  #define STATUS_CHAMBER_ANIM         // Use a second bitmap to indicate chamber heating
+  //#define STATUS_CUTTER_ANIM        // Use a second bitmap to indicate spindle / laser active
+  //#define STATUS_COOLER_ANIM        // Use a second bitmap to indicate laser cooling
+  //#define STATUS_FLOWMETER_ANIM     // Use multiple bitmaps to indicate coolant flow
   //#define STATUS_ALT_BED_BITMAP     // Use the alternative bed bitmap
   //#define STATUS_ALT_FAN_BITMAP     // Use the alternative fan bitmap
   //#define STATUS_FAN_FRAMES 3       // :[0,1,2,3,4] Number of fan animation frames
@@ -1948,7 +1971,7 @@
  *
  * See https://marlinfw.org/docs/features/lin_advance.html for full instructions.
  */
-//#define LIN_ADVANCE
+#define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
   #if ENABLED(DISTINCT_E_FACTORS)
     #define ADVANCE_K { 0.22 }    // (mm) Compression length per 1mm/s extruder speed, per extruder
@@ -2268,6 +2291,42 @@
   // Enable this option to collect and display the number
   // of dropped bytes after a file transfer to SD.
   //#define SERIAL_STATS_DROPPED_RX
+#endif
+
+// Monitor RX buffer usage
+// Dump an error to the serial port if the serial receive buffer overflows.
+// If you see these errors, increase the RX_BUFFER_SIZE value.
+// Not supported on all platforms.
+//#define RX_BUFFER_MONITOR
+
+/**
+ * Emergency Command Parser
+ *
+ * Add a low-level parser to intercept certain commands as they
+ * enter the serial receive buffer, so they cannot be blocked.
+ * Currently handles M108, M112, M410, M876
+ * NOTE: Not yet implemented for all platforms.
+ */
+//#define EMERGENCY_PARSER
+
+/**
+ * Realtime Reporting (requires EMERGENCY_PARSER)
+ *
+ * - Report position and state of the machine (like Grbl).
+ * - Auto-report position during long moves.
+ * - Useful for CNC/LASER.
+ *
+ * Adds support for commands:
+ *  S000 : Report State and Position while moving.
+ *  P000 : Instant Pause / Hold while moving.
+ *  R000 : Resume from Pause / Hold.
+ *
+ * - During Hold all Emergency Parser commands are available, as usual.
+ * - Enable NANODLP_Z_SYNC and NANODLP_ALL_AXIS for move command end-state reports.
+ */
+//#define REALTIME_REPORTING_COMMANDS
+#if ENABLED(REALTIME_REPORTING_COMMANDS)
+  //#define FULL_REPORT_TO_HOST_FEATURE   // Auto-report the machine status like Grbl CNC
 #endif
 
 // Bad Serial-connections can miss a received command by sending an 'ok'
@@ -3108,6 +3167,33 @@
   #endif
 #endif
 
+/**
+ * Synchronous Laser Control with M106/M107
+ *
+ * Marlin normally applies M106/M107 fan speeds at a time "soon after" processing
+ * a planner block. This is too inaccurate for a PWM/TTL laser attached to the fan
+ * header (as with some add-on laser kits). Enable this option to set fan/laser
+ * speeds with much more exact timing for improved print fidelity.
+ *
+ * NOTE: This option sacrifices some cooling fan speed options.
+ */
+//#define LASER_SYNCHRONOUS_M106_M107
+
+/**
+ * Coolant Control
+ *
+ * Add the M7, M8, and M9 commands to turn mist or flood coolant on and off.
+ *
+ * Note: COOLANT_MIST_PIN and/or COOLANT_FLOOD_PIN must also be defined.
+ */
+//#define COOLANT_CONTROL
+#if ENABLED(COOLANT_CONTROL)
+  #define COOLANT_MIST                // Enable if mist coolant is present
+  #define COOLANT_FLOOD               // Enable if flood coolant is present
+  #define COOLANT_MIST_INVERT  false  // Set "true" if the on/off function is reversed
+  #define COOLANT_FLOOD_INVERT false  // Set "true" if the on/off function is reversed
+#endif
+
 // @section filament width
 
 /**
@@ -3286,6 +3372,21 @@
  */
 //#define NO_WORKSPACE_OFFSETS
 
+/**
+ * CNC G-code options
+ * Support CNC-style G-code dialects used by laser cutters, drawing machine cams, etc.
+ * Note that G0 feedrates should be used with care for 3D printing (if used at all).
+ * High feedrates may cause ringing and harm print quality.
+ */
+//#define PAREN_COMMENTS      // Support for parentheses-delimited comments
+//#define GCODE_MOTION_MODES  // Remember the motion mode (G0 G1 G2 G3 G5 G38.X) and apply for X Y Z E F, etc.
+
+// Enable and set a (default) feedrate for all G0 moves
+//#define G0_FEEDRATE 3000 // (mm/min)
+#ifdef G0_FEEDRATE
+  //#define VARIABLE_G0_FEEDRATE // The G0 feedrate is set by F in G0 motion mode
+#endif
+
 // @section gcode
 
 /**
@@ -3354,29 +3455,29 @@
   #define CUSTOM_MENU_CONFIG_SCRIPT_AUDIBLE_FEEDBACK
   #define CUSTOM_MENU_CONFIG_SCRIPT_RETURN  // Return to status screen after a script
   #define CUSTOM_MENU_CONFIG_ONLY_IDLE        // Only show custom menu when the machine is idle
-// M106 Sets fan speed to 100 percent, M106 S0 sets fan to 0 - DELICIOUS
+
   #define CONFIG_MENU_ITEM_1_DESC "PID E C10  TEMP 180"
-  #define CONFIG_MENU_ITEM_1_GCODE "M106\nM303 E0 C10 S180 U\nM500\nM106 S0\nM117 [PID E TEMP 180 DONE]"
+  #define CONFIG_MENU_ITEM_1_GCODE "M106\nM303 E0 C10 S180 U\nM500\nM117 [PID E TEMP 180 DONE]"
   #define CONFIG_MENU_ITEM_1_CONFIRM        // Show a confirmation dialog before this action
 
   #define CONFIG_MENU_ITEM_2_DESC "PID E C10  TEMP 190"
-  #define CONFIG_MENU_ITEM_2_GCODE "M106\nM303 E0 C10 S190 U\nM500\nM106 S0\nM117 [PID E TEMP 190 DONE]"
+  #define CONFIG_MENU_ITEM_2_GCODE "M106\nM303 E0 C10 S190 U\nM500\nM117 [PID E TEMP 190 DONE]"
   #define CONFIG_MENU_ITEM_2_CONFIRM        // Show a confirmation dialog before this action
 
   #define CONFIG_MENU_ITEM_3_DESC "PID E C10  TEMP 200"
-  #define CONFIG_MENU_ITEM_3_GCODE "M106\nM303 E0 C10 S200 U\nM500\nM106 S0\nM117 [PID E TEMP 200 DONE]"
+  #define CONFIG_MENU_ITEM_3_GCODE "M106\nM303 E0 C10 S200 U\nM500\nM117 [PID E TEMP 200 DONE]"
   #define CONFIG_MENU_ITEM_3_CONFIRM        // Show a confirmation dialog before this action
 
   #define CONFIG_MENU_ITEM_4_DESC "PID BED C10  TEMP 50"
-  #define CONFIG_MENU_ITEM_4_GCODE "M303 E-1 C10 S50 U\nM500\nM106 S0\nM117 [PID BED TEMP 50 DONE]"
+  #define CONFIG_MENU_ITEM_4_GCODE "M303 E-1 C10 S50 U\nM500\nM117 [PID BED TEMP 50 DONE]"
   #define CONFIG_MENU_ITEM_4_CONFIRM
 
   #define CONFIG_MENU_ITEM_5_DESC "PID BED C10  TEMP 60"
-  #define CONFIG_MENU_ITEM_5_GCODE "M303 E-1 C10 S60 U\nM500\nM106 S0\nM117 [PID BED TEMP 60 DONE]"
+  #define CONFIG_MENU_ITEM_5_GCODE "M303 E-1 C10 S60 U\nM500\nM117 [PID BED TEMP 60 DONE]"
   #define CONFIG_MENU_ITEM_5_CONFIRM
 
   #define CONFIG_MENU_ITEM_6_DESC "PID BED C10  TEMP 70"
-  #define CONFIG_MENU_ITEM_6_GCODE "M303 E-1 C10 S70 U\nM500\nM106 S0\nM117 [PID BED TEMP 70 DONE]"
+  #define CONFIG_MENU_ITEM_6_GCODE "M303 E-1 C10 S70 U\nM500\nM117 [PID BED TEMP 70 DONE]"
   #define CONFIG_MENU_ITEM_6_CONFIRM
 #endif
 
