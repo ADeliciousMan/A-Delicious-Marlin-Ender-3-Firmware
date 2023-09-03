@@ -1,6 +1,6 @@
 # A Delicious Marlin Ender 3/Pro Firmware
 
-#### Date of Latest Build: 2023-08-23 - V1.5.0
+#### Date of Latest Build: 2023-09-03 - V1.6.0
 #### Latest Marlin Version: 2.1.2.1
 
 ## ABOUT
@@ -65,6 +65,15 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board (though should function on 
 * Trying to decide between AUTO_BED_LEVELING_BILINEAR (using this ATM) or AUTO_BED_LEVELING_UBL
 
 ## CHANGELOG:
+
+#### 2023-09-03 - V1.6.0
+* Turned on LIMITED_MAX_ACCEL_EDITING
+* Turned on ADVANCED_PAUSE_FEATURE
+  - PAUSE_PARK_RETRACT_LENGTH set to 3mm instead of default 2mm
+  - FILAMENT_CHANGE_UNLOAD_LENGTH set to 150mm instead of 100mm
+* Turned on NOZZLE_PARK_FEATURE
+* Turned on PARK_HEAD_ON_PAUSE
+* Turned on FILAMENT_LOAD_UNLOAD_GCODES
 
 #### 2023-08-23 - V1.5.0
 
