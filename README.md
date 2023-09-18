@@ -3,7 +3,7 @@
 #### Date of Latest Build: 2023-09-17 - V1.6.1
 #### Latest Marlin Version: 2.1.2.1
 
-![LOGO](https://github.com/ADeliciousMan/A-Delicious-Marlin-Ender-3-Pro-Firmware/blob/76a0c4bf106cbfaf16d01e50f935dda95623296f/bootscreen.png?raw=true)
+![LOGO](https://raw.githubusercontent.com/ADeliciousMan/A-Delicious-Marlin-Ender-3-Pro-Firmware/master/bootscreen.png?raw=true)
 
 ## ABOUT
 
