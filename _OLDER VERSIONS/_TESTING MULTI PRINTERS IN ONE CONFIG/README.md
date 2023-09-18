@@ -1,16 +1,14 @@
 # A Delicious Marlin Ender 3/Pro Firmware
 
-#### Date of Latest Build: 2023-09-17 - V1.6.1
+#### Date of Latest Build: 2023-09-03 - V1.6.0
 #### Latest Marlin Version: 2.1.2.1
-
-![Game Main Menu](https://github.com/ADeliciousMan/A-Delicious-Marlin-Ender-3-Pro-Firmware/bootscreen.png?raw=true)
 
 ## ABOUT
 
-Constantly being built off the latest version of Marlin (Stable), this firmware includes plenty of useful functions that are turned off by default on Ender 3 boards from Creality, with tweaks for a better out of the box printing experience. It is specifically for people who have an Ender 3 printer with a 4.2.7 board and a BL/CR Touch probe.
+Constantly being built off the latest version of Marlin (Stable), this firmware includes plenty of useful functions that are turned off by default on Ender 3 boards from Creality. It is specifically for people who have an Ender 3 printer with a 4.2.7 board (and now more boards in testing) and a BL/CR Touch probe (and other probes in testing).
 
-###### Note
-I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board (though should function on a 256k board as well and I have not seen a 4.2.7 board that isn't 512k), so it is the only .bin I will compile as it's the only one I can actually test properly; however user compiled and submitted .bins are more than welcome!
+~~###### Note
+I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board (though should function on a 256k board as well and I have not seen a 4.2.7 board that isn't 512k), so it is the only .bin I will compile as it's the only one I can actually test properly; however user compiled and submitted .bins are more than welcome!~~
 
 ## List of Features:
 
@@ -27,19 +25,18 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board (though should function on 
 * Input shaping and ability to adjust on screen directly
 * Z Probe Wizard
 * Tramming Wizard
-* Filament Change during print
 * Thermal runaway protection
 * Alphabetize SD card contents
 * Ability to silence beeps in menu
 * Long Texts Auto Scrolls
-* Power loss recovery (This feature is enabled but turned off in the menu)
+* Power loss recovery
 * Probe offset to align nozzle with center of bed after homing (instead of probe)
-* Lowered min temp for extrusion, 170C
+* Lower min temp for extrusion, 170C
 * Host actions (EX: You use Octoprint but stop the print on the printer directly, it will inform Octoprint of this)
 * And much, much more!
 
 ## What Steps To Take After installing This Firmware
-* Reset/Initialize your EEPROM on your printer, this is to ensure that previous settings are not messing with the new firmware. Yes it does Happen, happened to me plenty of times in testing
+* Reset your EEPROM on your printer, this is to ensure that previous settings are not messing with the new firmware. Yes it does Happen, happened to me plenty of times in testing
   - It would be a good idea to write down settings that you have already calibrated for, like E/Steps so you don't have to do it again
 * **CALIBRATE YOUR PRINTER SETTINGS**
   - [E Steps](https://letsprint3d.net/how-to-calibrate-the-extruder-steps-ender-3-5-cr-10/#EEPROM_Settings)
@@ -48,14 +45,13 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board (though should function on 
     - Go to Configuration > DELICIOUS COMMANDS > Select PID setting you want to use
     - Go to Configuration > Advanced Settings > Temperature and use the Marlin tools
     - Use GCode by following this [link](https://my3dlife.com/how-to-do-a-pid-autotune-on-an-ender-3-step-by-step-guide/)
-  * Either manually level your bed using a piece of paper or shim, or use the tramming settings in Motion > Tramming Wizard
+  * Either manually level your bed using a peice of paper or shim, or use the tramming settings in Motion > Tramming Wizard
   * Z Probe Wizard, Motion > Z Probe Wizard
   * Level Bed for a mesh level, Motion > Level Bed
   - ~~Linear Advance~~ **4.2.7 BAORD DOES NOT SUPPORT LINEAR ADVANCE**
     * ~~[Read this](https://marlinfw.org/docs/features/lin_advance.html)~~
     * ~~[Use this tool](https://marlinfw.org/tools/lin_advance/k-factor.html)~~
   - [Input Shaping](https://marlinfw.org/docs/gcode/M593.html)
-    - **Disclaimer, I am not sure if the 4.2.7 board properly supports Input Shaping, I was not able to see a change in results on my end**
     - [TH3D Guide](https://support.th3dstudio.com/helpcenter/unified-marlin-input-shaping-tuning-guide/)
     - [TH3D Calculator](https://www.th3dstudio.com/marlin-input-shaping-calculator/)
   * [General Overall Calibration Guides from 'Teaching Tech'](https://teachingtechyt.github.io/calibration.html)
@@ -70,20 +66,18 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board (though should function on 
 
 ## CHANGELOG:
 
-#### 2023-09-17 - V1.6.1
-* Changed X_BED_SIZE and Y_BED_SIZE (Printable area) from 235 to 220
-  - This was done to avoid issues with the printer tramming or printing off the edges
-* X_MAX_POS and Y_MAX_POS changed from X_BED_SIZE and Y_BED_SIZE to 235
-  - Just to set a safe static value
-* Fixed some potential bugs in the custom menu with improper text output
-* Changed custom PID E menu from just "M106" that assumes fan speed to max, to specifically say "M106 S255" (max speed)
-* Changed XY_PROBE_FEEDRATE from 133*60 to 200*60 (to speed up probing)
-* Changed Z_PROBE_FEEDRATE_FAST from 4*60 to 8*60 (to speed up probing)
+#### 2023-09-XX - V1.7.0
+* Building out to support multiple different boards and configs for the Ender 3! Will take a decent amount of work, but we'll get there
+  - This will be done with a series of IF/ELSE commands for settings, should auto change setting sand pins (I hope?) when selecting printer
+  - Created profiles for:
+    - ENDER_3_427_CR_BL_TOUCH
+    - ENDER_3_422_CR_BL_TOUCH
+    - ENDER_3_427_Z_SWITCH
+    - ENDER_3_422_Z_SWITCH
+    - ENDER_3_SKR_MNI_E3_V3_CR_BL_TOUCH
+    - ENDER_3_SKR_MNI_E3_V3_Z_SWITCH
 * Removed entire PSU control section
 * Cleaned up license file just to make it easier for me to read and scroll the config files
-* Removed these sections:
-  - security
-  - volumetrics
 
 #### 2023-09-03 - V1.6.0
 * Turned on LIMITED_MAX_ACCEL_EDITING

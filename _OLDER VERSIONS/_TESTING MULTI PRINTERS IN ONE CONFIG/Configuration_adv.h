@@ -3162,6 +3162,8 @@
  */
 //#define DISABLE_DRIVER_SAFE_POWER_PROTECT
 
+// @section cnc
+
 // @section reporting
 
 /**
@@ -3190,6 +3192,22 @@
 #if ENABLED(EXTENDED_CAPABILITIES_REPORT)
   //#define M115_GEOMETRY_REPORT
 #endif
+
+// @section security
+
+/**
+ * Expected Printer Check
+ * Add the M16 G-code to compare a string to the MACHINE_NAME.
+ * M16 with a non-matching string causes the printer to halt.
+ */
+//#define EXPECTED_PRINTER_CHECK
+
+// @section volumetrics
+
+/**
+ * Disable all Volumetric extrusion options
+ */
+//#define NO_VOLUMETRICS
 
 #if DISABLED(NO_VOLUMETRICS)
   /**
@@ -3321,27 +3339,27 @@
   #define CUSTOM_MENU_CONFIG_ONLY_IDLE        // Only show custom menu when the machine is idle
 // M106 Sets fan speed to 100 percent, M106 S0 sets fan to 0 - DELICIOUS
   #define CONFIG_MENU_ITEM_1_DESC "PID E C10  TEMP 180"
-  #define CONFIG_MENU_ITEM_1_GCODE "M106 S255\nM303 E0 C10 S180 U\nM500\nM106 S0\nM117 PID E TEMP 180 DONE"
+  #define CONFIG_MENU_ITEM_1_GCODE "M106\nM303 E0 C10 S180 U\nM500\nM106 S0\nM117 [PID E TEMP 180 DONE]"
   #define CONFIG_MENU_ITEM_1_CONFIRM        // Show a confirmation dialog before this action
 
   #define CONFIG_MENU_ITEM_2_DESC "PID E C10  TEMP 190"
-  #define CONFIG_MENU_ITEM_2_GCODE "M106 S255\nM303 E0 C10 S190 U\nM500\nM106 S0\nM117 PID E TEMP 190 DONE"
+  #define CONFIG_MENU_ITEM_2_GCODE "M106\nM303 E0 C10 S190 U\nM500\nM106 S0\nM117 [PID E TEMP 190 DONE]"
   #define CONFIG_MENU_ITEM_2_CONFIRM        // Show a confirmation dialog before this action
 
   #define CONFIG_MENU_ITEM_3_DESC "PID E C10  TEMP 200"
-  #define CONFIG_MENU_ITEM_3_GCODE "M106 S255\nM303 E0 C10 S200 U\nM500\nM106 S0\nM117 PID E TEMP 200 DONE"
+  #define CONFIG_MENU_ITEM_3_GCODE "M106\nM303 E0 C10 S200 U\nM500\nM106 S0\nM117 [PID E TEMP 200 DONE]"
   #define CONFIG_MENU_ITEM_3_CONFIRM        // Show a confirmation dialog before this action
 
   #define CONFIG_MENU_ITEM_4_DESC "PID BED C10  TEMP 50"
-  #define CONFIG_MENU_ITEM_4_GCODE "M303 E-1 C10 S50 U\nM500\nM106 S0\nM117 PID BED TEMP 50 DONE"
+  #define CONFIG_MENU_ITEM_4_GCODE "M303 E-1 C10 S50 U\nM500\nM106 S0\nM117 [PID BED TEMP 50 DONE]"
   #define CONFIG_MENU_ITEM_4_CONFIRM
 
   #define CONFIG_MENU_ITEM_5_DESC "PID BED C10  TEMP 60"
-  #define CONFIG_MENU_ITEM_5_GCODE "M303 E-1 C10 S60 U\nM500\nM106 S0\nM117 PID BED TEMP 60 DONE"
+  #define CONFIG_MENU_ITEM_5_GCODE "M303 E-1 C10 S60 U\nM500\nM106 S0\nM117 [PID BED TEMP 60 DONE]"
   #define CONFIG_MENU_ITEM_5_CONFIRM
 
   #define CONFIG_MENU_ITEM_6_DESC "PID BED C10  TEMP 70"
-  #define CONFIG_MENU_ITEM_6_GCODE "M303 E-1 C10 S70 U\nM500\nM106 S0\nM117 PID BED TEMP 70 DONE"
+  #define CONFIG_MENU_ITEM_6_GCODE "M303 E-1 C10 S70 U\nM500\nM106 S0\nM117 [PID BED TEMP 70 DONE]"
   #define CONFIG_MENU_ITEM_6_CONFIRM
 #endif
 

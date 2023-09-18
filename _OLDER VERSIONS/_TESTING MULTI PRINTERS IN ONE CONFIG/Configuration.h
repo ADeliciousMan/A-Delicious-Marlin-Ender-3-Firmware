@@ -1,23 +1,95 @@
 #pragma once
 
-// #define DELICIOUS_PRINTER
+// UNCOMMENT ONLY 1 PRINTER AT A TIME
+
+ #define DELICIOUS_PRINTER // My personal settings as my setup is custom to me - DELICIOUS
+ #define MOTHERBOARD BOARD_CREALITY_V427
+
+// #define ENDER_3_427_CR_BL_TOUCH
+// #define MOTHERBOARD BOARD_CREALITY_V427
+
+// #define ENDER_3_422_CR_BL_TOUCH
+// #define MOTHERBOARD BOARD_CREALITY_V422
+
+// #define ENDER_3_427_Z_SWITCH
+// #define MOTHERBOARD BOARD_CREALITY_V427
+
+// #define ENDER_3_422_Z_SWITCH
+// #define MOTHERBOARD BOARD_CREALITY_V422
+
+// #define ENDER_3_SKR_MNI_E3_V3_CR_BL_TOUCH
+// #define MOTHERBOARD BOARD_BTT_SKR_MINI_E3_V3_0
+
+// #define ENDER_3_SKR_MNI_E3_V3_Z_SWITCH
+// #define MOTHERBOARD BOARD_BTT_SKR_MINI_E3_V3_0
+
+
+// @section machine
+
+// Choose the name from boards.h that matches your setup
+#if ENABLED(DELICIOUS_PRINTER)
+  #define X_DRIVER_TYPE  TMC2208_STANDALONE
+  #define Y_DRIVER_TYPE  TMC2208_STANDALONE
+  #define Z_DRIVER_TYPE  TMC2208_STANDALONE
+  #define E0_DRIVER_TYPE TMC2208_STANDALONE
+  #define NOZZLE_TO_PROBE_OFFSET { -54, -19, 0 }
+  #define USE_PROBE_FOR_Z_HOMING
+  #define BLTOUCH
+#endif
+#if ENABLED(ENDER_3_427_CR_BL_TOUCH)
+  #define X_DRIVER_TYPE  TMC2208_STANDALONE
+  #define Y_DRIVER_TYPE  TMC2208_STANDALONE
+  #define Z_DRIVER_TYPE  TMC2208_STANDALONE
+  #define E0_DRIVER_TYPE TMC2208_STANDALONE
+  #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
+  #define USE_PROBE_FOR_Z_HOMING
+  #define BLTOUCH
+#endif
+#if ENABLED(ENDER_3_422_CR_BL_TOUCH)
+  #define MOTHERBOARD BOARD_CREALITY_V422
+  #define X_DRIVER_TYPE  A4988
+  #define Y_DRIVER_TYPE  A4988
+  #define Z_DRIVER_TYPE  A4988
+  #define E0_DRIVER_TYPE A4988
+  #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
+  #define USE_PROBE_FOR_Z_HOMING
+  #define BLTOUCH
+#endif
+#if ENABLED(ENDER_3_427_Z_SWITCH)
+  #define MOTHERBOARD BOARD_CREALITY_V427
+  #define X_DRIVER_TYPE  TMC2208_STANDALONE
+  #define Y_DRIVER_TYPE  TMC2208_STANDALONE
+  #define Z_DRIVER_TYPE  TMC2208_STANDALONE
+  #define E0_DRIVER_TYPE TMC2208_STANDALONE
+#endif
+#if ENABLED(ENDER_3_422_Z_SWITCH)
+  #define MOTHERBOARD BOARD_CREALITY_V422
+  #define X_DRIVER_TYPE  A4988
+  #define Y_DRIVER_TYPE  A4988
+  #define Z_DRIVER_TYPE  A4988
+  #define E0_DRIVER_TYPE A4988
+#endif
+#if ENABLED(ENDER_3_SKR_MNI_E3_V3_CR_BL_TOUCH)
+  #define X_DRIVER_TYPE  TMC2209_STANDALONE
+  #define Y_DRIVER_TYPE  TMC2209_STANDALONE
+  #define Z_DRIVER_TYPE  TMC2209_STANDALONE
+  #define E0_DRIVER_TYPE TMC2209_STANDALONE
+  #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
+  #define USE_PROBE_FOR_Z_HOMING
+  #define BLTOUCH
+#endif
+#if ENABLED(ENDER_3_SKR_MNI_E3_V3_Z_SWITCH)
+  #define X_DRIVER_TYPE  TMC2209_STANDALONE
+  #define Y_DRIVER_TYPE  TMC2209_STANDALONE
+  #define Z_DRIVER_TYPE  TMC2209_STANDALONE
+  #define E0_DRIVER_TYPE TMC2209_STANDALONE
+#endif
 
 #define CONFIGURATION_H_VERSION 02010201
 
 // Author info of this build printed to the host during boot and M115
 #define STRING_CONFIG_H_AUTHOR "(A Delicious Man)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
-
-/**
- * *** VENDORS PLEASE READ ***
- *
- * Marlin allows you to add a custom boot image for Graphical LCDs.
- * With this option Marlin will first show your custom screen followed
- * by the standard Marlin logo with version number and web URL.
- *
- * We encourage you to take advantage of this new feature and we also
- * respectfully request that you retain the unmodified Marlin boot screen.
- */
 
 // Show the Marlin bootscreen on startup. ** ENABLE FOR PRODUCTION **
 #define SHOW_BOOTSCREEN
@@ -27,13 +99,6 @@
 
 // Show the bitmap in Marlin/_Statusscreen.h on the status screen.
 #define CUSTOM_STATUS_SCREEN_IMAGE
-
-// @section machine
-
-// Choose the name from boards.h that matches your setup
-#ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_CREALITY_V427
-#endif
 
 /**
  * Select the serial port on the board to use for communication with the host.
@@ -77,7 +142,7 @@
 //#define BAUDRATE_3 250000   // :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000] Enable to override BAUDRATE
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Ender-3 Pro 4.2.7 - Marlin 2.1.2.1"
+#define CUSTOM_MACHINE_NAME "Ender-3 Pro - Marlin 2.1.2.1"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -100,9 +165,9 @@
  *          TMC5130, TMC5130_STANDALONE, TMC5160, TMC5160_STANDALONE
  * :['A4988', 'A5984', 'DRV8825', 'LV8729', 'TB6560', 'TB6600', 'TMC2100', 'TMC2130', 'TMC2130_STANDALONE', 'TMC2160', 'TMC2160_STANDALONE', 'TMC2208', 'TMC2208_STANDALONE', 'TMC2209', 'TMC2209_STANDALONE', 'TMC26X', 'TMC26X_STANDALONE', 'TMC2660', 'TMC2660_STANDALONE', 'TMC5130', 'TMC5130_STANDALONE', 'TMC5160', 'TMC5160_STANDALONE']
  */
-#define X_DRIVER_TYPE  TMC2208_STANDALONE
-#define Y_DRIVER_TYPE  TMC2208_STANDALONE
-#define Z_DRIVER_TYPE  TMC2208_STANDALONE
+//#define X_DRIVER_TYPE  TMC2208_STANDALONE
+//#define Y_DRIVER_TYPE  TMC2208_STANDALONE
+//#define Z_DRIVER_TYPE  TMC2208_STANDALONE
 //#define X2_DRIVER_TYPE A4988
 //#define Y2_DRIVER_TYPE A4988
 //#define Z2_DRIVER_TYPE A4988
@@ -114,7 +179,7 @@
 //#define U_DRIVER_TYPE  A4988
 //#define V_DRIVER_TYPE  A4988
 //#define W_DRIVER_TYPE  A4988
-#define E0_DRIVER_TYPE TMC2208_STANDALONE
+//#define E0_DRIVER_TYPE TMC2208_STANDALONE
 //#define E1_DRIVER_TYPE A4988
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
@@ -273,12 +338,7 @@
  *   999 : Dummy Table that ALWAYS reads 100°C or the temperature defined below.
  *
  */
-
-#if ENABLED(DELICIOUS_PRINTER)
-  #define TEMP_SENSOR_0 1047
-#else
-  #define TEMP_SENSOR_0 1
-#endif
+#define TEMP_SENSOR_0 1047 // default is 1, changed for my pt1000 from Triangel Labs - DELICIOUS
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
@@ -807,7 +867,7 @@
 //#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
 // Force the use of the probe for Z-axis homing
-#define USE_PROBE_FOR_Z_HOMING
+// #define USE_PROBE_FOR_Z_HOMING
 
 /**
  * Z_MIN_PROBE_PIN
@@ -861,7 +921,7 @@
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
-#define BLTOUCH
+// #define BLTOUCH
 
 /**
  * MagLev V4 probe by MDD
@@ -981,19 +1041,27 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
+
+
+// #if ENABLED(DELICIOUS_PRINTER)
+//   #define NOZZLE_TO_PROBE_OFFSET { -54, -19, 0 }
+// #endif
+
+// #if ENABLED(ENDER_3_427_CR_BL_TOUCH)
+//   #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
+// #endif
+
+// Personal numbers for my adapter - DELICIOUS
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
 #define PROBING_MARGIN 10
 
 // X and Y axis travel speed (mm/min) between probes
-// Default value is 133*60 - DELICIOUS
-#define XY_PROBE_FEEDRATE (200*60)
+#define XY_PROBE_FEEDRATE (133*60)
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
-// Default value is 4*60 - DELICIOUS
-#define Z_PROBE_FEEDRATE_FAST (8*60)
+#define Z_PROBE_FEEDRATE_FAST (4*60)
 
 // Feedrate (mm/min) for the "accurate" probe of each point
 #define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST / 2)
@@ -1195,16 +1263,16 @@
 
 // The size of the printable area
 //Defaults - DELICIOUS
-#define X_BED_SIZE 235
-#define Y_BED_SIZE 235
+#define X_BED_SIZE 220
+#define Y_BED_SIZE 220
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
 // Default, #define X_MAX_POS X_BED_SIZE - DELICIOUS
-#define X_MAX_POS 235
-#define Y_MAX_POS 235
+#define X_MAX_POS (X_BED_SIZE + 15)
+#define Y_MAX_POS (Y_BED_SIZE + 15)
 #define Z_MAX_POS 250
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50

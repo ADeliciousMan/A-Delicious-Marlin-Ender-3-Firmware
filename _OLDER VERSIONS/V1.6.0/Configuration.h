@@ -1,6 +1,25 @@
+/**
+ * Marlin 3D Printer Firmware
+ * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ *
+ * Based on Sprinter and grbl.
+ * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ */
 #pragma once
-
-// #define DELICIOUS_PRINTER
 
 #define CONFIGURATION_H_VERSION 02010201
 
@@ -174,6 +193,50 @@
 // Generally expected filament diameter (1.75, 2.85, 3.0, ...). Used for Volumetric, Filament Width Sensor, etc.
 #define DEFAULT_NOMINAL_FILAMENT_DIA 1.75
 
+// @section psu control
+
+/**
+ * Power Supply Control
+ *
+ * Enable and connect the power supply to the PS_ON_PIN.
+ * Specify whether the power supply is active HIGH or active LOW.
+ */
+//#define PSU_CONTROL
+//#define PSU_NAME "Power Supply"
+
+#if ENABLED(PSU_CONTROL)
+  //#define MKS_PWC                 // Using the MKS PWC add-on
+  //#define PS_OFF_CONFIRM          // Confirm dialog when power off
+  //#define PS_OFF_SOUND            // Beep 1s when power off
+  #define PSU_ACTIVE_STATE LOW      // Set 'LOW' for ATX, 'HIGH' for X-Box
+
+  //#define PSU_DEFAULT_OFF               // Keep power off until enabled directly with M80
+  //#define PSU_POWERUP_DELAY      250    // (ms) Delay for the PSU to warm up to full power
+  //#define LED_POWEROFF_TIMEOUT 10000    // (ms) Turn off LEDs after power-off, with this amount of delay
+
+  //#define POWER_OFF_TIMER               // Enable M81 D<seconds> to power off after a delay
+  //#define POWER_OFF_WAIT_FOR_COOLDOWN   // Enable M81 S to power off only after cooldown
+
+  //#define PSU_POWERUP_GCODE  "M355 S1"  // G-code to run after power-on (e.g., case light on)
+  //#define PSU_POWEROFF_GCODE "M355 S0"  // G-code to run before power-off (e.g., case light off)
+
+  //#define AUTO_POWER_CONTROL      // Enable automatic control of the PS_ON pin
+  #if ENABLED(AUTO_POWER_CONTROL)
+    #define AUTO_POWER_FANS         // Turn on PSU if fans need power
+    #define AUTO_POWER_E_FANS
+    #define AUTO_POWER_CONTROLLERFAN
+    #define AUTO_POWER_CHAMBER_FAN
+    #define AUTO_POWER_COOLER_FAN
+    #define POWER_TIMEOUT              30 // (s) Turn off power if the machine is idle for this duration
+    //#define POWER_OFF_DELAY          60 // (s) Delay of poweroff after M81 command. Useful to let fans run for extra time.
+  #endif
+  #if EITHER(AUTO_POWER_CONTROL, POWER_OFF_WAIT_FOR_COOLDOWN)
+    //#define AUTO_POWER_E_TEMP        50 // (°C) PSU on if any extruder is over this temperature
+    //#define AUTO_POWER_CHAMBER_TEMP  30 // (°C) PSU on if the chamber is over this temperature
+    //#define AUTO_POWER_COOLER_TEMP   26 // (°C) PSU on if the cooler is over this temperature
+  #endif
+#endif
+
 //===========================================================================
 //============================= Thermal Settings ============================
 //===========================================================================
@@ -273,12 +336,7 @@
  *   999 : Dummy Table that ALWAYS reads 100°C or the temperature defined below.
  *
  */
-
-#if ENABLED(DELICIOUS_PRINTER)
-  #define TEMP_SENSOR_0 1047
-#else
-  #define TEMP_SENSOR_0 1
-#endif
+#define TEMP_SENSOR_0 1
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
@@ -988,12 +1046,10 @@
 #define PROBING_MARGIN 10
 
 // X and Y axis travel speed (mm/min) between probes
-// Default value is 133*60 - DELICIOUS
-#define XY_PROBE_FEEDRATE (200*60)
+#define XY_PROBE_FEEDRATE (133*60)
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
-// Default value is 4*60 - DELICIOUS
-#define Z_PROBE_FEEDRATE_FAST (8*60)
+#define Z_PROBE_FEEDRATE_FAST (4*60)
 
 // Feedrate (mm/min) for the "accurate" probe of each point
 #define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST / 2)
@@ -1203,8 +1259,8 @@
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
 // Default, #define X_MAX_POS X_BED_SIZE - DELICIOUS
-#define X_MAX_POS 235
-#define Y_MAX_POS 235
+#define X_MAX_POS (X_BED_SIZE)
+#define Y_MAX_POS (Y_BED_SIZE)
 #define Z_MAX_POS 250
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
