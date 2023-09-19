@@ -877,7 +877,7 @@
 //
 // Add the G35 command to read bed corners to help adjust screws. Requires a bed probe.
 //
-//#define ASSISTED_TRAMMING
+#define ASSISTED_TRAMMING
 #if ENABLED(ASSISTED_TRAMMING)
 
   // Define positions for probe points.
@@ -3320,16 +3320,16 @@
   #define CUSTOM_MENU_CONFIG_SCRIPT_RETURN  // Return to status screen after a script
   #define CUSTOM_MENU_CONFIG_ONLY_IDLE        // Only show custom menu when the machine is idle
 // M106 Sets fan speed to 100 percent, M106 S0 sets fan to 0 - DELICIOUS
-  #define CONFIG_MENU_ITEM_1_DESC "PID E C10  TEMP 190"
-  #define CONFIG_MENU_ITEM_1_GCODE "M106 S255\nM303 E0 C10 S190 U\nM500\nM106 S0\nM117 PID E TEMP 180 DONE"
+  #define CONFIG_MENU_ITEM_1_DESC "PID E C10  TEMP 180"
+  #define CONFIG_MENU_ITEM_1_GCODE "M106 S255\nM303 E0 C10 S180 U\nM500\nM106 S0\nM117 PID E TEMP 180 DONE"
   #define CONFIG_MENU_ITEM_1_CONFIRM        // Show a confirmation dialog before this action
 
-  #define CONFIG_MENU_ITEM_2_DESC "PID E C10  TEMP 200"
-  #define CONFIG_MENU_ITEM_2_GCODE "M106 S255\nM303 E0 C10 S200 U\nM500\nM106 S0\nM117 PID E TEMP 190 DONE"
+  #define CONFIG_MENU_ITEM_2_DESC "PID E C10  TEMP 190"
+  #define CONFIG_MENU_ITEM_2_GCODE "M106 S255\nM303 E0 C10 S190 U\nM500\nM106 S0\nM117 PID E TEMP 190 DONE"
   #define CONFIG_MENU_ITEM_2_CONFIRM        // Show a confirmation dialog before this action
 
-  #define CONFIG_MENU_ITEM_3_DESC "PID E C10  TEMP 210"
-  #define CONFIG_MENU_ITEM_3_GCODE "M106 S255\nM303 E0 C10 S210 U\nM500\nM106 S0\nM117 PID E TEMP 200 DONE"
+  #define CONFIG_MENU_ITEM_3_DESC "PID E C10  TEMP 200"
+  #define CONFIG_MENU_ITEM_3_GCODE "M106 S255\nM303 E0 C10 S200 U\nM500\nM106 S0\nM117 PID E TEMP 200 DONE"
   #define CONFIG_MENU_ITEM_3_CONFIRM        // Show a confirmation dialog before this action
 
   #define CONFIG_MENU_ITEM_4_DESC "PID BED C10  TEMP 50"
