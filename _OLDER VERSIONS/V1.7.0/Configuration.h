@@ -1,11 +1,9 @@
 #pragma once
 
-//===========================================================================
-//=========== UNCOMMENT ONLY 1 PRINTER AND 1 MOTHERBOARD AT A TIME ==========
-//===========================================================================
+// UNCOMMENT ONLY 1 PRINTER AND 1 MOTHERBOARD AT A TIME
 
-#define DELICIOUS_PRINTER // My personal settings as my setup is custom to me - DELICIOUS
-#define MOTHERBOARD BOARD_CREALITY_V427
+//#define DELICIOUS_PRINTER // My personal settings as my setup is custom to me - DELICIOUS
+//#define MOTHERBOARD BOARD_CREALITY_V427
 
 //#define ENDER_3_427_CR_BL_TOUCH
 //#define MOTHERBOARD BOARD_CREALITY_V427
@@ -13,16 +11,10 @@
 //#define ENDER_3_422_CR_BL_TOUCH
 //#define MOTHERBOARD BOARD_CREALITY_V422
 
-//#define ENDER_3_427_CR_BL_TOUCH_SPRITE_EXTRUDER
+//#define ENDER_3_427_CR_BL_TOUCH_WITH_SPIDER_HOTEND
 //#define MOTHERBOARD BOARD_CREALITY_V427
 
-//#define ENDER_3_422_CR_BL_TOUCH_SPRITE_EXTRUDER
-//#define MOTHERBOARD BOARD_CREALITY_V422
-
-//#define ENDER_3_427_CR_BL_TOUCH_WITH_THERMISTOR_61
-//#define MOTHERBOARD BOARD_CREALITY_V427
-
-//#define ENDER_3_422_CR_BL_TOUCH_WITH_THERMISTOR_61
+//#define ENDER_3_422_CR_BL_TOUCH_WITH_SPIDER_HOTEND
 //#define MOTHERBOARD BOARD_CREALITY_V422
 
 //#define ENDER_3_427_Z_SWITCH
@@ -59,7 +51,6 @@
   #define NOZZLE_TO_PROBE_OFFSET { -45, -19, 0 }
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
-  #define BABYSTEP_ZPROBE_OFFSET
 
   // TEMPERATURE SETTINGS
   #define TEMP_SENSOR_0 1047
@@ -87,7 +78,6 @@
   #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
-  #define BABYSTEP_ZPROBE_OFFSET
 
   // TEMPERATURE SETTINGS
   #define TEMP_SENSOR_0 1
@@ -115,7 +105,6 @@
   #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
-  #define BABYSTEP_ZPROBE_OFFSET
 
   // TEMPERATURE SETTINGS
   #define TEMP_SENSOR_0 1
@@ -128,8 +117,7 @@
   // MACHINE NAME
   #define CUSTOM_MACHINE_NAME "Ender-3 4.2.2 - Marlin 2.1.2.1"
 #endif
-#if ENABLED(ENDER_3_427_CR_BL_TOUCH_SPRITE_EXTRUDER)
-
+#if ENABLED(ENDER_3_427_CR_BL_TOUCH_WITH_SPIDER_HOTEND)
   // DRIVERS
   #define X_DRIVER_TYPE  TMC2208_STANDALONE
   #define Y_DRIVER_TYPE  TMC2208_STANDALONE
@@ -143,62 +131,6 @@
   #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
-  #define BABYSTEP_ZPROBE_OFFSET
-
-  // TEMPERATURE SETTINGS
-  #define TEMP_SENSOR_0 13
-  #define HEATER_0_MAXTEMP 285
-
-  // EXTRAS
-  //#define LIN_ADVANCE
-  //#define NO_CREALITY_422_DRIVER_WARNING
-
-  // MACHINE NAME
-  #define CUSTOM_MACHINE_NAME "Ender-3 4.2.7 - Marlin 2.1.2.1"
-#endif
-#if ENABLED(ENDER_3_422_CR_BL_TOUCH_SPRITE_EXTRUDER)
-
-  // DRIVERS
-  #define X_DRIVER_TYPE  A4988
-  #define Y_DRIVER_TYPE  A4988
-  #define Z_DRIVER_TYPE  A4988
-  #define E0_DRIVER_TYPE A4988
-
-  // BED LEVELING
-  #define BLTOUCH
-  #define USE_PROBE_FOR_Z_HOMING
-  #define AUTO_BED_LEVELING_BILINEAR
-  #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
-  #define ASSISTED_TRAMMING
-  #define BED_TRAMMING_USE_PROBE
-  #define BABYSTEP_ZPROBE_OFFSET
-
-  // TEMPERATURE SETTINGS
-  #define TEMP_SENSOR_0 13
-  #define HEATER_0_MAXTEMP 285
-
-  // EXTRAS
-  //#define LIN_ADVANCE
-  #define NO_CREALITY_422_DRIVER_WARNING
-
-  // MACHINE NAME
-  #define CUSTOM_MACHINE_NAME "Ender-3 4.2.2 - Marlin 2.1.2.1"
-#endif
-#if ENABLED(ENDER_3_427_CR_BL_TOUCH_WITH_THERMISTOR_61)
-  // DRIVERS
-  #define X_DRIVER_TYPE  TMC2208_STANDALONE
-  #define Y_DRIVER_TYPE  TMC2208_STANDALONE
-  #define Z_DRIVER_TYPE  TMC2208_STANDALONE
-  #define E0_DRIVER_TYPE TMC2208_STANDALONE
-
-  // BED LEVELING
-  #define BLTOUCH
-  #define USE_PROBE_FOR_Z_HOMING
-  #define AUTO_BED_LEVELING_BILINEAR
-  #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
-  #define ASSISTED_TRAMMING
-  #define BED_TRAMMING_USE_PROBE
-  #define BABYSTEP_ZPROBE_OFFSET
 
   // TEMPERATURE SETTINGS
   #define TEMP_SENSOR_0 61
@@ -211,7 +143,7 @@
   // MACHINE NAME
   #define CUSTOM_MACHINE_NAME "Ender-3 4.2.7 - Marlin 2.1.2.1"
 #endif
-#if ENABLED(ENDER_3_422_CR_BL_TOUCH_WITH_THERMISTOR_61)
+#if ENABLED(ENDER_3_422_CR_BL_TOUCH_WITH_SPIDER_HOTEND)
   // DRIVERS
   #define X_DRIVER_TYPE  A4988
   #define Y_DRIVER_TYPE  A4988
@@ -225,7 +157,6 @@
   #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
-  #define BABYSTEP_ZPROBE_OFFSET
 
   // TEMPERATURE SETTINGS
   #define TEMP_SENSOR_0 61
@@ -252,7 +183,6 @@
   //#define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
   //#define ASSISTED_TRAMMING
   //#define BED_TRAMMING_USE_PROBE
-  //#define BABYSTEP_ZPROBE_OFFSET
 
   // TEMPERATURE SETTINGS
   #define TEMP_SENSOR_0 1
@@ -279,7 +209,6 @@
   //#define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
   //#define ASSISTED_TRAMMING
   //#define BED_TRAMMING_USE_PROBE
-  //#define BABYSTEP_ZPROBE_OFFSET
 
   // TEMPERATURE SETTINGS
   #define TEMP_SENSOR_0 1
@@ -294,10 +223,10 @@
 #endif
 #if ENABLED(ENDER_3_SKR_MNI_E3_V3_CR_BL_TOUCH)
   // DRIVERS
-  #define X_DRIVER_TYPE  TMC2209
-  #define Y_DRIVER_TYPE  TMC2209
-  #define Z_DRIVER_TYPE  TMC2209
-  #define E0_DRIVER_TYPE TMC2209
+  #define X_DRIVER_TYPE  TMC2209_STANDALONE
+  #define Y_DRIVER_TYPE  TMC2209_STANDALONE
+  #define Z_DRIVER_TYPE  TMC2209_STANDALONE
+  #define E0_DRIVER_TYPE TMC2209_STANDALONE
 
   // BED LEVELING
   #define BLTOUCH
@@ -306,7 +235,6 @@
   #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
-  #define BABYSTEP_ZPROBE_OFFSET
 
   // TEMPERATURE SETTINGS
   #define TEMP_SENSOR_0 1
@@ -321,10 +249,10 @@
 #endif
 #if ENABLED(ENDER_3_SKR_MNI_E3_V3_Z_SWITCH)
   // DRIVERS
-  #define X_DRIVER_TYPE  TMC2209
-  #define Y_DRIVER_TYPE  TMC2209
-  #define Z_DRIVER_TYPE  TMC2209
-  #define E0_DRIVER_TYPE TMC2209  
+  #define X_DRIVER_TYPE  TMC2209_STANDALONE
+  #define Y_DRIVER_TYPE  TMC2209_STANDALONE
+  #define Z_DRIVER_TYPE  TMC2209_STANDALONE
+  #define E0_DRIVER_TYPE TMC2209_STANDALONE
 
   // BED LEVELING
   //#define BLTOUCH
@@ -333,7 +261,6 @@
   //#define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
   //#define ASSISTED_TRAMMING
   //#define BED_TRAMMING_USE_PROBE
-  //#define BABYSTEP_ZPROBE_OFFSET
 
   // TEMPERATURE SETTINGS
   #define TEMP_SENSOR_0 1
@@ -364,7 +291,6 @@
   #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
-  #define BABYSTEP_ZPROBE_OFFSET
 
   // TEMPERATURE SETTINGS
   #define TEMP_SENSOR_0 1
@@ -378,12 +304,6 @@
   #define CUSTOM_MACHINE_NAME "Ender-3 BOARD NAME - Marlin 2.1.2.1"
 #endif
 */
-
-//===========================================================================
-//================================= SCREENS =================================
-//===========================================================================
-
-// TO BE COMPLETED
 
 #define CONFIGURATION_H_VERSION 02010201
 
@@ -1520,19 +1440,9 @@
 // @section motion
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-
-#if ENABLED(ENDER_3_SKR_MNI_E3_V3_CR_BL_TOUCH) || ENABLED(ENDER_3_SKR_MNI_E3_V3_Z_SWITCH)
-  #define INVERT_X_DIR true
-  #define INVERT_Y_DIR true
-  #define INVERT_Z_DIR false
-#else // EVERYTHING ELSE - DELICIOUS
-  #define INVERT_X_DIR false
-  #define INVERT_Y_DIR false
-  #define INVERT_Z_DIR true
-#endif
-//#define INVERT_X_DIR false
-//#define INVERT_Y_DIR false
-//#define INVERT_Z_DIR true
+#define INVERT_X_DIR false
+#define INVERT_Y_DIR false
+#define INVERT_Z_DIR true
 //#define INVERT_I_DIR false
 //#define INVERT_J_DIR false
 //#define INVERT_K_DIR false
@@ -1543,12 +1453,7 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#if ENABLED(ENDER_3_SKR_MNI_E3_V3_CR_BL_TOUCH) || ENABLED(ENDER_3_SKR_MNI_E3_V3_Z_SWITCH)
-  #define INVERT_E0_DIR true
-#else // EVERYTHING ELSE - DELICIOUS
-  #define INVERT_E0_DIR false
-#endif
-//#define INVERT_E0_DIR false
+#define INVERT_E0_DIR false
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false

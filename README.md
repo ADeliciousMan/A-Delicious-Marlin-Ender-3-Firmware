@@ -1,6 +1,6 @@
 # A Delicious Marlin Ender 3/Pro Firmware
 
-#### Date of Latest Build: 2023-09-19 - V1.7.0
+#### Date of Latest Build: 2023-09-19 - V1.8.0
 #### Latest Marlin Version: 2.1.2.1
 
 ![LOGO](https://raw.githubusercontent.com/ADeliciousMan/A-Delicious-Marlin-Ender-3-Firmware/master/images/bootscreen.png?raw=true)
@@ -69,6 +69,14 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
 * Trying to decide between AUTO_BED_LEVELING_BILINEAR (using this ATM) or AUTO_BED_LEVELING_UBL
 
 ## CHANGELOG:
+
+#### 2023-09-19 - V1.8.0
+* Changed the SKR_MNI_E3_V3 boards from TMC2209_STANDALONE to TMC2209
+* SKR_MNI_E3_V3 boards are now inverted for the XYZE direction (true, true, false, true)
+  - Should no longer go backwards
+* Enabled BABYSTEP_ZPROBE_OFFSET
+* Added ENDER_3_427_CR_BL_TOUCH_SPRITE_EXTRUDER and ENDER_3_422_CR_BL_TOUCH_SPRITE_EXTRUDER
+* Changed ENDER_3_427_CR_BL_TOUCH_WITH_SPIDER_HOTEND and ENDER_3_422_CR_BL_TOUCH_WITH_SPIDER_HOTEND to ENDER_3_427_CR_BL_TOUCH_WITH_THERMISTOR_61 and ENDER_3_422_CR_BL_TOUCH_WITH_THERMISTOR_61
 
 #### 2023-09-19 - V1.7.0 - Multi-Printer Support Update
 * Building out to support multiple different boards and configs for the Ender 3! Will take a decent amount of work, but we'll get there
