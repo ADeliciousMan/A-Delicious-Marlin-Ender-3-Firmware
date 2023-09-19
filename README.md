@@ -1,16 +1,16 @@
 # A Delicious Marlin Ender 3/Pro Firmware
 
-#### Date of Latest Build: 2023-09-17 - V1.6.1
+#### Date of Latest Build: 2023-09-19 - V1.7.0
 #### Latest Marlin Version: 2.1.2.1
 
-![LOGO](https://raw.githubusercontent.com/ADeliciousMan/A-Delicious-Marlin-Ender-3-Pro-Firmware/master/bootscreen.png?raw=true)
+![LOGO](https://github.com/ADeliciousMan/A-Delicious-Marlin-Ender-3-Pro-Firmware/images/bootscreen.png?raw=true)
 
 ## ABOUT
 
-Constantly being built off the latest version of Marlin (Stable), this firmware includes plenty of useful functions that are turned off by default on Ender 3 boards from Creality, with tweaks for a better out of the box printing experience. It is specifically for people who have an Ender 3 printer with a 4.2.7 board and a BL/CR Touch probe.
+Constantly being built off the latest version of Marlin (Stable), this firmware includes plenty of useful functions that are turned off by default on Ender 3 boards from Creality, with tweaks for a better out of the box printing experience.
 
 ###### Note
-I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board (though should function on a 256k board as well and I have not seen a 4.2.7 board that isn't 512k), so it is the only .bin I will compile as it's the only one I can actually test properly; however user compiled and submitted .bins are more than welcome!
+I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can actually test properly; however more .bins are included as well as user compiled and submitted .bins are more than welcome!
 
 ## List of Features:
 
@@ -51,11 +51,11 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board (though should function on 
   * Either manually level your bed using a piece of paper or shim, or use the tramming settings in Motion > Tramming Wizard
   * Z Probe Wizard, Motion > Z Probe Wizard
   * Level Bed for a mesh level, Motion > Level Bed
-  - ~~Linear Advance~~ **4.2.7 BAORD DOES NOT SUPPORT LINEAR ADVANCE**
-    * ~~[Read this](https://marlinfw.org/docs/features/lin_advance.html)~~
-    * ~~[Use this tool](https://marlinfw.org/tools/lin_advance/k-factor.html)~~
+  - Linear Advance **4.2.2 and 4.2.2 BAORD DOES NOT SUPPORT LINEAR ADVANCE**
+    * [Read this](https://marlinfw.org/docs/features/lin_advance.html)
+    * [Use this tool](https://marlinfw.org/tools/lin_advance/k-factor.html)
   - [Input Shaping](https://marlinfw.org/docs/gcode/M593.html)
-    - **Disclaimer, I am not sure if the 4.2.7 board properly supports Input Shaping, I was not able to see a change in results on my end**
+    - **Disclaimer, I am not sure if the 4.2.2 or 4.2.7 board properly supports Input Shaping, I was not able to see a change in results on my end**
     - [TH3D Guide](https://support.th3dstudio.com/helpcenter/unified-marlin-input-shaping-tuning-guide/)
     - [TH3D Calculator](https://www.th3dstudio.com/marlin-input-shaping-calculator/)
   * [General Overall Calibration Guides from 'Teaching Tech'](https://teachingtechyt.github.io/calibration.html)
@@ -69,6 +69,22 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board (though should function on 
 * Trying to decide between AUTO_BED_LEVELING_BILINEAR (using this ATM) or AUTO_BED_LEVELING_UBL
 
 ## CHANGELOG:
+
+#### 2023-09-19 - V1.7.0 - Multi-Printer Support Update
+* Building out to support multiple different boards and configs for the Ender 3! Will take a decent amount of work, but we'll get there
+  - This will be done with a series of IF/ELSE commands for settings, should auto change setting sand pins (I hope?) when selecting printer
+  - Created profiles for:
+    - ENDER_3_427_CR_BL_TOUCH
+    - ENDER_3_422_CR_BL_TOUCH (4.2.2 boards assume A4988 drivers)
+    - ENDER_3_427_Z_SWITCH
+    - ENDER_3_422_Z_SWITCH (4.2.2 boards assume A4988 drivers)
+    - ENDER_3_427_CR_BL_TOUCH_WITH_SPIDER_HOTEND (Different temp sensor than stock Ender 3)
+    - ENDER_3_422_CR_BL_TOUCH_WITH_SPIDER_HOTEND (Different temp sensor than stock Ender 3) (4.2.2 boards assume A4988 drivers)
+    - ENDER_3_SKR_MNI_E3_V3_CR_BL_TOUCH
+    - ENDER_3_SKR_MNI_E3_V3_Z_SWITCH
+* Changed DELICIOUS COMMANDS for PID tuning of the Hot-End from "180, 190, 200" to "190, 200, 210." Seemed more reasonable
+* LIN_ADVANCE added for BTT SKR Mini E3 V3
+* Changed HEATER_0_MAXTEMP from 275 to 350 on 4.2.2 and 4.2.7 boards(don't burn your house down)
 
 #### 2023-09-17 - V1.6.1
 * Changed X_BED_SIZE and Y_BED_SIZE (Printable area) from 235 to 220

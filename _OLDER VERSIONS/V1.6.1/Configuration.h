@@ -1,309 +1,6 @@
 #pragma once
 
-// UNCOMMENT ONLY 1 PRINTER AND 1 MOTHERBOARD AT A TIME
-
-//#define DELICIOUS_PRINTER // My personal settings as my setup is custom to me - DELICIOUS
-//#define MOTHERBOARD BOARD_CREALITY_V427
-
-//#define ENDER_3_427_CR_BL_TOUCH
-//#define MOTHERBOARD BOARD_CREALITY_V427
-
-//#define ENDER_3_422_CR_BL_TOUCH
-//#define MOTHERBOARD BOARD_CREALITY_V422
-
-//#define ENDER_3_427_CR_BL_TOUCH_WITH_SPIDER_HOTEND
-//#define MOTHERBOARD BOARD_CREALITY_V427
-
-//#define ENDER_3_422_CR_BL_TOUCH_WITH_SPIDER_HOTEND
-//#define MOTHERBOARD BOARD_CREALITY_V422
-
-//#define ENDER_3_427_Z_SWITCH
-//#define MOTHERBOARD BOARD_CREALITY_V427
-
-//#define ENDER_3_422_Z_SWITCH
-//#define MOTHERBOARD BOARD_CREALITY_V422
-
-//#define ENDER_3_SKR_MNI_E3_V3_CR_BL_TOUCH
-//#define MOTHERBOARD BOARD_BTT_SKR_MINI_E3_V3_0
-
-//#define ENDER_3_SKR_MNI_E3_V3_Z_SWITCH
-//#define MOTHERBOARD BOARD_BTT_SKR_MINI_E3_V3_0
-
-//===========================================================================
-//=================== NO MORE SEETINGS NEED TO BE CHANGED ===================
-//===========================================================================
-
-// @section machine
-
-// Choose the name from boards.h that matches your setup
-#if ENABLED(DELICIOUS_PRINTER) // My personal settings as my setup is custom to me - DELICIOUS
-
-  // DRIVERS
-  #define X_DRIVER_TYPE  TMC2208_STANDALONE
-  #define Y_DRIVER_TYPE  TMC2208_STANDALONE
-  #define Z_DRIVER_TYPE  TMC2208_STANDALONE
-  #define E0_DRIVER_TYPE TMC2208_STANDALONE
-
-  // BED LEVELING
-  #define BLTOUCH
-  #define USE_PROBE_FOR_Z_HOMING
-  #define AUTO_BED_LEVELING_BILINEAR
-  #define NOZZLE_TO_PROBE_OFFSET { -45, -19, 0 }
-  #define ASSISTED_TRAMMING
-  #define BED_TRAMMING_USE_PROBE
-
-  // TEMPERATURE SETTINGS
-  #define TEMP_SENSOR_0 1047
-  #define HEATER_0_MAXTEMP 350
-  
-  // EXTRAS
-  //#define LIN_ADVANCE
-  //#define NO_CREALITY_422_DRIVER_WARNING
-
-  // MACHINE NAME
-  #define CUSTOM_MACHINE_NAME "Marlin 2.1.2.1"
-#endif
-#if ENABLED(ENDER_3_427_CR_BL_TOUCH)
-
-  // DRIVERS
-  #define X_DRIVER_TYPE  TMC2208_STANDALONE
-  #define Y_DRIVER_TYPE  TMC2208_STANDALONE
-  #define Z_DRIVER_TYPE  TMC2208_STANDALONE
-  #define E0_DRIVER_TYPE TMC2208_STANDALONE
-
-  // BED LEVELING
-  #define BLTOUCH
-  #define USE_PROBE_FOR_Z_HOMING
-  #define AUTO_BED_LEVELING_BILINEAR
-  #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
-  #define ASSISTED_TRAMMING
-  #define BED_TRAMMING_USE_PROBE
-
-  // TEMPERATURE SETTINGS
-  #define TEMP_SENSOR_0 1
-  #define HEATER_0_MAXTEMP 275
-
-  // EXTRAS
-  //#define LIN_ADVANCE
-  //#define NO_CREALITY_422_DRIVER_WARNING
-
-  // MACHINE NAME
-  #define CUSTOM_MACHINE_NAME "Ender-3 4.2.7 - Marlin 2.1.2.1"
-#endif
-#if ENABLED(ENDER_3_422_CR_BL_TOUCH)
-
-  // DRIVERS
-  #define X_DRIVER_TYPE  A4988
-  #define Y_DRIVER_TYPE  A4988
-  #define Z_DRIVER_TYPE  A4988
-  #define E0_DRIVER_TYPE A4988
-
-  // BED LEVELING
-  #define BLTOUCH
-  #define USE_PROBE_FOR_Z_HOMING
-  #define AUTO_BED_LEVELING_BILINEAR
-  #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
-  #define ASSISTED_TRAMMING
-  #define BED_TRAMMING_USE_PROBE
-
-  // TEMPERATURE SETTINGS
-  #define TEMP_SENSOR_0 1
-  #define HEATER_0_MAXTEMP 275
-
-  // EXTRAS
-  //#define LIN_ADVANCE
-  #define NO_CREALITY_422_DRIVER_WARNING
-
-  // MACHINE NAME
-  #define CUSTOM_MACHINE_NAME "Ender-3 4.2.2 - Marlin 2.1.2.1"
-#endif
-#if ENABLED(ENDER_3_427_CR_BL_TOUCH_WITH_SPIDER_HOTEND)
-  // DRIVERS
-  #define X_DRIVER_TYPE  TMC2208_STANDALONE
-  #define Y_DRIVER_TYPE  TMC2208_STANDALONE
-  #define Z_DRIVER_TYPE  TMC2208_STANDALONE
-  #define E0_DRIVER_TYPE TMC2208_STANDALONE
-
-  // BED LEVELING
-  #define BLTOUCH
-  #define USE_PROBE_FOR_Z_HOMING
-  #define AUTO_BED_LEVELING_BILINEAR
-  #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
-  #define ASSISTED_TRAMMING
-  #define BED_TRAMMING_USE_PROBE
-
-  // TEMPERATURE SETTINGS
-  #define TEMP_SENSOR_0 61
-  #define HEATER_0_MAXTEMP 350
-
-  // EXTRAS
-  //#define LIN_ADVANCE
-  //#define NO_CREALITY_422_DRIVER_WARNING
-
-  // MACHINE NAME
-  #define CUSTOM_MACHINE_NAME "Ender-3 4.2.7 - Marlin 2.1.2.1"
-#endif
-#if ENABLED(ENDER_3_422_CR_BL_TOUCH_WITH_SPIDER_HOTEND)
-  // DRIVERS
-  #define X_DRIVER_TYPE  A4988
-  #define Y_DRIVER_TYPE  A4988
-  #define Z_DRIVER_TYPE  A4988
-  #define E0_DRIVER_TYPE A4988
-
-  // BED LEVELING
-  #define BLTOUCH
-  #define USE_PROBE_FOR_Z_HOMING
-  #define AUTO_BED_LEVELING_BILINEAR
-  #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
-  #define ASSISTED_TRAMMING
-  #define BED_TRAMMING_USE_PROBE
-
-  // TEMPERATURE SETTINGS
-  #define TEMP_SENSOR_0 61
-  #define HEATER_0_MAXTEMP 350
-
-  // EXTRAS
-  //#define LIN_ADVANCE
-  #define NO_CREALITY_422_DRIVER_WARNING
-
-  // MACHINE NAME
-  #define CUSTOM_MACHINE_NAME "Ender-3 4.2.2 - Marlin 2.1.2.1"
-#endif
-#if ENABLED(ENDER_3_427_Z_SWITCH)
-  // DRIVERS
-  #define X_DRIVER_TYPE  TMC2208_STANDALONE
-  #define Y_DRIVER_TYPE  TMC2208_STANDALONE
-  #define Z_DRIVER_TYPE  TMC2208_STANDALONE
-  #define E0_DRIVER_TYPE TMC2208_STANDALONE
-
-  // BED LEVELING
-  //#define BLTOUCH
-  //#define USE_PROBE_FOR_Z_HOMING
-  //#define AUTO_BED_LEVELING_BILINEAR
-  //#define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
-  //#define ASSISTED_TRAMMING
-  //#define BED_TRAMMING_USE_PROBE
-
-  // TEMPERATURE SETTINGS
-  #define TEMP_SENSOR_0 1
-  #define HEATER_0_MAXTEMP 275
-
-  // EXTRAS
-  //#define LIN_ADVANCE
-  //#define NO_CREALITY_422_DRIVER_WARNING
-
-  // MACHINE NAME
-  #define CUSTOM_MACHINE_NAME "Ender-3 4.2.7 - Marlin 2.1.2.1"
-#endif
-#if ENABLED(ENDER_3_422_Z_SWITCH)
-  // DRIVERS
-  #define X_DRIVER_TYPE  A4988
-  #define Y_DRIVER_TYPE  A4988
-  #define Z_DRIVER_TYPE  A4988
-  #define E0_DRIVER_TYPE A4988
-
-  // BED LEVELING
-  //#define BLTOUCH
-  //#define USE_PROBE_FOR_Z_HOMING
-  //#define AUTO_BED_LEVELING_BILINEAR
-  //#define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
-  //#define ASSISTED_TRAMMING
-  //#define BED_TRAMMING_USE_PROBE
-
-  // TEMPERATURE SETTINGS
-  #define TEMP_SENSOR_0 1
-  #define HEATER_0_MAXTEMP 275
-
-  // EXTRAS
-  //#define LIN_ADVANCE
-  #define NO_CREALITY_422_DRIVER_WARNING
-
-  // MACHINE NAME
-  #define CUSTOM_MACHINE_NAME "Ender-3 4.2.2 - Marlin 2.1.2.1"
-#endif
-#if ENABLED(ENDER_3_SKR_MNI_E3_V3_CR_BL_TOUCH)
-  // DRIVERS
-  #define X_DRIVER_TYPE  TMC2209_STANDALONE
-  #define Y_DRIVER_TYPE  TMC2209_STANDALONE
-  #define Z_DRIVER_TYPE  TMC2209_STANDALONE
-  #define E0_DRIVER_TYPE TMC2209_STANDALONE
-
-  // BED LEVELING
-  #define BLTOUCH
-  #define USE_PROBE_FOR_Z_HOMING
-  #define AUTO_BED_LEVELING_BILINEAR
-  #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
-  #define ASSISTED_TRAMMING
-  #define BED_TRAMMING_USE_PROBE
-
-  // TEMPERATURE SETTINGS
-  #define TEMP_SENSOR_0 1
-  #define HEATER_0_MAXTEMP 275
-
-  // EXTRAS
-  #define LIN_ADVANCE
-  //#define NO_CREALITY_422_DRIVER_WARNING
-
-  // MACHINE NAME
-  #define CUSTOM_MACHINE_NAME "Ender-3 SKR Mini E3 V3 - Marlin 2.1.2.1"
-#endif
-#if ENABLED(ENDER_3_SKR_MNI_E3_V3_Z_SWITCH)
-  // DRIVERS
-  #define X_DRIVER_TYPE  TMC2209_STANDALONE
-  #define Y_DRIVER_TYPE  TMC2209_STANDALONE
-  #define Z_DRIVER_TYPE  TMC2209_STANDALONE
-  #define E0_DRIVER_TYPE TMC2209_STANDALONE
-
-  // BED LEVELING
-  //#define BLTOUCH
-  //#define USE_PROBE_FOR_Z_HOMING
-  //#define AUTO_BED_LEVELING_BILINEAR
-  //#define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
-  //#define ASSISTED_TRAMMING
-  //#define BED_TRAMMING_USE_PROBE
-
-  // TEMPERATURE SETTINGS
-  #define TEMP_SENSOR_0 1
-  #define HEATER_0_MAXTEMP 275
-
-  // EXTRAS
-  #define LIN_ADVANCE
-  //#define NO_CREALITY_422_DRIVER_WARNING
-
-  // MACHINE NAME
-  #define CUSTOM_MACHINE_NAME "Ender-3 SKR Mini E3 V3 - Marlin 2.1.2.1"
-#endif
-
-// TEMPLATE
-
-/*
-#if ENABLED(TEMPLATE_PRINTER)
-  // DRIVERS
-  #define X_DRIVER_TYPE  TMC2208_STANDALONE
-  #define Y_DRIVER_TYPE  TMC2208_STANDALONE
-  #define Z_DRIVER_TYPE  TMC2208_STANDALONE
-  #define E0_DRIVER_TYPE TMC2208_STANDALONE
-
-  // BED LEVELING
-  #define BLTOUCH
-  #define USE_PROBE_FOR_Z_HOMING
-  #define AUTO_BED_LEVELING_BILINEAR
-  #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
-  #define ASSISTED_TRAMMING
-  #define BED_TRAMMING_USE_PROBE
-
-  // TEMPERATURE SETTINGS
-  #define TEMP_SENSOR_0 1
-  #define HEATER_0_MAXTEMP 275
-
-  // EXTRAS
-  #define LIN_ADVANCE
-  #define NO_CREALITY_422_DRIVER_WARNING
-
-  // MACHINE NAME
-  #define CUSTOM_MACHINE_NAME "Ender-3 BOARD NAME - Marlin 2.1.2.1"
-#endif
-*/
+// #define DELICIOUS_PRINTER
 
 #define CONFIGURATION_H_VERSION 02010201
 
@@ -334,9 +31,9 @@
 // @section machine
 
 // Choose the name from boards.h that matches your setup
-//#ifndef MOTHERBOARD
-//  #define MOTHERBOARD BOARD_CREALITY_V427
-//#endif
+#ifndef MOTHERBOARD
+  #define MOTHERBOARD BOARD_CREALITY_V427
+#endif
 
 /**
  * Select the serial port on the board to use for communication with the host.
@@ -380,7 +77,7 @@
 //#define BAUDRATE_3 250000   // :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000] Enable to override BAUDRATE
 
 // Name displayed in the LCD "Ready" message and Info menu
-//#define CUSTOM_MACHINE_NAME "Ender-3 Pro 4.2.7 - Marlin 2.1.2.1"
+#define CUSTOM_MACHINE_NAME "Ender-3 Pro 4.2.7 - Marlin 2.1.2.1"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -403,9 +100,9 @@
  *          TMC5130, TMC5130_STANDALONE, TMC5160, TMC5160_STANDALONE
  * :['A4988', 'A5984', 'DRV8825', 'LV8729', 'TB6560', 'TB6600', 'TMC2100', 'TMC2130', 'TMC2130_STANDALONE', 'TMC2160', 'TMC2160_STANDALONE', 'TMC2208', 'TMC2208_STANDALONE', 'TMC2209', 'TMC2209_STANDALONE', 'TMC26X', 'TMC26X_STANDALONE', 'TMC2660', 'TMC2660_STANDALONE', 'TMC5130', 'TMC5130_STANDALONE', 'TMC5160', 'TMC5160_STANDALONE']
  */
-//#define X_DRIVER_TYPE  TMC2208_STANDALONE
-//#define Y_DRIVER_TYPE  TMC2208_STANDALONE
-//#define Z_DRIVER_TYPE  TMC2208_STANDALONE
+#define X_DRIVER_TYPE  TMC2208_STANDALONE
+#define Y_DRIVER_TYPE  TMC2208_STANDALONE
+#define Z_DRIVER_TYPE  TMC2208_STANDALONE
 //#define X2_DRIVER_TYPE A4988
 //#define Y2_DRIVER_TYPE A4988
 //#define Z2_DRIVER_TYPE A4988
@@ -417,7 +114,7 @@
 //#define U_DRIVER_TYPE  A4988
 //#define V_DRIVER_TYPE  A4988
 //#define W_DRIVER_TYPE  A4988
-//#define E0_DRIVER_TYPE TMC2208_STANDALONE
+#define E0_DRIVER_TYPE TMC2208_STANDALONE
 //#define E1_DRIVER_TYPE A4988
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
@@ -577,7 +274,11 @@
  *
  */
 
-//#define TEMP_SENSOR_0 1
+#if ENABLED(DELICIOUS_PRINTER)
+  #define TEMP_SENSOR_0 1047
+#else
+  #define TEMP_SENSOR_0 1
+#endif
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
@@ -636,8 +337,7 @@
 // Above this temperature the heater will be switched off.
 // This can protect components from overheating, but NOT from shorts and failures.
 // (Use MINTEMP for thermistor short/failure protection.)
-// Default is 275 - DELICIOUS
-//#define HEATER_0_MAXTEMP 350
+#define HEATER_0_MAXTEMP 275
 #define HEATER_1_MAXTEMP 275
 #define HEATER_2_MAXTEMP 275
 #define HEATER_3_MAXTEMP 275
@@ -1161,7 +861,7 @@
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
-//#define BLTOUCH
+#define BLTOUCH
 
 /**
  * MagLev V4 probe by MDD
@@ -1281,7 +981,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-//#define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
+#define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1675,7 +1375,7 @@
  */
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-//#define AUTO_BED_LEVELING_BILINEAR
+#define AUTO_BED_LEVELING_BILINEAR
 //#define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
 
@@ -1836,7 +1536,7 @@
   #define BED_TRAMMING_HEIGHT      0.2        // (mm) Z height of nozzle at leveling points
   #define BED_TRAMMING_Z_HOP       4.0        // (mm) Z height of nozzle between leveling points
   #define BED_TRAMMING_INCLUDE_CENTER       // Move to the center after the last corner
-  //#define BED_TRAMMING_USE_PROBE
+  #define BED_TRAMMING_USE_PROBE
   #if ENABLED(BED_TRAMMING_USE_PROBE)
     #define BED_TRAMMING_PROBE_TOLERANCE 0.04  // (mm)
     #define BED_TRAMMING_VERIFY_RAISED        // After adjustment triggers the probe, re-probe to verify
