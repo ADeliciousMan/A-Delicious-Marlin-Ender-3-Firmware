@@ -73,7 +73,9 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
 #### 2023-09-20 - V1.9.0 - Customizer Support Update
 
 * Added 'CUSTOMIZER PRINTER' section where you can easily make a firmware from scratch in seconds!
+  - Select things like motherboard, drivers, probe and be ready to compile in record time
 * Added a 'PRE BUILT PRINTERS' section where you can easily enable/disable a printer for a quick compile
+  - Printer already pre-configured? Just select one of the many custom printer options and export away
 * Changed SPRITE_EXTRUDER E/Steps from 97 to 430
 * Changed SPRITE_EXTRUDER Probe Offset from { -40, -8, 0 } to { -38.8, -40.50, 0 }
 
