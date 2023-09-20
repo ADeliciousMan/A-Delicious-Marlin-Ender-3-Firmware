@@ -70,6 +70,13 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
 
 ## CHANGELOG:
 
+#### 2023-09-20 - V1.9.0 - Customizer Support Update
+
+* Added 'CUSTOMIZER PRINTER' section where you can easily make a firmware from scratch in seconds!
+* Added a 'PRE BUILT PRINTERS' section where you can easily enable/disable a printer for a quick compile
+* Changed SPRITE_EXTRUDER E/Steps from 97 to 430
+* Changed SPRITE_EXTRUDER Probe Offset from { -40, -8, 0 } to { -38.8, -40.50, 0 }
+
 #### 2023-09-19 - V1.8.0
 * Changed the SKR_MNI_E3_V3 boards from TMC2209_STANDALONE to TMC2209
 * SKR_MNI_E3_V3 boards are now inverted for the XYZE direction (true, true, false, true)
