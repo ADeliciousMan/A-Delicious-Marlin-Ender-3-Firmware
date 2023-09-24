@@ -47,7 +47,7 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
   - Extruder and BED PID (3 options)
     - Go to Configuration > DELICIOUS COMMANDS > Select PID setting you want to use
     - Go to Configuration > Advanced Settings > Temperature and use the Marlin tools
-    - Use GCode by following this [link](https://my3dlife.com/how-to-do-a-pid-autotune-on-an-ender-3-step-by-step-guide/)
+    - Use GCode by following this [link](https://marlinfw.org/docs/gcode/M303.html)
   * Either manually level your bed using a piece of paper or shim, or use the tramming settings in Motion > Tramming Wizard
   * Z Probe Wizard, Motion > Z Probe Wizard
   * Level Bed for a mesh level, Motion > Level Bed
@@ -63,8 +63,16 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
   * [Stringing Test](https://www.thingiverse.com/thing:2080224)
   * [XYZ Cube](https://www.thingiverse.com/thing:1278865/comments)
   * [Benchy Boat](https://www.thingiverse.com/thing:763622)
+  * [Cali-Dragon](https://www.thingiverse.com/thing:5401659)
 
 ## TO DO:
+* Add option for filament runout sensor
+* Add boards:
+  - SKR mini v2
+  - SKR mini v1
+  - Octopus Pro
+  - Octopus Max
+  - Octopus EZ
 * Leveling/Tramming is off to the side a little, still trying to figure it out
 * Trying to decide between AUTO_BED_LEVELING_BILINEAR (using this ATM) or AUTO_BED_LEVELING_UBL
 
