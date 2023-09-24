@@ -39,8 +39,9 @@
 //#define HAS_Z_PROBE //                                Say if you have a Z Probe, leave blank for Z axis switch
 
 #if ENABLED(HAS_Z_PROBE)                          
-//  #define HAS_BL_CR_TOUCH //                           BL Touch or CR Touch probe
-//  #define HAS_SPRITE //                                Creality Sprite Extruder
+//  #define HAS_BL_CR_TOUCH //                          BL Touch or CR Touch probe
+//  #define HAS_SPRITE //                               Creality Sprite Extruder
+//  #define TH3D_BL_CR_MULTIMOUNT //                    If you're using a BL_CR_MULTIMOUNT with TH3D Multi-Mount
 #endif
 
 //===========================================================================
@@ -48,9 +49,9 @@
 //===========================================================================
 
 //#define THERMISTOR_01 //                               Default choice for Creality, if stock or unsure use this one
-//#define THERMISTOR_13 //                               Thermistor used in cREALITY Sprite hotends
+//#define THERMISTOR_13 //                               Thermistor used in Creality Sprite hotends
 //#define THERMISTOR_61 //                               Thermistor used in some Spider hotends, if unsure use thermistor 01
-//#define THERMISTOR_1047//                              Thermistor for Pt1000, 4.7kΩ pullup
+//#define THERMISTOR_1047  //                            Thermistor for Pt1000, 4.7kΩ pullup
 
 //===========================================================================
 //================================= E STEPS =================================
@@ -136,7 +137,7 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define BLTOUCH
   #define USE_PROBE_FOR_Z_HOMING
   #define AUTO_BED_LEVELING_BILINEAR
-  #define NOZZLE_TO_PROBE_OFFSET { -45, -19, 0 }
+  #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
   #define BABYSTEP_ZPROBE_OFFSET
@@ -145,6 +146,14 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define USE_PROBE_FOR_Z_HOMING
   #define AUTO_BED_LEVELING_BILINEAR
   #define NOZZLE_TO_PROBE_OFFSET { -38.8, -40.50, 0 }
+  #define ASSISTED_TRAMMING
+  #define BED_TRAMMING_USE_PROBE
+  #define BABYSTEP_ZPROBE_OFFSET
+#elif ENABLED(TH3D_BL_CR_MULTIMOUNT)
+  #define BLTOUCH
+  #define USE_PROBE_FOR_Z_HOMING
+  #define AUTO_BED_LEVELING_BILINEAR
+  #define NOZZLE_TO_PROBE_OFFSET { -45, -19, 0 }
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
   #define BABYSTEP_ZPROBE_OFFSET
@@ -254,7 +263,7 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define HEATER_0_MAXTEMP 350
   
   // EXTRAS
-  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 97 }
+  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95.10 }
   //#define LIN_ADVANCE
   //#define NO_CREALITY_422_DRIVER_WARNING
 

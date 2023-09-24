@@ -2,7 +2,7 @@
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I2I8PI401)
 
-#### Date of Latest Build: 2023-09-24 - V1.10.0
+#### Date of Latest Build: 2023-09-24 - V1.11.0
 #### Latest Marlin Version: 2.1.2.1
 
 ![LOGO](https://raw.githubusercontent.com/ADeliciousMan/A-Delicious-Marlin-Ender-3-Firmware/master/images/bootscreen.png?raw=true)
@@ -80,6 +80,10 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
 * Leveling/Tramming is off to the side a little, still trying to figure it out
 
 ## CHANGELOG:
+
+#### 2023-09-24 - V1.11.0
+* Fixed an issue where the menus were wrong for the DELICIOUS COMMANDS which would cause the firmware to fail to compile
+* Added support for TH3D Multi-Mount BL/CR probe
 
 #### 2023-09-24 - V1.10.0
 * Added FILAMENT_RUNOUT_SENSOR - Customize Printer section
