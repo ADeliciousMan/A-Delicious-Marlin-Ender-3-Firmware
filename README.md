@@ -59,6 +59,9 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
     - [TH3D Guide](https://support.th3dstudio.com/helpcenter/unified-marlin-input-shaping-tuning-guide/)
     - [TH3D Calculator](https://www.th3dstudio.com/marlin-input-shaping-calculator/)
   * [General Overall Calibration Guides from 'Teaching Tech'](https://teachingtechyt.github.io/calibration.html)
+  * Horizontal Expansion
+    - [Model](https://www.thingiverse.com/thing:4418599)
+    - [Explaination](https://www.youtube.com/watch?v=UUelLZvDelU)
 * **Calibration tests**
   * [Stringing Test](https://www.thingiverse.com/thing:2080224)
   * [XYZ Cube](https://www.thingiverse.com/thing:1278865/comments)
