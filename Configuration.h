@@ -15,7 +15,14 @@
 
 //#define MOTHERBOARD BOARD_CREALITY_V427 //            Creality 4.2.7 Board
 //#define MOTHERBOARD BOARD_CREALITY_V422 //            Creality 4.2.2 Board, standard for Ender 3 and Ender 3 Pro
-//#define MOTHERBOARD BOARD_BTT_SKR_MINI_E3_V3_0 //     BIQU SKR MINI E3 V3
+//#define MOTHERBOARD BOARD_BTT_SKR_MINI_E3_V3_0 //     BIQU SKR MINI E3 V3.0
+//#define MOTHERBOARD BOARD_BTT_SKR_MINI_E3_V1_0 //     BIQU SKR MINI E3 V1.0
+//#define MOTHERBOARD BOARD_BTT_SKR_MINI_E3_V1_2 //     BIQU SKR MINI E3 V1.2
+//#define MOTHERBOARD BOARD_BTT_SKR_MINI_E3_V2_0 //     BIQU SKR MINI E3 V2.0
+//##define MOTHERBOARD BOARD_BTT_OCTOPUS_V1_0 //        BIQU OCTOPUS V1
+//##define MOTHERBOARD BOARD_BTT_OCTOPUS_V1_1 //        BIQU OCTOPUS V1.1
+//##define MOTHERBOARD BOARD_BTT_OCTOPUS_PRO_V1_0 //    BIQU OCTOPUS PRO V1
+//##define MOTHERBOARD BOARD_BTT_OCTOPUS_MAX_EZ_V1_0 // BIQU OCTOPUS MAX EZ
 
 //===========================================================================
 //================================= DRIVERS =================================
@@ -23,7 +30,7 @@
 
 //#define DRIVERS_TMC2208_STANDALONE //                 Typical drivers for a Creality 4.2.7 board
 //#define DRIVERS_A4988 //                              Typical drivers for a Creality 4.2.2 board
-//#define DRIVERS_TMC2209 //                            Typical drivers for a BIQU SKR Mini 3 V3 board
+//#define DRIVERS_TMC2209 //                            Typical drivers for a BIQU SKR Mini 3 V3 board or Octopus Pro (Same driver as the EZ2209 on the Octopus Max EZ)
 
 //===========================================================================
 //================================= Z PROBE =================================
@@ -63,9 +70,14 @@
 //================================== EXTRAS =================================
 //===========================================================================
 
-//#define LIN_ADVANCE                                     // ENable Linear Advance, 422 & 427 boards do not support this
+//#define LIN_ADVANCE                                     // Enable Linear Advance, 422 & 427 boards do not support this
+//#define FILAMENT_RUNOUT_SENSOR                          // Enable filament runout sensor
 
-
+#if ENABLED(FILAMENT_RUNOUT_SENSOR)                       // PICK ONLY ONE
+    #define FIL_RUNOUT_STATE     LOW                      // State pins are in indicating that filament is NOT present
+    #define FIL_RUNOUT_STATE     HIGH                     // State pins are in indicating that filament is NOT present
+#endif
+  
 /*    ______________  ______   ____  ____  _   ________
    / ____/  _/ __ \/_  __/  / __ \/ __ \/ | / / ____/
   / __/  / // / / / / /    / / / / / / /  |/ / __/   
@@ -91,12 +103,12 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define INVERT_E0_DIR false
   #define NO_CREALITY_422_DRIVER_WARNING //                   Makes VScode shut up about the 422 drivers
   #define CUSTOM_MACHINE_NAME "Ender-3 4.2.2 - Marlin 2.1.2.1"
-#elif (MOTHERBOARD == BOARD_BTT_SKR_MINI_E3_V3_0) //       Special inverting of motors for BIQU SKR MINI E3 V3
+#elif (MOTHERBOARD == BOARD_BTT_SKR_MINI_E3_V3_0) || (MOTHERBOARD == BOARD_BTT_SKR_MINI_E3_V2_0) || (MOTHERBOARD == BOARD_BTT_SKR_MINI_E3_V1_2) || (MOTHERBOARD == BOARD_BTT_SKR_MINI_E3_V1_0)  //       Special inverting of motors for BIQU SKR MINI E3 V3
   #define INVERT_X_DIR true
   #define INVERT_Y_DIR true
   #define INVERT_Z_DIR false
   #define INVERT_E0_DIR true
-  #define CUSTOM_MACHINE_NAME "Ender-3 SKR Mini E3 V3 - Marlin 2.1.2.1"
+  #define CUSTOM_MACHINE_NAME "Ender-3 SKR Mini E3 - Marlin 2.1.2.1"
 #endif
 
 // Driver Setting
