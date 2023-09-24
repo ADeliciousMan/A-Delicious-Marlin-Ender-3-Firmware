@@ -74,8 +74,8 @@
 //#define FILAMENT_RUNOUT_SENSOR                          // Enable filament runout sensor
 
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)                       // PICK ONLY ONE
-    #define FIL_RUNOUT_STATE     LOW                      // State pins are in indicating that filament is NOT present
-    #define FIL_RUNOUT_STATE     HIGH                     // State pins are in indicating that filament is NOT present
+    //#define FIL_RUNOUT_STATE     LOW                      // State pins are in indicating that filament is NOT present
+    //#define FIL_RUNOUT_STATE     HIGH                     // State pins are in indicating that filament is NOT present
 #endif
   
 /*    ______________  ______   ____  ____  _   ________
