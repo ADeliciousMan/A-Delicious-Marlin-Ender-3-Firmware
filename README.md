@@ -1,6 +1,8 @@
 # A Delicious Marlin Ender 3/Pro Firmware
 
-#### Date of Latest Build: 2023-09-19 - V1.8.0
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I2I8PI401)
+
+#### Date of Latest Build: 2023-09-24 - V1.10.0
 #### Latest Marlin Version: 2.1.2.1
 
 ![LOGO](https://raw.githubusercontent.com/ADeliciousMan/A-Delicious-Marlin-Ender-3-Firmware/master/images/bootscreen.png?raw=true)
@@ -19,12 +21,13 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
 * BL/CR Touch support
 * Marlins PID Tuning
 * Custom menu with custom easy to access PID settings for Extruder and Bed
-  - Extruder PID Presets, 10 cycles, 180C, 190C, 200C
-  - Bed PID Presets, 10 cycles, 50C, 60C, 70C
+  - Extruder PID Presets, 10 cycles, 180C, 190C, 200C, 260C
+  - Bed PID Presets, 10 cycles, 50C, 60C, 70C, 90C
   - These do not reapply a default PID setting, but instead actual run a full PID tune so it is unique to your machine (extruder, heading block, nozzle, cooling fan, specific temperature)
 * More accurate defaults for easier instant setup (I highly recommend you to do your own calibrations to get the most out of your printer, this firmware just helps to get you started faster and easier with more tools to calibrate easily)
 * Mesh leveling, 9 points (BILINEAR)
 * Input shaping and ability to adjust on screen directly
+* Linear Advance (for supported boards)
 * Z Probe Wizard
 * Tramming Wizard
 * Filament Change during print
@@ -36,6 +39,11 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
 * Probe offset to align nozzle with center of bed after homing (instead of probe)
 * Lowered min temp for extrusion, 170C
 * Host actions (EX: You use Octoprint but stop the print on the printer directly, it will inform Octoprint of this)
+* Babystep for Z-Probe
+* Ability to mute Beeps
+* Nozzle park
+* Pause feature for unloading and loading filament
+* Option to turn on Autostart (executes gcode with file name auto0.g.gcode on startup)
 * And much, much more!
 
 ## What Steps To Take After installing This Firmware
@@ -69,17 +77,24 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
   * [Cali-Dragon](https://www.thingiverse.com/thing:5401659)
 
 ## TO DO:
-* Add option for filament runout sensor
-* Add boards:
-  - SKR mini v2
-  - SKR mini v1
-  - Octopus Pro
-  - Octopus Max
-  - Octopus EZ
 * Leveling/Tramming is off to the side a little, still trying to figure it out
-* Trying to decide between AUTO_BED_LEVELING_BILINEAR (using this ATM) or AUTO_BED_LEVELING_UBL
 
 ## CHANGELOG:
+
+#### 2023-09-24 - V1.10.0
+* Added FILAMENT_RUNOUT_SENSOR - Customize Printer section
+* Added support for these boards - Customize printer section
+  - BOARD_BTT_SKR_MINI_E3_V1_0
+  - BOARD_BTT_SKR_MINI_E3_V1_2
+  - BOARD_BTT_SKR_MINI_E3_V2_0
+  - BOARD_BTT_OCTOPUS_V1_0
+  - BOARD_BTT_OCTOPUS_V1_1
+  - BOARD_BTT_OCTOPUS_PRO_V1_0
+  - BOARD_BTT_OCTOPUS_MAX_EZ_V1_0
+  * Added new DELICIOUS COMMANDS
+    - PID E 260C (Useful for ABS and ASA)
+    - PID Bed 90C (Useful for ASA)
+* MENU_ADDAUTOSTART (adds ability to turn on autostart with runs gcode on boot with name auto0.g.code)
 
 #### 2023-09-20 - V1.9.0 - Customizer Support Update
 
