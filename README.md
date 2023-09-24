@@ -94,7 +94,7 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
   * Added new DELICIOUS COMMANDS
     - PID E 260C (Useful for ABS and ASA)
     - PID Bed 90C (Useful for ASA)
-* MENU_ADDAUTOSTART (adds ability to turn on autostart with runs gcode on boot with name auto0.g.code)
+* MENU_ADDAUTOSTART (adds ability to turn on autostart which runs gcode on boot with name auto0.g.code)
 
 #### 2023-09-20 - V1.9.0 - Customizer Support Update
 
