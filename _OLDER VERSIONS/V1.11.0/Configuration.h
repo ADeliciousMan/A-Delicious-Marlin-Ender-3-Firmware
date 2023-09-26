@@ -19,10 +19,10 @@
 //#define MOTHERBOARD BOARD_BTT_SKR_MINI_E3_V1_0 //     BIQU SKR MINI E3 V1.0
 //#define MOTHERBOARD BOARD_BTT_SKR_MINI_E3_V1_2 //     BIQU SKR MINI E3 V1.2
 //#define MOTHERBOARD BOARD_BTT_SKR_MINI_E3_V2_0 //     BIQU SKR MINI E3 V2.0
-//#define MOTHERBOARD BOARD_BTT_OCTOPUS_V1_0 //         BIQU OCTOPUS V1
-//#define MOTHERBOARD BOARD_BTT_OCTOPUS_V1_1 //         BIQU OCTOPUS V1.1
-//#define MOTHERBOARD BOARD_BTT_OCTOPUS_PRO_V1_0 //     BIQU OCTOPUS PRO V1
-//#define MOTHERBOARD BOARD_BTT_OCTOPUS_MAX_EZ_V1_0 //  BIQU OCTOPUS MAX EZ
+//##define MOTHERBOARD BOARD_BTT_OCTOPUS_V1_0 //        BIQU OCTOPUS V1
+//##define MOTHERBOARD BOARD_BTT_OCTOPUS_V1_1 //        BIQU OCTOPUS V1.1
+//##define MOTHERBOARD BOARD_BTT_OCTOPUS_PRO_V1_0 //    BIQU OCTOPUS PRO V1
+//##define MOTHERBOARD BOARD_BTT_OCTOPUS_MAX_EZ_V1_0 // BIQU OCTOPUS MAX EZ
 
 //===========================================================================
 //================================= DRIVERS =================================
@@ -38,7 +38,7 @@
 
 //#define HAS_Z_PROBE //                                Say if you have a Z Probe, leave blank for Z axis switch
 
-#if ENABLED(HAS_Z_PROBE) //                             PICK ONLY ONE AND ONLY IF HAS_Z_PROBE IS ON
+#if ENABLED(HAS_Z_PROBE)                          
 //  #define HAS_BL_CR_TOUCH //                          BL Touch or CR Touch probe
 //  #define HAS_SPRITE //                               Creality Sprite Extruder
 //  #define TH3D_BL_CR_MULTIMOUNT //                    If you're using a BL_CR_MULTIMOUNT with TH3D Multi-Mount
@@ -48,46 +48,35 @@
 //================================ THERMISTOR ===============================
 //===========================================================================
 
-//#define THERMISTOR_01 //                              Default choice for Creality, if stock or unsure use this one
-//#define THERMISTOR_13 //                              Thermistor used in Creality Sprite hotends
-//#define THERMISTOR_61 //                              Thermistor used in some Spider hotends, if unsure use thermistor 01
-//#define THERMISTOR_1047 //                            Thermistor for Pt1000, 4.7kΩ pullup
+//#define THERMISTOR_01 //                               Default choice for Creality, if stock or unsure use this one
+//#define THERMISTOR_13 //                               Thermistor used in Creality Sprite hotends
+//#define THERMISTOR_61 //                               Thermistor used in some Spider hotends, if unsure use thermistor 01
+//#define THERMISTOR_1047  //                            Thermistor for Pt1000, 4.7kΩ pullup
 
 //===========================================================================
 //================================= E STEPS =================================
 //===========================================================================
 
-//#define HAS_STANDARD_MOTORS //                        Default Creality Motors
-//#define HAS_SPRITE_EXTRUDER //                        Creality Sprite Extruder
-//#define HAS_H2_V2s //                                 BIQU H2 V2s
-
-//===========================================================================
-//================================= Z-AXIS =================================
-//===========================================================================
-
-//#define Z2_DRIVER_TYPE //                             If you have 2 dedicated/independent Z Motors
-
-#if ENABLED(Z2_DRIVER_TYPE)
-  #define Z_STEPPER_AUTO_ALIGN //                       Aligns the Z-Axis independently
-  //#define Z_MULTI_ENDSTOPS //                         If the second Z-Axis has a dedicated endstop
-#endif
+//#define HAS_STANDARD_MOTORS //                          Default Creality Motors
+//#define HAS_SPRITE_EXTRUDER //                          Creality Sprite Extruder
+//#define HAS_H2_V2s //                                   BIQU H2 V2s
 
 //===========================================================================
 //================================= SCREENS =================================
 //===========================================================================
 
-//#define TOUCH_SCREEN //                               Enables Touch Screen support, I think
+// Lol, this section can wait
 
 //===========================================================================
 //================================== EXTRAS =================================
 //===========================================================================
 
-//#define LIN_ADVANCE                                // Enable Linear Advance, 422 & 427 boards do not support this
-//#define FILAMENT_RUNOUT_SENSOR                     // Enable filament runout sensor
+//#define LIN_ADVANCE                                     // Enable Linear Advance, 422 & 427 boards do not support this
+//#define FILAMENT_RUNOUT_SENSOR                          // Enable filament runout sensor
 
-#if ENABLED(FILAMENT_RUNOUT_SENSOR)                  // PICK ONLY ONE AND ONLY IF FILAMENT_RUNOUT_SENSOR IS ON
-    //#define FIL_RUNOUT_STATE     LOW               // State pins are in indicating that filament is NOT present
-    //#define FIL_RUNOUT_STATE     HIGH              // State pins are in indicating that filament is NOT present
+#if ENABLED(FILAMENT_RUNOUT_SENSOR)                       // PICK ONLY ONE
+    //#define FIL_RUNOUT_STATE     LOW                      // State pins are in indicating that filament is NOT present
+    //#define FIL_RUNOUT_STATE     HIGH                     // State pins are in indicating that filament is NOT present
 #endif
   
 /*    ______________  ______   ____  ____  _   ________
@@ -207,8 +196,8 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
 //=========== UNCOMMENT ONLY 1 PRINTER AND 1 MOTHERBOARD AT A TIME ==========
 //===========================================================================
 
-#define DELICIOUS_PRINTER // My personal settings as my setup is custom to me - DELICIOUS
-#define MOTHERBOARD BOARD_CREALITY_V427
+//#define DELICIOUS_PRINTER // My personal settings as my setup is custom to me - DELICIOUS
+//#define MOTHERBOARD BOARD_CREALITY_V427
 
 //#define ENDER_3_427_CR_BL_TOUCH
 //#define MOTHERBOARD BOARD_CREALITY_V427
@@ -351,7 +340,7 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define BLTOUCH
   #define USE_PROBE_FOR_Z_HOMING
   #define AUTO_BED_LEVELING_BILINEAR
-  #define NOZZLE_TO_PROBE_OFFSET { -38, -40, 0 }
+  #define NOZZLE_TO_PROBE_OFFSET { -38.8, -40.50, 0 }
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
   #define BABYSTEP_ZPROBE_OFFSET
@@ -363,7 +352,7 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   // EXTRAS
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 430 }
   //#define LIN_ADVANCE
-  //#define NO_CREALITY_422_DRIVER_WARNING 
+  //#define NO_CREALITY_422_DRIVER_WARNING
 
   // MACHINE NAME
   #define CUSTOM_MACHINE_NAME "Ender-3 4.2.7 - Marlin 2.1.2.1"
@@ -2338,22 +2327,17 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
 #define PREHEAT_1_LABEL       "PLA"
 #define PREHEAT_1_TEMP_HOTEND 190
 #define PREHEAT_1_TEMP_BED     50
-#define PREHEAT_1_FAN_SPEED   0 // Value from 0 to 255
+#define PREHEAT_1_FAN_SPEED   255 // Value from 0 to 255
 
 #define PREHEAT_2_LABEL       "ABS"
 #define PREHEAT_2_TEMP_HOTEND 240
 #define PREHEAT_2_TEMP_BED     70
-#define PREHEAT_2_FAN_SPEED   0 // Value from 0 to 255
+#define PREHEAT_2_FAN_SPEED   255 // Value from 0 to 255
 
-#define PREHEAT_3_LABEL       "ASA"
-#define PREHEAT_3_TEMP_HOTEND 260
-#define PREHEAT_3_TEMP_BED     90
-#define PREHEAT_3_FAN_SPEED   0 // Value from 0 to 255
-
-#define PREHEAT_4_LABEL       "BED LEVEL"
-#define PREHEAT_4_TEMP_HOTEND 150
-#define PREHEAT_4_TEMP_BED     50
-#define PREHEAT_4_FAN_SPEED   0 // Value from 0 to 255
+#define PREHEAT_3_LABEL       "BED LEVEL"
+#define PREHEAT_3_TEMP_HOTEND 150
+#define PREHEAT_3_TEMP_BED     50
+#define PREHEAT_3_FAN_SPEED   255 // Value from 0 to 255
 
 // @section motion
 

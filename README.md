@@ -1,8 +1,9 @@
 # A Delicious Marlin Ender 3/Pro Firmware
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I2I8PI401) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?business=FQK32ZSLKR8AJ&no_recurring=0&item_name=Creating+Marling+Firmware+and+Open+Source+Games&currency_code=USD)
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I2I8PI401)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?business=FQK32ZSLKR8AJ&no_recurring=0&item_name=Creating+Marling+Firmware+and+Open+Source+Games&currency_code=USD)
 
-#### Date of Latest Build: 2023-09-24 - V1.11.0
+#### Date of Latest Build: 2023-09-26 - V1.12.0
 #### Latest Marlin Version: 2.1.2.1
 
 ![LOGO](https://raw.githubusercontent.com/ADeliciousMan/A-Delicious-Marlin-Ender-3-Firmware/master/images/bootscreen.png?raw=true)
@@ -11,8 +12,29 @@
 
 Constantly being built off the latest version of Marlin (Stable), this firmware includes plenty of useful functions that are turned off by default on Ender 3 boards from Creality, with tweaks for a better out of the box printing experience.
 
-###### Note
-I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can actually test properly; however more .bins are included as well as user compiled and submitted .bins are more than welcome!
+###### How to Use and Notes
+
+Thee are 3 different ways to use this firmware:
+1: Download one of the pre compiled firmware .bins from their respective name folders
+  - These .bins are not re-compiled every update, so check the tag and see what version they are on, if you want the total newest, see options 2 and 3
+2: Use the 'Customize Printer' options to easily build a firmware specific for your printer in minutes
+  - You need to be able to compile your own firmware, there are plenty of great guides online this is just a rough idea
+    - Download Marlin firmware
+    - Download Visual Studios (whatever flavor you prefer)
+    - Install Auto Build Marlin
+    - Download the Configuration.h and Configuration_adv.h files, and replace them in the Marlin folder
+    - Uncomment the specific options you want for your printer, please read the instructions in the firmware notes
+    - Compile and enjoy :)
+3: Use the 'Pre-Built Printers' options to select which printer and option you want in seconds
+  - You need to be able to compile your own firmware, there are plenty of great guides online this is just a rough idea
+    - Download Marlin firmware
+    - Download Visual Studios (whatever flavor you prefer)
+    - Install Auto Build Marlin
+    - Download the Configuration.h and Configuration_adv.h files, and replace them in the Marlin folder
+    - Uncomment the specific printer you want to use, please read the instructions in the firmware notes
+    - Compile and enjoy :)
+
+I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can actually test properly.
 
 ## List of Features:
 
@@ -25,6 +47,7 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
   - Bed PID Presets, 10 cycles, 50C, 60C, 70C, 90C
   - These do not reapply a default PID setting, but instead actual run a full PID tune so it is unique to your machine (extruder, heading block, nozzle, cooling fan, specific temperature)
 * More accurate defaults for easier instant setup (I highly recommend you to do your own calibrations to get the most out of your printer, this firmware just helps to get you started faster and easier with more tools to calibrate easily)
+* Pre Heat options for PLA, ABS, ASA, and Bed Leveling
 * Mesh leveling, 9 points (BILINEAR)
 * Input shaping and ability to adjust on screen directly
 * Linear Advance (for supported boards)
@@ -43,8 +66,19 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
 * Ability to mute Beeps
 * Nozzle park
 * Pause feature for unloading and loading filament
-* Option to turn on Autostart (executes gcode with file name auto0.g.gcode on startup)
+* Duel Z if your printer supports it
+* Option to turn on Autostart (executes gcode with file name auto0.g (not .gcode) on startup)
 * And much, much more!
+
+## Extras
+* Included a 'auto0.g' in the 'extras' folder. Place it in the SD cards root directory if you want to use it
+  - Auto heats the extruder to 150C and bed to 50C on startup for easier use
+  - If you want to modify it, add '.gcode' to it, make your changes, save and then remove the '.gcode', it should only read 'auto0.g' to the printer
+* My custom CURA profile
+  - **IMPORTANT NOTE:** I AM ON A DIRECT DRIVE SO IF YOU ARE BOWDEN TUBE CHANGE THE RETRACTION DISTANCE AND SPEED
+  - I included screenshots as some settings of mine are material specific so they won't show the same on your settings
+  - It is PLA specific
+  - You should tinker with the settings as each printer is different
 
 ## What Steps To Take After installing This Firmware
 * Reset/Initialize your EEPROM on your printer, this is to ensure that previous settings are not messing with the new firmware. Yes it does Happen, happened to me plenty of times in testing
@@ -75,14 +109,31 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
   * [XYZ Cube](https://www.thingiverse.com/thing:1278865/comments)
   * [Benchy Boat](https://www.thingiverse.com/thing:763622)
   * [Cali-Dragon](https://www.thingiverse.com/thing:5401659)
+* Other Guides of note:
+  - [Various Post-Processing scripts](https://github.com/5axes/Calibration-Shapes/wiki/Postprocessing-scripts#retracttowerpy)
+  - [General Calibrations](https://github.com/5axes/Calibration-Shapes/wiki)
+  - [Ellis 3dp guide](https://ellis3dp.com/Print-Tuning-Guide/)
 
 ## TO DO:
 * Leveling/Tramming is off to the side a little, still trying to figure it out
+* Check Multi Mount probe offset, see if it's correct - { -54, -19, 0 }
+* Updated all pre-builds to latest version
 
 ## CHANGELOG:
 
+#### 2023-09-26 - V1.12.0
+* Added my own auto0.g file into the 'extras' folder on github. Place it in the SD cards root directory
+  - Auto heats the extruder to 150C and bed to 50C on startup for easier use
+  - If you want to modify it, add '.gcode' to it, make your changes, save and then remove the '.gcode', it should only read 'auto0.g' to the printer
+* Added support for Touch Screens (I think)
+* Added support for DUEL Z in Customize Printer section
+* Added ASA Pre Heat in DELICIOUS COMMANDS
+  - Also change the fan speeds for all pre-heats to 0 for this, you're just pre-heating, don't need it to go crazy
+* Added REPORT_TRAMMING_MM to ASSISTED_TRAMMING
+* Fixed some syntax issues
+
 #### 2023-09-24 - V1.11.0
-* Fixed an issue where the menus were wrong for the DELICIOUS COMMANDS which would cause the firmware to fail to compile
+* Fixed an issue where the menus settings were wrong for the DELICIOUS COMMANDS which would cause the firmware to fail to compile (oooooops)
 * Added support for TH3D Multi-Mount BL/CR probe
 
 #### 2023-09-24 - V1.10.0

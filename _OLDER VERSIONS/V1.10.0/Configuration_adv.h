@@ -890,7 +890,7 @@
   #define TRAMMING_POINT_NAME_4 "Back-Left"
 
   #define RESTORE_LEVELING_AFTER_G35    // Enable to restore leveling setup after operation
-  #define REPORT_TRAMMING_MM          // Report Z deviation (mm) for each point relative to the first
+  //#define REPORT_TRAMMING_MM          // Report Z deviation (mm) for each point relative to the first
 
   #define ASSISTED_TRAMMING_WIZARD    // Add a Tramming Wizard to the LCD menu
 
@@ -1371,7 +1371,7 @@
   #define SD_MENU_CONFIRM_START             // Confirm the selected SD file before printing
 
   //#define NO_SD_AUTOSTART                 // Remove auto#.g file support completely to save some Flash, SRAM
-  #define MENU_ADDAUTOSTART               // Add a menu option to run auto#.g files
+  //#define MENU_ADDAUTOSTART               // Add a menu option to run auto#.g files
 
   //#define BROWSE_MEDIA_ON_INSERT          // Open the file browser when media is inserted
 
@@ -3332,25 +3332,25 @@
   #define CONFIG_MENU_ITEM_3_GCODE "M106 S255\nM303 E0 C10 S210 U\nM500\nM106 S0\nM117 PID E TEMP 200 DONE"
   #define CONFIG_MENU_ITEM_3_CONFIRM        // Show a confirmation dialog before this action
 
-  #define CONFIG_MENU_ITEM_4_DESC "PID E C10  TEMP 260"
-  #define CONFIG_MENU_ITEM_4_GCODE "M106 S255\nM303 E0 C10 S260 U\nM500\nM106 S0\nM117 PID E TEMP 260 DONE"
-  #define CONFIG_MENU_ITEM_4_CONFIRM        // Show a confirmation dialog before this action
+  #define CONFIG_MENU_ITEM_3_DESC "PID E C10  TEMP 260"
+  #define CONFIG_MENU_ITEM_3_GCODE "M106 S255\nM303 E0 C10 S260 U\nM500\nM106 S0\nM117 PID E TEMP 260 DONE"
+  #define CONFIG_MENU_ITEM_3_CONFIRM        // Show a confirmation dialog before this action
 
-  #define CONFIG_MENU_ITEM_5_DESC "PID BED C10  TEMP 50"
-  #define CONFIG_MENU_ITEM_5_GCODE "M303 E-1 C10 S50 U\nM500\nM106 S0\nM117 PID BED TEMP 50 DONE"
+  #define CONFIG_MENU_ITEM_4_DESC "PID BED C10  TEMP 50"
+  #define CONFIG_MENU_ITEM_4_GCODE "M303 E-1 C10 S50 U\nM500\nM106 S0\nM117 PID BED TEMP 50 DONE"
+  #define CONFIG_MENU_ITEM_4_CONFIRM
+
+  #define CONFIG_MENU_ITEM_5_DESC "PID BED C10  TEMP 60"
+  #define CONFIG_MENU_ITEM_5_GCODE "M303 E-1 C10 S60 U\nM500\nM106 S0\nM117 PID BED TEMP 60 DONE"
   #define CONFIG_MENU_ITEM_5_CONFIRM
 
-  #define CONFIG_MENU_ITEM_6_DESC "PID BED C10  TEMP 60"
-  #define CONFIG_MENU_ITEM_6_GCODE "M303 E-1 C10 S60 U\nM500\nM106 S0\nM117 PID BED TEMP 60 DONE"
+  #define CONFIG_MENU_ITEM_6_DESC "PID BED C10  TEMP 70"
+  #define CONFIG_MENU_ITEM_6_GCODE "M303 E-1 C10 S70 U\nM500\nM106 S0\nM117 PID BED TEMP 70 DONE"
   #define CONFIG_MENU_ITEM_6_CONFIRM
 
-  #define CONFIG_MENU_ITEM_7_DESC "PID BED C10  TEMP 70"
-  #define CONFIG_MENU_ITEM_7_GCODE "M303 E-1 C10 S70 U\nM500\nM106 S0\nM117 PID BED TEMP 70 DONE"
-  #define CONFIG_MENU_ITEM_7_CONFIRM
-
-  #define CONFIG_MENU_ITEM_8_DESC "PID BED C10  TEMP 90"
-  #define CONFIG_MENU_ITEM_8_GCODE "M303 E-1 C10 S90 U\nM500\nM106 S0\nM117 PID BED TEMP 90 DONE"
-  #define CONFIG_MENU_ITEM_8_CONFIRM
+  #define CONFIG_MENU_ITEM_6_DESC "PID BED C10  TEMP 90"
+  #define CONFIG_MENU_ITEM_6_GCODE "M303 E-1 C10 S90 U\nM500\nM106 S0\nM117 PID BED TEMP 90 DONE"
+  #define CONFIG_MENU_ITEM_6_CONFIRM
 #endif
 
 // @section custom buttons
