@@ -131,6 +131,7 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
   - Also change the fan speeds for all pre-heats to 0 for this, you're just pre-heating, don't need it to go crazy
 * Added REPORT_TRAMMING_MM to ASSISTED_TRAMMING
 * Fixed some syntax issues
+* Added my custom Cura settings
 
 #### 2023-09-24 - V1.11.0
 * Fixed an issue where the menus settings were wrong for the DELICIOUS COMMANDS which would cause the firmware to fail to compile (oooooops)
