@@ -3,7 +3,7 @@
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I2I8PI401)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?business=FQK32ZSLKR8AJ&no_recurring=0&item_name=Creating+Marling+Firmware+and+Open+Source+Games&currency_code=USD)
 
-#### Date of Latest Build: 2023-09-26 - V1.12.0
+#### Date of Latest Build: 2023-09-27 - V1.12.1 - Hotfix
 #### Latest Marlin Version: 2.1.2.1
 
 ![LOGO](https://raw.githubusercontent.com/ADeliciousMan/A-Delicious-Marlin-Ender-3-Firmware/master/images/bootscreen.png?raw=true)
@@ -19,7 +19,7 @@ Thee are 3 different ways to use this firmware:
   - These .bins are not re-compiled every update, so check the tag and see what version they are on, if you want the total newest, see options 2 and 3
 2: Use the 'Customize Printer' options to easily build a firmware specific for your printer in minutes
   - You need to be able to compile your own firmware, there are plenty of great guides online this is just a rough idea
-    - Download Marlin firmware
+    - Download Marlin firmware that matches the Latest Marlin Version above ^^^ (https://marlinfw.org/meta/download/)
     - Download Visual Studios (whatever flavor you prefer)
     - Install Auto Build Marlin
     - Download the Configuration.h and Configuration_adv.h files, and replace them in the Marlin folder
@@ -27,7 +27,7 @@ Thee are 3 different ways to use this firmware:
     - Compile and enjoy :)
 3: Use the 'Pre-Built Printers' options to select which printer and option you want in seconds
   - You need to be able to compile your own firmware, there are plenty of great guides online this is just a rough idea
-    - Download Marlin firmware
+    - Download Marlin firmware that matches the Latest Marlin Version above ^^^ (https://marlinfw.org/meta/download/)
     - Download Visual Studios (whatever flavor you prefer)
     - Install Auto Build Marlin
     - Download the Configuration.h and Configuration_adv.h files, and replace them in the Marlin folder
@@ -121,17 +121,20 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
 
 ## CHANGELOG:
 
+#### 2023-09-27 - V1.12.1 - Hotfix
+* Fixed some bugs that would cause compile to fail if not commented out
+
 #### 2023-09-26 - V1.12.0
 * Added my own auto0.g file into the 'extras' folder on github. Place it in the SD cards root directory
   - Auto heats the extruder to 150C and bed to 50C on startup for easier use
   - If you want to modify it, add '.gcode' to it, make your changes, save and then remove the '.gcode', it should only read 'auto0.g' to the printer
+* Added my custom CURA settings
 * Added support for Touch Screens (I think)
 * Added support for DUEL Z in Customize Printer section
 * Added ASA Pre Heat in DELICIOUS COMMANDS
   - Also change the fan speeds for all pre-heats to 0 for this, you're just pre-heating, don't need it to go crazy
 * Added REPORT_TRAMMING_MM to ASSISTED_TRAMMING
 * Fixed some syntax issues
-* Added my custom Cura settings
 
 #### 2023-09-24 - V1.11.0
 * Fixed an issue where the menus settings were wrong for the DELICIOUS COMMANDS which would cause the firmware to fail to compile (oooooops)

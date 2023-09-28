@@ -207,8 +207,8 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
 //=========== UNCOMMENT ONLY 1 PRINTER AND 1 MOTHERBOARD AT A TIME ==========
 //===========================================================================
 
-//#define DELICIOUS_PRINTER // My personal settings as my setup is custom to me - DELICIOUS
-//#define MOTHERBOARD BOARD_CREALITY_V427
+#define DELICIOUS_PRINTER // My personal settings as my setup is custom to me - DELICIOUS
+#define MOTHERBOARD BOARD_CREALITY_V427
 
 //#define ENDER_3_427_CR_BL_TOUCH
 //#define MOTHERBOARD BOARD_CREALITY_V427
