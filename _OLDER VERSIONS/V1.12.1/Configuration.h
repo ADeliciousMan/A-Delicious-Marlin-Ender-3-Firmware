@@ -23,7 +23,6 @@
 //#define MOTHERBOARD BOARD_BTT_OCTOPUS_V1_1 //         BIQU OCTOPUS V1.1
 //#define MOTHERBOARD BOARD_BTT_OCTOPUS_PRO_V1_0 //     BIQU OCTOPUS PRO V1
 //#define MOTHERBOARD BOARD_BTT_OCTOPUS_MAX_EZ_V1_0 //  BIQU OCTOPUS MAX EZ
-//#define MOTHERBOARD BOARD_CREALITY_V4 //              Ender 3 Max
 
 //===========================================================================
 //================================= DRIVERS =================================
@@ -31,7 +30,7 @@
 
 //#define DRIVERS_TMC2208_STANDALONE //                 Typical drivers for a Creality 4.2.7 board
 //#define DRIVERS_A4988 //                              Typical drivers for a Creality 4.2.2 board
-//#define DRIVERS_TMC2209 //                            Typical drivers for a BIQU SKR Mini 3 V3 board or Octopus Pro (Same driver as the EZ2209 on the Octopus Max EZ), Anycubic Kobra Max
+//#define DRIVERS_TMC2209 //                            Typical drivers for a BIQU SKR Mini 3 V3 board or Octopus Pro (Same driver as the EZ2209 on the Octopus Max EZ)
 
 //===========================================================================
 //================================= Z PROBE =================================
@@ -41,7 +40,7 @@
 
 #if ENABLED(HAS_Z_PROBE) //                             PICK ONLY ONE AND ONLY IF HAS_Z_PROBE IS ON
 //  #define HAS_BL_CR_TOUCH //                          BL Touch or CR Touch probe
-  #define HAS_SPRITE //                               Creality Sprite Extruder
+//  #define HAS_SPRITE //                               Creality Sprite Extruder
 //  #define TH3D_BL_CR_MULTIMOUNT //                    If you're using a BL_CR_MULTIMOUNT with TH3D Multi-Mount
 #endif
 
@@ -66,20 +65,12 @@
 //================================= Z-AXIS =================================
 //===========================================================================
 
-//#define DUEL_Z_AXIS //                             If you have 2 dedicated/independent Z Motors
+//#define Z2_DRIVER_TYPE //                             If you have 2 dedicated/independent Z Motors
 
-#if ENABLED(DUEL_Z_AXIS)
+#if ENABLED(Z2_DRIVER_TYPE)
   #define Z_STEPPER_AUTO_ALIGN //                       Aligns the Z-Axis independently
   //#define Z_MULTI_ENDSTOPS //                         If the second Z-Axis has a dedicated endstop
 #endif
-
-//===========================================================================
-//================================= BED SIZE ================================
-//===========================================================================
-
-//#define BEDSIZE_220x220x250 //                         Standard Ender 3 Bed Size
-//#define BEDSIZE_300x300x340 //                         Ender 3 Max
-//#define BEDSIZE_400x400x450 //                         Any Cubic Kobra Max
 
 //===========================================================================
 //================================= SCREENS =================================
@@ -98,7 +89,7 @@
     //#define FIL_RUNOUT_STATE     LOW               // State pins are in indicating that filament is NOT present
     //#define FIL_RUNOUT_STATE     HIGH              // State pins are in indicating that filament is NOT present
 #endif
-
+  
 /*    ______________  ______   ____  ____  _   ________
    / ____/  _/ __ \/_  __/  / __ \/ __ \/ | / / ____/
   / __/  / // / / / / /    / / / / / / /  |/ / __/   
@@ -110,7 +101,7 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
 
 */
 
-//Motherboard Settings
+//Motherbaord Settings
 #if (MOTHERBOARD == BOARD_CREALITY_V427) // 
   #define INVERT_X_DIR false
   #define INVERT_Y_DIR false
@@ -122,26 +113,14 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define INVERT_Y_DIR false
   #define INVERT_Z_DIR true
   #define INVERT_E0_DIR false
-  #define NO_CREALITY_422_DRIVER_WARNING //  Makes VScode shut up about the 422 drivers
+  #define NO_CREALITY_422_DRIVER_WARNING //                   Makes VScode shut up about the 422 drivers
   #define CUSTOM_MACHINE_NAME "Ender-3 4.2.2 - Marlin 2.1.2.1"
-#elif (MOTHERBOARD == BOARD_CREALITY_V4) // 
-  #define INVERT_X_DIR false
-  #define INVERT_Y_DIR false
-  #define INVERT_Z_DIR true
-  #define INVERT_E0_DIR false
-  #define CUSTOM_MACHINE_NAME "Ender-3 V4 - Marlin 2.1.2.1"
-#elif (MOTHERBOARD == BOARD_BTT_SKR_MINI_E3_V3_0) || (MOTHERBOARD == BOARD_BTT_SKR_MINI_E3_V2_0) || (MOTHERBOARD == BOARD_BTT_SKR_MINI_E3_V1_2) || (MOTHERBOARD == BOARD_BTT_SKR_MINI_E3_V1_0)  //  Special inverting of motors for BIQU SKR MINI E3 V3
+#elif (MOTHERBOARD == BOARD_BTT_SKR_MINI_E3_V3_0) || (MOTHERBOARD == BOARD_BTT_SKR_MINI_E3_V2_0) || (MOTHERBOARD == BOARD_BTT_SKR_MINI_E3_V1_2) || (MOTHERBOARD == BOARD_BTT_SKR_MINI_E3_V1_0)  //       Special inverting of motors for BIQU SKR MINI E3 V3
   #define INVERT_X_DIR true
   #define INVERT_Y_DIR true
   #define INVERT_Z_DIR false
   #define INVERT_E0_DIR true
   #define CUSTOM_MACHINE_NAME "Ender-3 SKR Mini E3 - Marlin 2.1.2.1"
-#elif (MOTHERBOARD == BOARD_BTT_OCTOPUS_V1_0) || (MOTHERBOARD == BOARD_BTT_OCTOPUS_V1_1) || (MOTHERBOARD == BOARD_BTT_OCTOPUS_PRO_V1_0) || (MOTHERBOARD == BOARD_BTT_OCTOPUS_MAX_EZ_V1_0)  //  Special inverting of motors for BIQU OCTOPUS
-  #define INVERT_X_DIR true
-  #define INVERT_Y_DIR true
-  #define INVERT_Z_DIR false
-  #define INVERT_E0_DIR true
-  #define CUSTOM_MACHINE_NAME "Ender-3 Octopus - Marlin 2.1.2.1"
 #endif
 
 // Driver Setting
@@ -177,7 +156,7 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define BLTOUCH
   #define USE_PROBE_FOR_Z_HOMING
   #define AUTO_BED_LEVELING_BILINEAR
-  #define NOZZLE_TO_PROBE_OFFSET { -32, -40, 0 }
+  #define NOZZLE_TO_PROBE_OFFSET { -38.8, -40.50, 0 }
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
   #define BABYSTEP_ZPROBE_OFFSET
@@ -185,7 +164,7 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define BLTOUCH
   #define USE_PROBE_FOR_Z_HOMING
   #define AUTO_BED_LEVELING_BILINEAR
-  #define NOZZLE_TO_PROBE_OFFSET { -54, -19, 0 }
+  #define NOZZLE_TO_PROBE_OFFSET { -45, -19, 0 }
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
   #define BABYSTEP_ZPROBE_OFFSET
@@ -213,64 +192,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 430 }
 #elif ENABLED(HAS_H2_V2s)
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 930}
-#endif
-
-// Z-Axis
-
-#if ENABLED(DUEL_Z_AXIS)
-  #if ENABLED(DRIVERS_TMC2208_STANDALONE)
-    #define Z2_DRIVER_TYPE  TMC2208_STANDALONE
-  #endif
-  #if ENABLED(DRIVERS_A4988)
-    #define Z2_DRIVER_TYPE  TMC2208_STANDALONE
-  #endif
-  #if ENABLED(DRIVERS_TMC2209)
-    #define Z2_DRIVER_TYPE  TMC2209
-  #endif
-#endif
-
-// Bed Size
-#if ENABLED(BEDSIZE_220x220x250)
-  // The size of the printable area
-  #define X_BED_SIZE 220
-  #define Y_BED_SIZE 220
-
-  // Travel limits after homing, corresponding to endstop positions.
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
-  #define Z_MIN_POS 0
-
-  #define X_MAX_POS 235
-  #define Y_MAX_POS 235
-  #define Z_MAX_POS 250
-#endif
-#if ENABLED(BEDSIZE_300x300x340)
-  // The size of the printable area
-  #define X_BED_SIZE 300
-  #define Y_BED_SIZE 300
-
-  // Travel limits after homing, corresponding to endstop positions.
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
-  #define Z_MIN_POS 0
-
-  #define X_MAX_POS X_BED_SIZE
-  #define Y_MAX_POS Y_BED_SIZE
-  #define Z_MAX_POS 340
-#endif
-#if ENABLED(BEDSIZE_400x400x450)
-  // The size of the printable area
-  #define X_BED_SIZE 400
-  #define Y_BED_SIZE 400
-
-  // Travel limits after homing, corresponding to endstop positions.
-  #define X_MIN_POS -6.2 // Default values from company
-  #define Y_MIN_POS -20.5 // Default values from company
-  #define Z_MIN_POS 0
-
-  #define X_MAX_POS X_BED_SIZE +4 // Default values from company
-  #define Y_MAX_POS Y_BED_SIZE +4 // Default values from company
-  #define Z_MAX_POS 450
 #endif
 
 /*
@@ -343,7 +264,7 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define BLTOUCH
   #define USE_PROBE_FOR_Z_HOMING
   #define AUTO_BED_LEVELING_BILINEAR
-  #define NOZZLE_TO_PROBE_OFFSET { -54, -19, 0 }
+  #define NOZZLE_TO_PROBE_OFFSET { -45, -19, 0 }
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
   #define BABYSTEP_ZPROBE_OFFSET
@@ -351,20 +272,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   // TEMPERATURE SETTINGS
   #define TEMP_SENSOR_0 1047
   #define HEATER_0_MAXTEMP 350
-
-  // BED + POSITION
-  // The size of the printable area
-  #define X_BED_SIZE 220
-  #define Y_BED_SIZE 220
-
-  // Travel limits after homing, corresponding to endstop positions.
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
-  #define Z_MIN_POS 0
-
-  #define X_MAX_POS 235
-  #define Y_MAX_POS 235
-  #define Z_MAX_POS 250
   
   // EXTRAS
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95.10 }
@@ -395,20 +302,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define TEMP_SENSOR_0 1
   #define HEATER_0_MAXTEMP 275
 
-  // BED + POSITION
-  // The size of the printable area
-  #define X_BED_SIZE 220
-  #define Y_BED_SIZE 220
-
-  // Travel limits after homing, corresponding to endstop positions.
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
-  #define Z_MIN_POS 0
-
-  #define X_MAX_POS 235
-  #define Y_MAX_POS 235
-  #define Z_MAX_POS 250
-
   // EXTRAS
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 97 }
   //#define LIN_ADVANCE
@@ -438,20 +331,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define TEMP_SENSOR_0 1
   #define HEATER_0_MAXTEMP 275
 
-  // BED + POSITION
-  // The size of the printable area
-  #define X_BED_SIZE 220
-  #define Y_BED_SIZE 220
-
-  // Travel limits after homing, corresponding to endstop positions.
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
-  #define Z_MIN_POS 0
-
-  #define X_MAX_POS 235
-  #define Y_MAX_POS 235
-  #define Z_MAX_POS 250
-
   // EXTRAS
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 97 }
   //#define LIN_ADVANCE
@@ -472,7 +351,7 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define BLTOUCH
   #define USE_PROBE_FOR_Z_HOMING
   #define AUTO_BED_LEVELING_BILINEAR
-  #define NOZZLE_TO_PROBE_OFFSET { -32, -40, 0 }
+  #define NOZZLE_TO_PROBE_OFFSET { -38, -40, 0 }
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
   #define BABYSTEP_ZPROBE_OFFSET
@@ -480,20 +359,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   // TEMPERATURE SETTINGS
   #define TEMP_SENSOR_0 13
   #define HEATER_0_MAXTEMP 285
-
-  // BED + POSITION
-  // The size of the printable area
-  #define X_BED_SIZE 220
-  #define Y_BED_SIZE 220
-
-  // Travel limits after homing, corresponding to endstop positions.
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
-  #define Z_MIN_POS 0
-
-  #define X_MAX_POS 235
-  #define Y_MAX_POS 235
-  #define Z_MAX_POS 250
 
   // EXTRAS
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 430 }
@@ -515,7 +380,7 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define BLTOUCH
   #define USE_PROBE_FOR_Z_HOMING
   #define AUTO_BED_LEVELING_BILINEAR
-  #define NOZZLE_TO_PROBE_OFFSET { -32, -40, 0 }
+  #define NOZZLE_TO_PROBE_OFFSET { -38.8, -40.50, 0 }
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
   #define BABYSTEP_ZPROBE_OFFSET
@@ -523,20 +388,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   // TEMPERATURE SETTINGS
   #define TEMP_SENSOR_0 13
   #define HEATER_0_MAXTEMP 285
-
-  // BED + POSITION
-  // The size of the printable area
-  #define X_BED_SIZE 220
-  #define Y_BED_SIZE 220
-
-  // Travel limits after homing, corresponding to endstop positions.
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
-  #define Z_MIN_POS 0
-
-  #define X_MAX_POS 235
-  #define Y_MAX_POS 235
-  #define Z_MAX_POS 250
 
   // EXTRAS
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 430 }
@@ -566,20 +417,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define TEMP_SENSOR_0 61
   #define HEATER_0_MAXTEMP 350
 
-  // BED + POSITION
-  // The size of the printable area
-  #define X_BED_SIZE 220
-  #define Y_BED_SIZE 220
-
-  // Travel limits after homing, corresponding to endstop positions.
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
-  #define Z_MIN_POS 0
-
-  #define X_MAX_POS 235
-  #define Y_MAX_POS 235
-  #define Z_MAX_POS 250
-
   // EXTRAS
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 97 }
   //#define LIN_ADVANCE
@@ -607,20 +444,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   // TEMPERATURE SETTINGS
   #define TEMP_SENSOR_0 61
   #define HEATER_0_MAXTEMP 350
-
-  // BED + POSITION
-  // The size of the printable area
-  #define X_BED_SIZE 220
-  #define Y_BED_SIZE 220
-
-  // Travel limits after homing, corresponding to endstop positions.
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
-  #define Z_MIN_POS 0
-
-  #define X_MAX_POS 235
-  #define Y_MAX_POS 235
-  #define Z_MAX_POS 250
 
   // EXTRAS
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 97 }
@@ -651,20 +474,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define TEMP_SENSOR_0 1
   #define HEATER_0_MAXTEMP 275
 
-  // BED + POSITION
-  // The size of the printable area
-  #define X_BED_SIZE 220
-  #define Y_BED_SIZE 220
-
-  // Travel limits after homing, corresponding to endstop positions.
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
-  #define Z_MIN_POS 0
-
-  #define X_MAX_POS 235
-  #define Y_MAX_POS 235
-  #define Z_MAX_POS 250
-
   // EXTRAS
   //#define LIN_ADVANCE
   //#define NO_CREALITY_422_DRIVER_WARNING
@@ -691,20 +500,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   // TEMPERATURE SETTINGS
   #define TEMP_SENSOR_0 1
   #define HEATER_0_MAXTEMP 275
-
-  // BED + POSITION
-  // The size of the printable area
-  #define X_BED_SIZE 220
-  #define Y_BED_SIZE 220
-
-  // Travel limits after homing, corresponding to endstop positions.
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
-  #define Z_MIN_POS 0
-
-  #define X_MAX_POS 235
-  #define Y_MAX_POS 235
-  #define Z_MAX_POS 250
 
   // EXTRAS
   //#define LIN_ADVANCE
@@ -734,20 +529,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define TEMP_SENSOR_0 1
   #define HEATER_0_MAXTEMP 275
 
-  // BED + POSITION
-  // The size of the printable area
-  #define X_BED_SIZE 220
-  #define Y_BED_SIZE 220
-
-  // Travel limits after homing, corresponding to endstop positions.
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
-  #define Z_MIN_POS 0
-
-  #define X_MAX_POS 235
-  #define Y_MAX_POS 235
-  #define Z_MAX_POS 250
-
   // EXTRAS
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 97 }
   #define LIN_ADVANCE
@@ -775,20 +556,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   // TEMPERATURE SETTINGS
   #define TEMP_SENSOR_0 1
   #define HEATER_0_MAXTEMP 275
-
-  // BED + POSITION
-  // The size of the printable area
-  #define X_BED_SIZE 220
-  #define Y_BED_SIZE 220
-
-  // Travel limits after homing, corresponding to endstop positions.
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
-  #define Z_MIN_POS 0
-
-  #define X_MAX_POS 235
-  #define Y_MAX_POS 235
-  #define Z_MAX_POS 250
 
   // EXTRAS
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 97 }
@@ -821,20 +588,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   // TEMPERATURE SETTINGS
   #define TEMP_SENSOR_0 1
   #define HEATER_0_MAXTEMP 275
-
-  // BED + POSITION
-  // The size of the printable area
-  #define X_BED_SIZE 220
-  #define Y_BED_SIZE 220
-
-  // Travel limits after homing, corresponding to endstop positions.
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
-  #define Z_MIN_POS 0
-
-  #define X_MAX_POS 235
-  #define Y_MAX_POS 235
-  #define Z_MAX_POS 250
 
   // EXTRAS
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 97 }
@@ -2060,17 +1813,17 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
 
 // The size of the printable area
 //Defaults - DELICIOUS
-//#define X_BED_SIZE 220
-//#define Y_BED_SIZE 220
+#define X_BED_SIZE 235
+#define Y_BED_SIZE 235
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
-//#define X_MIN_POS 0
-//#define Y_MIN_POS 0
-//#define Z_MIN_POS 0
+#define X_MIN_POS 0
+#define Y_MIN_POS 0
+#define Z_MIN_POS 0
 // Default, #define X_MAX_POS X_BED_SIZE - DELICIOUS
-//#define X_MAX_POS 235
-//#define Y_MAX_POS 235
-//#define Z_MAX_POS 250
+#define X_MAX_POS 235
+#define Y_MAX_POS 235
+#define Z_MAX_POS 250
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
 //#define J_MIN_POS 0

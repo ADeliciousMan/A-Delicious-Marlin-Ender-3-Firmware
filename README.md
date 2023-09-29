@@ -3,7 +3,7 @@
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I2I8PI401)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?business=FQK32ZSLKR8AJ&no_recurring=0&item_name=Creating+Marling+Firmware+and+Open+Source+Games&currency_code=USD)
 
-#### Date of Latest Build: 2023-09-27 - V1.12.1 - Hotfix
+#### Date of Latest Build: 2023-09-29 - V1.13.00
 #### Latest Marlin Version: 2.1.2.1
 
 ![LOGO](https://raw.githubusercontent.com/ADeliciousMan/A-Delicious-Marlin-Ender-3-Firmware/master/images/bootscreen.png?raw=true)
@@ -18,6 +18,7 @@ Thee are 3 different ways to use this firmware:
 1: Download one of the pre compiled firmware .bins from their respective name folders
   - These .bins are not re-compiled every update, so check the tag and see what version they are on, if you want the total newest, see options 2 and 3
 2: Use the 'Customize Printer' options to easily build a firmware specific for your printer in minutes
+  - YOU NEED TO DOWNLOAD THE **CONFIGURATION.H**, **CONFIGURATION_ADV.H**, **_BOOTSCREEN.H**, and **_STATUSSCREEN.H**
   - You need to be able to compile your own firmware, there are plenty of great guides online this is just a rough idea
     - Download Marlin firmware that matches the Latest Marlin Version above ^^^ (https://marlinfw.org/meta/download/)
     - Download Visual Studios (whatever flavor you prefer)
@@ -40,7 +41,7 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
 
 * Newest Marlin Build
 * Faster prints
-* BL/CR Touch support
+* Touch sense support (EX:BL touch, CR touch)
 * Marlins PID Tuning
 * Custom menu with custom easy to access PID settings for Extruder and Bed
   - Extruder PID Presets, 10 cycles, 180C, 190C, 200C, 260C
@@ -63,11 +64,13 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
 * Lowered min temp for extrusion, 170C
 * Host actions (EX: You use Octoprint but stop the print on the printer directly, it will inform Octoprint of this)
 * Babystep for Z-Probe
-* Ability to mute Beeps
 * Nozzle park
 * Pause feature for unloading and loading filament
 * Duel Z if your printer supports it
 * Option to turn on Autostart (executes gcode with file name auto0.g (not .gcode) on startup)
+* Support for Touch screens
+* Support for Duel Z
+* Large printers supported
 * And much, much more!
 
 ## Extras
@@ -115,11 +118,22 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
   - [Ellis 3dp guide](https://ellis3dp.com/Print-Tuning-Guide/)
 
 ## TO DO:
-* Leveling/Tramming is off to the side a little, still trying to figure it out
-* Check Multi Mount probe offset, see if it's correct - { -54, -19, 0 }
-* Updated all pre-builds to latest version
+* Leveling/Tramming is off to the side a little, still trying to figure it out (I think it's fixed but needs testing)
+* Check Multi Mount probe offset, see if it's correct - { -54, -19, 0 } (this might be fixed too, same issues as above)
+* Added triple and quad Z Axis motor support
 
 ## CHANGELOG:
+
+#### 2023-09-29 - V1.13.00
+* Added drive inversion for BTT Octopus boards, same as SKR boards (on the Customize Printer section)
+* Added a more robust Z-Axis duel motor support for Customize Printer section
+* Changed X_BED_SIZE and Y_BED_SIZE from 235 to 220, seems to have fixed most tramming issues, need to confirm
+* Updated all prebuilds to latest version
+* Added support for larger bed sizes in the Customize Printer section
+  - BEDSIZE_220x220x250
+  - BEDSIZE_300x300x340
+  - BEDSIZE_400x400x450
+* Added support for BOARD_CREALITY_V4
 
 #### 2023-09-27 - V1.12.1 - Hotfix
 * Fixed some bugs that would cause compile to fail if not commented out
