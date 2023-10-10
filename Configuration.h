@@ -15,6 +15,7 @@
 
 //#define MOTHERBOARD BOARD_CREALITY_V427 //            Creality 4.2.7 Board
 //#define MOTHERBOARD BOARD_CREALITY_V422 //            Creality 4.2.2 Board, standard for Ender 3 and Ender 3 Pro
+//#define MOTHERBOARD BOARD_CREALITY_V4 //              Ender 3 Max, Ender 3V2
 //#define MOTHERBOARD BOARD_BTT_SKR_MINI_E3_V3_0 //     BIQU SKR MINI E3 V3.0
 //#define MOTHERBOARD BOARD_BTT_SKR_MINI_E3_V1_0 //     BIQU SKR MINI E3 V1.0
 //#define MOTHERBOARD BOARD_BTT_SKR_MINI_E3_V1_2 //     BIQU SKR MINI E3 V1.2
@@ -23,15 +24,22 @@
 //#define MOTHERBOARD BOARD_BTT_OCTOPUS_V1_1 //         BIQU OCTOPUS V1.1
 //#define MOTHERBOARD BOARD_BTT_OCTOPUS_PRO_V1_0 //     BIQU OCTOPUS PRO V1
 //#define MOTHERBOARD BOARD_BTT_OCTOPUS_MAX_EZ_V1_0 //  BIQU OCTOPUS MAX EZ
-//#define MOTHERBOARD BOARD_CREALITY_V4 //              Ender 3 Max
 
 //===========================================================================
-//================================= DRIVERS =================================
+//============================== X Y Z DRIVERS ==============================
 //===========================================================================
 
 //#define DRIVERS_TMC2208_STANDALONE //                 Typical drivers for a Creality 4.2.7 board
 //#define DRIVERS_A4988 //                              Typical drivers for a Creality 4.2.2 board
 //#define DRIVERS_TMC2209 //                            Typical drivers for a BIQU SKR Mini 3 V3 board or Octopus Pro (Same driver as the EZ2209 on the Octopus Max EZ), Anycubic Kobra Max
+
+//===========================================================================
+//================================ E DRIVERS ================================
+//===========================================================================
+
+//#define DRIVERS_TMC2208_STANDALONE_E //               Typical drivers for a Creality 4.2.7 board
+//#define DRIVERS_A4988_E //                            Typical drivers for a Creality 4.2.2 board
+//#define DRIVERS_TMC2209_E //                          Typical drivers for a BIQU SKR Mini 3 V3 board or Octopus Pro (Same driver as the EZ2209 on the Octopus Max EZ), Anycubic Kobra Max
 
 //===========================================================================
 //================================= Z PROBE =================================
@@ -40,9 +48,9 @@
 //#define HAS_Z_PROBE //                                Say if you have a Z Probe, leave blank for Z axis switch
 
 #if ENABLED(HAS_Z_PROBE) //                             PICK ONLY ONE AND ONLY IF HAS_Z_PROBE IS ON
-//  #define HAS_BL_CR_TOUCH //                          BL Touch or CR Touch probe
-  #define HAS_SPRITE //                               Creality Sprite Extruder
-//  #define TH3D_BL_CR_MULTIMOUNT //                    If you're using a BL_CR_MULTIMOUNT with TH3D Multi-Mount
+  //#define HAS_BL_CR_TOUCH //                          BL Touch or CR Touch probe
+  //#define HAS_SPRITE //                               Creality Sprite Extruder with BL or CR Touch
+  //#define TH3D_BL_CR_MULTIMOUNT //                    If you're using a BL_CR_MULTIMOUNT with TH3D Multi-Mount
 #endif
 
 //===========================================================================
@@ -55,7 +63,7 @@
 //#define THERMISTOR_1047 //                            Thermistor for Pt1000, 4.7kΩ pullup
 
 //===========================================================================
-//================================= E STEPS =================================
+//================================= E-STEPS =================================
 //===========================================================================
 
 //#define HAS_STANDARD_MOTORS //                        Default Creality Motors
@@ -95,8 +103,8 @@
 //#define FILAMENT_RUNOUT_SENSOR                     // Enable filament runout sensor
 
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)                  // PICK ONLY ONE AND ONLY IF FILAMENT_RUNOUT_SENSOR IS ON
-    //#define FIL_RUNOUT_STATE     LOW               // State pins are in indicating that filament is NOT present
-    //#define FIL_RUNOUT_STATE     HIGH              // State pins are in indicating that filament is NOT present
+  //#define FIL_RUNOUT_STATE     LOW               // State pins are in indicating that filament is NOT present
+  //#define FIL_RUNOUT_STATE     HIGH              // State pins are in indicating that filament is NOT present
 #endif
 
 /*    ______________  ______   ____  ____  _   ________
@@ -144,23 +152,27 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define CUSTOM_MACHINE_NAME "Ender-3 Octopus - Marlin 2.1.2.1"
 #endif
 
-// Driver Setting
+// X Y Z Driver Setting
 #if ENABLED(DRIVERS_TMC2208_STANDALONE)
   #define X_DRIVER_TYPE  TMC2208_STANDALONE
   #define Y_DRIVER_TYPE  TMC2208_STANDALONE
   #define Z_DRIVER_TYPE  TMC2208_STANDALONE
-  #define E0_DRIVER_TYPE TMC2208_STANDALONE
-#endif
-#if ENABLED(DRIVERS_A4988)
+#elif ENABLED(DRIVERS_A4988)
   #define X_DRIVER_TYPE  TMC2208_STANDALONE
   #define Y_DRIVER_TYPE  TMC2208_STANDALONE
   #define Z_DRIVER_TYPE  TMC2208_STANDALONE
-  #define E0_DRIVER_TYPE TMC2208_STANDALONE
-#endif
-#if ENABLED(DRIVERS_TMC2209)
+#elif ENABLED(DRIVERS_TMC2209)
   #define X_DRIVER_TYPE  TMC2209
   #define Y_DRIVER_TYPE  TMC2209
   #define Z_DRIVER_TYPE  TMC2209
+#endif
+
+// E Driver Settings
+#if ENABLED(DRIVERS_TMC2208_STANDALONE_E)
+  #define E0_DRIVER_TYPE TMC2208_STANDALONE
+#elif ENABLED(DRIVERS_A4988_E)
+  #define E0_DRIVER_TYPE TMC2208_STANDALONE
+#elif ENABLED(DRIVERS_TMC2209_E)
   #define E0_DRIVER_TYPE TMC2209
 #endif
 
@@ -220,11 +232,9 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
 #if ENABLED(DUEL_Z_AXIS)
   #if ENABLED(DRIVERS_TMC2208_STANDALONE)
     #define Z2_DRIVER_TYPE  TMC2208_STANDALONE
-  #endif
-  #if ENABLED(DRIVERS_A4988)
+  #elif ENABLED(DRIVERS_A4988)
     #define Z2_DRIVER_TYPE  TMC2208_STANDALONE
-  #endif
-  #if ENABLED(DRIVERS_TMC2209)
+  #elif ENABLED(DRIVERS_TMC2209)
     #define Z2_DRIVER_TYPE  TMC2209
   #endif
 #endif
@@ -243,8 +253,7 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define X_MAX_POS 235
   #define Y_MAX_POS 235
   #define Z_MAX_POS 250
-#endif
-#if ENABLED(BEDSIZE_300x300x340)
+#elif ENABLED(BEDSIZE_300x300x340)
   // The size of the printable area
   #define X_BED_SIZE 300
   #define Y_BED_SIZE 300
@@ -257,8 +266,7 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define X_MAX_POS X_BED_SIZE
   #define Y_MAX_POS Y_BED_SIZE
   #define Z_MAX_POS 340
-#endif
-#if ENABLED(BEDSIZE_400x400x450)
+#elif ENABLED(BEDSIZE_400x400x450)
   // The size of the printable area
   #define X_BED_SIZE 400
   #define Y_BED_SIZE 400
@@ -284,6 +292,7 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
 
 //===========================================================================
 //=========== UNCOMMENT ONLY 1 PRINTER AND 1 MOTHERBOARD AT A TIME ==========
+//=========== DO NOT USE IN COMBINATION WITH THE CUSTIMIZE PRINTER ==========
 //===========================================================================
 
 //#define DELICIOUS_PRINTER // My personal settings as my setup is custom to me - DELICIOUS
@@ -2549,7 +2558,7 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
 #define EEPROM_CHITCHAT       // Give feedback on EEPROM commands. Disable to save PROGMEM.
 #define EEPROM_BOOT_SILENT    // Keep M503 quiet and only give errors during first load
 #if ENABLED(EEPROM_SETTINGS)
-  //#define EEPROM_AUTO_INIT  // Init EEPROM automatically on any errors.
+  #define EEPROM_AUTO_INIT  // Init EEPROM automatically on any errors.
   //#define EEPROM_INIT_NOW   // Init EEPROM on first boot after a new build.
 #endif
 

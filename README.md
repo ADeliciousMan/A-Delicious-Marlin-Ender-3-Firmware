@@ -1,9 +1,9 @@
-# A Delicious Marlin Ender 3/Pro Firmware
+# A Delicious Marlin Ender 3 Firmware
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I2I8PI401)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?business=FQK32ZSLKR8AJ&no_recurring=0&item_name=Creating+Marling+Firmware+and+Open+Source+Games&currency_code=USD)
 
-#### Date of Latest Build: 2023-09-29 - V1.13.00
+#### Date of Latest Build: 2023-10-10 - V1.14.00
 #### Latest Marlin Version: 2.1.2.1
 
 ![LOGO](https://raw.githubusercontent.com/ADeliciousMan/A-Delicious-Marlin-Ender-3-Firmware/master/images/bootscreen.png?raw=true)
@@ -117,12 +117,21 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
   - [General Calibrations](https://github.com/5axes/Calibration-Shapes/wiki)
   - [Ellis 3dp guide](https://ellis3dp.com/Print-Tuning-Guide/)
 
+### DISCLAIMER
+
+This firmware and all other files is provided free of charge with no warranty or guarantee. I am not liable for any damage to your printer, person, or other property due to the use of this firmware.
+
 ## TO DO:
 * Leveling/Tramming is off to the side a little, still trying to figure it out (I think it's fixed but needs testing)
 * Check Multi Mount probe offset, see if it's correct - { -54, -19, 0 } (this might be fixed too, same issues as above)
 * Added triple and quad Z Axis motor support
 
 ## CHANGELOG:
+
+#### 2023-10-10 - V1.14.00
+* Separated XYZ driver selection from the E driver, noticed a few printers that needed that
+* Included latest Marlin folders in GitHub so it's easier and faster to find the current version
+* Enabled EEPROM_AUTO_INIT, auto initialize the EEPROM on error
 
 #### 2023-09-29 - V1.13.00
 * Added drive inversion for BTT Octopus boards, same as SKR boards (on the Customize Printer section)
