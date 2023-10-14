@@ -3,7 +3,7 @@
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I2I8PI401)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?business=FQK32ZSLKR8AJ&no_recurring=0&item_name=Creating+Marling+Firmware+and+Open+Source+Games&currency_code=USD)
 
-#### Date of Latest Build: 2023-10-10 - V1.14.00
+#### Date of Latest Build: 2023-10-14 - V1.14.1
 #### Latest Marlin Version: 2.1.2.1
 
 ![LOGO](https://raw.githubusercontent.com/ADeliciousMan/A-Delicious-Marlin-Ender-3-Firmware/master/images/bootscreen.png?raw=true)
@@ -123,10 +123,12 @@ This firmware and all other files is provided free of charge with no warranty or
 
 ## TO DO:
 * Leveling/Tramming is off to the side a little, still trying to figure it out (I think it's fixed but needs testing)
-* Check Multi Mount probe offset, see if it's correct - { -54, -19, 0 } (this might be fixed too, same issues as above)
 * Added triple and quad Z Axis motor support
 
 ## CHANGELOG:
+
+#### 2023-10-14 - V1.14.1
+* Added BEDSIZE_300x300x320 (Ender 3 Max Neo)
 
 #### 2023-10-10 - V1.14.00
 * Separated XYZ driver selection from the E driver, noticed a few printers that needed that

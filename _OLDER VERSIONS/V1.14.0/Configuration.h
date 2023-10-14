@@ -87,8 +87,7 @@
 
 //#define BEDSIZE_220x220x250 //                         Standard Ender 3 Bed Size
 //#define BEDSIZE_300x300x340 //                         Ender 3 Max
-//#define BEDSIZE_300x300x320 //                         Ender 3 Max Neo
-//#define BEDSIZE_400x400x450 //                         Anycubic Kobra Max
+//#define BEDSIZE_400x400x450 //                         Any Cubic Kobra Max
 
 //===========================================================================
 //================================= SCREENS =================================
@@ -267,19 +266,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define X_MAX_POS X_BED_SIZE
   #define Y_MAX_POS Y_BED_SIZE
   #define Z_MAX_POS 340
-#elif ENABLED(BEDSIZE_300x300x320)
-  // The size of the printable area
-  #define X_BED_SIZE 300
-  #define Y_BED_SIZE 300
-
-  // Travel limits after homing, corresponding to endstop positions.
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
-  #define Z_MIN_POS 0
-
-  #define X_MAX_POS X_BED_SIZE
-  #define Y_MAX_POS Y_BED_SIZE
-  #define Z_MAX_POS 320
 #elif ENABLED(BEDSIZE_400x400x450)
   // The size of the printable area
   #define X_BED_SIZE 400
