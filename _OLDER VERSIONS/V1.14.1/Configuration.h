@@ -1,12 +1,12 @@
 #pragma once
 
 /*
-   ________  _________________  __  ____________   ______   ____  ____  _____   __________________ 
-  / ____/ / / / ___/_  __/ __ \/  |/  /  _/__  /  / ____/  / __ \/ __ \/  _/ | / /_  __/ ____/ __ \
- / /   / / / /\__ \ / / / / / / /|_/ // /   / /  / __/    / /_/ / /_/ // //  |/ / / / / __/ / /_/ /
-/ /___/ /_/ /___/ // / / /_/ / /  / // /   / /__/ /___   / ____/ _, _// // /|  / / / / /___/ _, _/ 
-\____/\____//____//_/  \____/_/  /_/___/  /____/_____/  /_/   /_/ |_/___/_/ |_/ /_/ /_____/_/ |_|  
-                                                                                                    
+   ________  ___________________  ____________   ______   ____  ____  _____   __________________ 
+  / ____/ / / / ___/_  __/  _/  |/  /  _/__  /  / ____/  / __ \/ __ \/  _/ | / /_  __/ ____/ __ \
+ / /   / / / /\__ \ / /  / // /|_/ // /   / /  / __/    / /_/ / /_/ // //  |/ / / / / __/ / /_/ /
+/ /___/ /_/ /___/ // / _/ // /  / // /   / /__/ /___   / ____/ _, _// // /|  / / / / /___/ _, _/ 
+\____/\____//____//_/ /___/_/  /_/___/  /____/_____/  /_/   /_/ |_/___/_/ |_/ /_/ /_____/_/ |_|  
+                                                                                                 
 */
 
 //===========================================================================
@@ -69,7 +69,6 @@
 //#define HAS_STANDARD_MOTORS //                        Default Creality Motors
 //#define HAS_SPRITE_EXTRUDER //                        Creality Sprite Extruder
 //#define HAS_H2_V2s //                                 BIQU H2 V2s
-//#define HAS_ORBITER_V2 //                             Orbiter Extruder V2.0
 
 //===========================================================================
 //================================= Z-AXIS =================================
@@ -90,7 +89,6 @@
 //#define BEDSIZE_300x300x340 //                         Ender 3 Max
 //#define BEDSIZE_300x300x320 //                         Ender 3 Max Neo
 //#define BEDSIZE_400x400x450 //                         Anycubic Kobra Max
-//#define BEDSIZE_300x225x380 //                         CR 5 Pro
 
 //===========================================================================
 //================================= SCREENS =================================
@@ -228,8 +226,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 430 }
 #elif ENABLED(HAS_H2_V2s)
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 930}
-#elif ENABLED(HAS_ORBITER_V2)
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 690}
 #endif
 
 // Z-Axis
@@ -297,18 +293,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define X_MAX_POS X_BED_SIZE +4 // Default values from company
   #define Y_MAX_POS Y_BED_SIZE +4 // Default values from company
   #define Z_MAX_POS 450
-#elif ENABLED(BEDSIZE_300x225x380)
-  #define X_BED_SIZE 300
-  #define Y_BED_SIZE 225
-
-  // Travel limits after homing, corresponding to endstop positions.
-  #define X_MIN_POS -6.2 // Default values from company
-  #define Y_MIN_POS -20.5 // Default values from company
-  #define Z_MIN_POS 0
-
-  #define X_MAX_POS X_BED_SIZE
-  #define Y_MAX_POS Y_BED_SIZE
-  #define Z_MAX_POS 380
 #endif
 
 /*

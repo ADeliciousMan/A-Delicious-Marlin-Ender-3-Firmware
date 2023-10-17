@@ -3,7 +3,7 @@
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I2I8PI401)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?business=FQK32ZSLKR8AJ&no_recurring=0&item_name=Creating+Marling+Firmware+and+Open+Source+Games&currency_code=USD)
 
-#### Date of Latest Build: 2023-10-14 - V1.14.1
+#### Date of Latest Build: 2023-10-17 - V1.14.2
 #### Latest Marlin Version: 2.1.2.1
 
 ![LOGO](https://raw.githubusercontent.com/ADeliciousMan/A-Delicious-Marlin-Ender-3-Firmware/master/images/bootscreen.png?raw=true)
@@ -126,6 +126,11 @@ This firmware and all other files is provided free of charge with no warranty or
 * Added triple and quad Z Axis motor support
 
 ## CHANGELOG:
+
+#### 2023-10-17 - V1.14.2
+* Fixed a typo for the DELICIOUS COMMANDS that would say the wrong temperature finished PID tuning.
+* Added HAS_ORBITER_V2 to E Steps in the Customize Printer section for the Orbiter Extruder V2.0
+* Added BEDSIZE_300x225x380 for CR 5 Pro
 
 #### 2023-10-14 - V1.14.1
 * Added BEDSIZE_300x300x320 (Ender 3 Max Neo)
