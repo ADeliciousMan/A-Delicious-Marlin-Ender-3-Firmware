@@ -3,43 +3,38 @@
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I2I8PI401)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?business=FQK32ZSLKR8AJ&no_recurring=0&item_name=Creating+Marling+Firmware+and+Open+Source+Games&currency_code=USD)
 
-#### Date of Latest Build: 2023-10-17 - V1.14.2
+#### Date of Latest Build: 2023-10-26 - V1.15.0
 #### Latest Marlin Version: 2.1.2.1
 
 ![LOGO](https://raw.githubusercontent.com/ADeliciousMan/A-Delicious-Marlin-Ender-3-Firmware/master/images/bootscreen.png?raw=true)
 
 ## ABOUT
 
-Constantly being built off the latest version of Marlin (Stable), this firmware includes plenty of useful functions that are turned off by default on Ender 3 boards from Creality, with tweaks for a better out of the box printing experience.
+Constantly being built off the latest version of Marlin (Stable), this firmware includes plenty of useful functions that are turned off by default on Ender 3 boards (and other printers), with tweaks for a better out of the box printing experience.
 
 ###### How to Use and Notes
 
 Thee are 3 different ways to use this firmware:
-1: Download one of the pre compiled firmware .bins from their respective name folders
-  - These .bins are not re-compiled every update, so check the tag and see what version they are on, if you want the total newest, see options 2 and 3
+1: Download one of the PRE COMPILED FIRMWARES .bins from their respective named folders
+  - These .bins are not re-compiled every update, so check the tag and see what version they are on, if you want the totally newest, see options 2 and 3
 2: Use the 'Customize Printer' options to easily build a firmware specific for your printer in minutes
   - YOU NEED TO DOWNLOAD THE **CONFIGURATION.H**, **CONFIGURATION_ADV.H**, **_BOOTSCREEN.H**, and **_STATUSSCREEN.H**
+  - YOU NEED TO DOWNLOAD THE MARLIN FOLDER IN THIS REPO OR THE SAME MATCHING VERSION FROM MARLINS WEBSITE
+    - https://marlinfw.org/meta/download/
   - You need to be able to compile your own firmware, there are plenty of great guides online this is just a rough idea
-    - Download Marlin firmware that matches the Latest Marlin Version above ^^^ (https://marlinfw.org/meta/download/)
     - Download Visual Studios (whatever flavor you prefer)
     - Install Auto Build Marlin
-    - Download the Configuration.h and Configuration_adv.h files, and replace them in the Marlin folder
+    - Place the **CONFIGURATION.H**, **CONFIGURATION_ADV.H**, **_BOOTSCREEN.H**, and **_STATUSSCREEN.H** files in the Marlin folder
     - Uncomment the specific options you want for your printer, please read the instructions in the firmware notes
     - Compile and enjoy :)
 3: Use the 'Pre-Built Printers' options to select which printer and option you want in seconds
-  - You need to be able to compile your own firmware, there are plenty of great guides online this is just a rough idea
-    - Download Marlin firmware that matches the Latest Marlin Version above ^^^ (https://marlinfw.org/meta/download/)
-    - Download Visual Studios (whatever flavor you prefer)
-    - Install Auto Build Marlin
-    - Download the Configuration.h and Configuration_adv.h files, and replace them in the Marlin folder
-    - Uncomment the specific printer you want to use, please read the instructions in the firmware notes
-    - Compile and enjoy :)
+  - Follow the same Setup as **Option 2** but go to the 'Pre-Built Printers' section which is further down in the **configuration.h** file and uncomment the **Motherboard** and **settings** you want
 
 I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can actually test properly.
 
 ## List of Features:
 
-* Newest Marlin Build
+* Newest Marlin Stable Build
 * Faster prints
 * Touch sense support (EX:BL touch, CR touch)
 * Marlins PID Tuning
@@ -50,7 +45,7 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
 * More accurate defaults for easier instant setup (I highly recommend you to do your own calibrations to get the most out of your printer, this firmware just helps to get you started faster and easier with more tools to calibrate easily)
 * Pre Heat options for PLA, ABS, ASA, and Bed Leveling
 * Mesh leveling, 9 points (BILINEAR)
-* Input shaping and ability to adjust on screen directly
+* Input shaping (for supported boards)
 * Linear Advance (for supported boards)
 * Z Probe Wizard
 * Tramming Wizard
@@ -75,38 +70,50 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
 
 ## Extras
 * Included a 'auto0.g' in the 'extras' folder. Place it in the SD cards root directory if you want to use it
-  - Auto heats the extruder to 150C and bed to 50C on startup for easier use
+  - Auto heats the extruder to 150C and bed to 50C on startup for faster use
   - If you want to modify it, add '.gcode' to it, make your changes, save and then remove the '.gcode', it should only read 'auto0.g' to the printer
 * My custom CURA profile
-  - **IMPORTANT NOTE:** I AM ON A DIRECT DRIVE SO IF YOU ARE BOWDEN TUBE CHANGE THE RETRACTION DISTANCE AND SPEED
+  - **IMPORTANT NOTE:** I AM ON A DIRECT DRIVE SO IF YOU ARE BOWDEN TUBE CHANGE THE RETRACTION **DISTANCE** (something like 6mm) AND **SPEED** (something like 45mm/s)
   - I included screenshots as some settings of mine are material specific so they won't show the same on your settings
-  - It is PLA specific
   - You should tinker with the settings as each printer is different
 
-## What Steps To Take After installing This Firmware
-* Reset/Initialize your EEPROM on your printer, this is to ensure that previous settings are not messing with the new firmware. Yes it does Happen, happened to me plenty of times in testing
-  - It would be a good idea to write down settings that you have already calibrated for, like E/Steps so you don't have to do it again
-* **CALIBRATE YOUR PRINTER SETTINGS**
-  - [E Steps](https://letsprint3d.net/how-to-calibrate-the-extruder-steps-ender-3-5-cr-10/#EEPROM_Settings)
-  - [Flow Rate](https://3dprintbeginner.com/flow-rate-calibration/)
-  - Extruder and BED PID (3 options)
-    - Go to Configuration > DELICIOUS COMMANDS > Select PID setting you want to use
-    - Go to Configuration > Advanced Settings > Temperature and use the Marlin tools
-    - Use GCode by following this [link](https://marlinfw.org/docs/gcode/M303.html)
-  * Either manually level your bed using a piece of paper or shim, or use the tramming settings in Motion > Tramming Wizard
-  * Z Probe Wizard, Motion > Z Probe Wizard
-  * Level Bed for a mesh level, Motion > Level Bed
-  - Linear Advance **4.2.2 and 4.2.2 BAORD DOES NOT SUPPORT LINEAR ADVANCE**
-    * [Read this](https://marlinfw.org/docs/features/lin_advance.html)
-    * [Use this tool](https://marlinfw.org/tools/lin_advance/k-factor.html)
-  - [Input Shaping](https://marlinfw.org/docs/gcode/M593.html)
-    - **Disclaimer, I am not sure if the 4.2.2 or 4.2.7 board properly supports Input Shaping, I was not able to see a change in results on my end**
-    - [TH3D Guide](https://support.th3dstudio.com/helpcenter/unified-marlin-input-shaping-tuning-guide/)
-    - [TH3D Calculator](https://www.th3dstudio.com/marlin-input-shaping-calculator/)
-  * [General Overall Calibration Guides from 'Teaching Tech'](https://teachingtechyt.github.io/calibration.html)
+## What Steps To Take After Installing This Firmware
+
+### Must Do:
+* Reset/Initialize your EEPROM on your printer, this is to ensure that previous settings are not messing with the new firmware.
+  * Configuration > Advanced Settings > INITILIZE EEPROM
+* Extruder and BED PID (3 options)
+  * Go to Configuration > DELICIOUS COMMANDS > Select PID setting you want to use
+  * Go to Configuration > Advanced Settings > Temperature and use the Marlin tools
+  * Using GCode by following this [link](https://marlinfw.org/docs/gcode/M303.html)
+* If using a Probe:
+  * Set Z to Probe offset
+    * Motion > Z Probe Wizard
+  * Add G29 command to your slicer (this is needed so the printer will actually do a bed leveling every print)
+
+## Good To Do:
+* Tram your bed (2 options)
+  * Manually level your bed using a piece of paper or shim
+  * Use the tramming mode in Motion > Bed Tramming
+    * Before using this method, you need to tighten your bed wheels all the way and then back out about 2 rotations. The bed should be eye balled leveled
+* [E Steps](https://letsprint3d.net/how-to-calibrate-the-extruder-steps-ender-3-5-cr-10/#EEPROM_Settings)
+* [Flow Rate](https://3dprintbeginner.com/flow-rate-calibration/)
+
+## Not Needed But Useful
+* Linear Advance **4.2.2 and 4.2.7 BAORD DOES NOT SUPPORT LINEAR ADVANCE**
+  * [Read this](https://marlinfw.org/docs/features/lin_advance.html)
+  * [Use this tool](https://marlinfw.org/tools/lin_advance/k-factor.html)
+* Input Shaping **Disclaimer, I am not sure if the 4.2.2 or 4.2.7 board properly supports Input Shaping, I was not able to see a change in results on my end**
+  * [Read this](https://marlinfw.org/docs/gcode/M593.html)
+  * [TH3D Guide](https://support.th3dstudio.com/helpcenter/unified-marlin-input-shaping-tuning-guide/)
+  * [TH3D Calculator](https://www.th3dstudio.com/marlin-input-shaping-calculator/)
   * Horizontal Expansion
-    - [Model](https://www.thingiverse.com/thing:4418599)
-    - [Explaination](https://www.youtube.com/watch?v=UUelLZvDelU)
+    * [Model](https://www.thingiverse.com/thing:4418599)
+    * [Explaination](https://www.youtube.com
+
+## Other Guides And Calibrations
+  * [General Overall Calibration Guides from 'Teaching Tech'](https://teachingtechyt.github.io/calibration.html)
+/watch?v=UUelLZvDelU)
 * **Calibration tests**
   * [Stringing Test](https://www.thingiverse.com/thing:2080224)
   * [XYZ Cube](https://www.thingiverse.com/thing:1278865/comments)
@@ -117,18 +124,50 @@ I **ONLY** own a Ender 3 Pro with a 4.2.7 512k board so it's the only one I can 
   - [General Calibrations](https://github.com/5axes/Calibration-Shapes/wiki)
   - [Ellis 3dp guide](https://ellis3dp.com/Print-Tuning-Guide/)
 
+* My extruder doesn't seem to reach my entire bed / printer doesn't seem to know exactly where it is in space
+  - Ok, this is a quark of 3D printing I am figuring out myself, between the limited movement in space of your extruder system, the actually size of the bed, placement of your limit switches, and different extruder ends / cooling systems taking up different volumes of space, your printer might not exactly know where it is in space and think that it's ok to print somewhere that is off the edge of the bed, or probe too close to one edge but far from the opposite edge.
+  This requires some firmware level settings, and your help. Here is a great read about how to get X Y Bed size, X Y MIN POS and XY MAX POS: https://manuelmclure.github.io/ConfiguringLeveling.html
+  With this info I can refine the firmware based on above settings and get way more accurate results
+
 ### DISCLAIMER
 
 This firmware and all other files is provided free of charge with no warranty or guarantee. I am not liable for any damage to your printer, person, or other property due to the use of this firmware.
 
 ## TO DO:
-* Leveling/Tramming is off to the side a little, still trying to figure it out (I think it's fixed but needs testing)
 * Added triple and quad Z Axis motor support
+* Remove TRAMMING WIZARD as some people are confused as to what it does (will level TRAM Bed)
+* Remove LEVEL BED in the menu, as people are confused as what that does. Clicking the button does NOT level the bed, it generates a mesh using during printing
+* Special Z steps
+  - Ender 5 = 800 steps
 
 ## CHANGELOG:
 
+#### 2023-10-26 - V1.15.0
+* READ ME updates, major change to "What Steps To Take After Installing This Firmware"
+* Enabled LCD_BED_LEVELING
+* Updated all PRE BUILTS to latest version
+* Added 'XY-Steps' in CUSTOMIZE PRINTER sections
+  * For special case / custom motors
+* Added 'Z-Steps' in CUSTOMIZE PRINTER sections
+  * For special case / custom motors
+* Added HAS_MICRO_SWISS_BOWDEN_DUEL_GEAR
+* Removed ENDER_3_427_CR_BL_TOUCH_WITH_THERMISTOR_61
+  * This was a special case and can easily be customized now
+* Removed ENDER_3_422_CR_BL_TOUCH_WITH_THERMISTOR_61
+  * This was a special case and can easily be customized now
+* Removed ENDER_3_427_Z_SWITCH
+  * People on total stock hardware tend not to update the firmware
+* Removed ENDER_3_422_Z_SWITCH
+  * People on total stock hardware tend not to update the firmware
+* Removed ENDER_3_422_CR_BL_TOUCH_SPRITE_EXTRUDER
+  * Special case, can be done in customizer now
+* Removed ENDER_3_427_CR_BL_TOUCH_SPRITE_EXTRUDER
+  * Special case, can be done in customizer now
+* Added PINS section for "Customize Printer" section
+  * This is for special board cases who don't like the default
+
 #### 2023-10-17 - V1.14.2
-* Fixed a typo for the DELICIOUS COMMANDS that would say the wrong temperature finished PID tuning.
+* Fixed a typo for the DELICIOUS COMMANDS that would say the wrong temperature finished PID tuning
 * Added HAS_ORBITER_V2 to E Steps in the Customize Printer section for the Orbiter Extruder V2.0
 * Added BEDSIZE_300x225x380 for CR 5 Pro
 

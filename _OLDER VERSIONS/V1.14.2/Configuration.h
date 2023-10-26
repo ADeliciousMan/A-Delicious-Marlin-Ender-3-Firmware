@@ -57,7 +57,7 @@
 //================================ THERMISTOR ===============================
 //===========================================================================
 
-//#define THERMISTOR_01 //                              Default choice for Creality, if stock or unsure use this one (Ender 3, Pro, 3 V2)
+//#define THERMISTOR_01 //                              Default choice for Creality, if stock or unsure use this one
 //#define THERMISTOR_13 //                              Thermistor used in Creality Sprite hotends
 //#define THERMISTOR_61 //                              Thermistor used in some Spider hotends, if unsure use thermistor 01
 //#define THERMISTOR_1047 //                            Thermistor for Pt1000, 4.7kΩ pullup
@@ -66,28 +66,19 @@
 //================================= E-STEPS =================================
 //===========================================================================
 
-//#define HAS_STANDARD_MOTORS //                        Default Creality Motors (Ender 3, Pro, 3 V2)
+//#define HAS_STANDARD_MOTORS //                        Default Creality Motors
 //#define HAS_SPRITE_EXTRUDER //                        Creality Sprite Extruder
 //#define HAS_H2_V2s //                                 BIQU H2 V2s
 //#define HAS_ORBITER_V2 //                             Orbiter Extruder V2.0
-//define HAS_MICRO_SWISS_BOWDEN_DUEL_GEAR //            Micro Swiss Bowden Duel Gear
 
 //===========================================================================
-//================================= XY-STEPS ================================
-//===========================================================================
-
-//===========================================================================
-//================================= Z-STEPS =================================
-//===========================================================================
-
-//===========================================================================
-//================================= Z-AXIS ==================================
+//================================= Z-AXIS =================================
 //===========================================================================
 
 //#define DUEL_Z_AXIS //                             If you have 2 dedicated/independent Z Motors
 
 #if ENABLED(DUEL_Z_AXIS)
-  //#define Z_STEPPER_AUTO_ALIGN //                       Aligns the Z-Axis independently
+  #define Z_STEPPER_AUTO_ALIGN //                       Aligns the Z-Axis independently
   //#define Z_MULTI_ENDSTOPS //                         If the second Z-Axis has a dedicated endstop
 #endif
 
@@ -95,7 +86,7 @@
 //================================= BED SIZE ================================
 //===========================================================================
 
-//#define BEDSIZE_220x220x250 //                         Ender 3 / Pro / 3 V2 Bed Size
+//#define BEDSIZE_220x220x250 //                         Standard Ender 3 Bed Size
 //#define BEDSIZE_300x300x340 //                         Ender 3 Max
 //#define BEDSIZE_300x300x320 //                         Ender 3 Max Neo
 //#define BEDSIZE_400x400x450 //                         Anycubic Kobra Max
@@ -112,7 +103,6 @@
 //===========================================================================
 
 //#define LIN_ADVANCE                                // Enable Linear Advance, 422 & 427 boards do not support this
-
 //#define FILAMENT_RUNOUT_SENSOR                     // Enable filament runout sensor
 
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)                  // PICK ONLY ONE AND ONLY IF FILAMENT_RUNOUT_SENSOR IS ON
@@ -198,7 +188,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
   #define BABYSTEP_ZPROBE_OFFSET
-  #define LCD_BED_LEVELING
 #elif ENABLED(HAS_SPRITE)
   #define BLTOUCH
   #define USE_PROBE_FOR_Z_HOMING
@@ -207,16 +196,14 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
   #define BABYSTEP_ZPROBE_OFFSET
-  #define LCD_BED_LEVELING
 #elif ENABLED(TH3D_BL_CR_MULTIMOUNT)
   #define BLTOUCH
   #define USE_PROBE_FOR_Z_HOMING
   #define AUTO_BED_LEVELING_BILINEAR
-  #define NOZZLE_TO_PROBE_OFFSET { -58, -19, 0 }
+  #define NOZZLE_TO_PROBE_OFFSET { -54, -19, 0 }
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
   #define BABYSTEP_ZPROBE_OFFSET
-  #define LCD_BED_LEVELING
 #endif
 
 // Thermistor section
@@ -234,32 +221,16 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define HEATER_0_MAXTEMP 350
 #endif
 
-// E-Steps
+// E Steps
 #if ENABLED(HAS_STANDARD_MOTORS)
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 97 }
-  //#define E_STEPS_DEFAULT = 97
 #elif ENABLED(HAS_SPRITE_EXTRUDER)
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 430 }
-  //#define E_STEPS_SPRITE_EXTRUDER = 430
 #elif ENABLED(HAS_H2_V2s)
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 930}
-  //#define E_STEPS_H2_V2S = 930
 #elif ENABLED(HAS_ORBITER_V2)
-  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 690}
-  //define E_STEPS_ORBITER_V2 = 690
-#elif ENABLED(HAS_MICRO_SWISS_BOWDEN_DUEL_GEAR)
-  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 130}
-  //#define E_STEPS_MICRO_SWISS_BOWDEN_DUEL_GEAR = 130
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 690}
 #endif
-
-// XY-Steps
-
-#define XY_STEPS_DEFAULT = 80
-
-// Z-Steps
-
-#define Z_STEPS_DEFAULT = 400
-//#define Z_STEPS_ENDER_5 = 800
 
 // Z-Axis
 
@@ -284,8 +255,8 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define Y_MIN_POS 0
   #define Z_MIN_POS 0
 
-  #define X_MAX_POS X_BED_SIZE
-  #define Y_MAX_POS Y_BED_SIZE
+  #define X_MAX_POS 235
+  #define Y_MAX_POS 235
   #define Z_MAX_POS 250
 #elif ENABLED(BEDSIZE_300x300x340)
   // The size of the printable area
@@ -340,13 +311,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define Z_MAX_POS 380
 #endif
 
-// Pins
-#if (MOTHERBOARD == BOARD_CREALITY_V427) || (MOTHERBOARD == BOARD_CREALITY_V422)  || (MOTHERBOARD == BOARD_CREALITY_V4) || (MOTHERBOARD == BOARD_BTT_SKR_MINI_E3_V1_0) || (MOTHERBOARD == BOARD_BTT_SKR_MINI_E3_V1_2) || (MOTHERBOARD == BOARD_BTT_SKR_MINI_E3_V2_0) || (MOTHERBOARD == BOARD_BTT_OCTOPUS_V1_0)  || (MOTHERBOARD == BOARD_BTT_OCTOPUS_V1_1) || (MOTHERBOARD == BOARD_BTT_OCTOPUS_PRO_V1_0)  || (MOTHERBOARD == BOARD_BTT_OCTOPUS_MAX_EZ_V1_0)
-  #define E0_AUTO_FAN_PIN -1
-#elif (MOTHERBOARD == BOARD_BTT_SKR_MINI_E3_V3_0)
-  #define E0_AUTO_FAN_PIN FAN1_PIN
-#endif
-
 /*
     ____  ____  ______   ____  __  ________  ______   ____  ____  _____   __________________  _____
    / __ \/ __ \/ ____/  / __ )/ / / /  _/ / /_  __/  / __ \/ __ \/  _/ | / /_  __/ ____/ __ \/ ___/
@@ -368,6 +332,24 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
 //#define MOTHERBOARD BOARD_CREALITY_V427
 
 //#define ENDER_3_422_CR_BL_TOUCH
+//#define MOTHERBOARD BOARD_CREALITY_V422
+
+//#define ENDER_3_427_CR_BL_TOUCH_SPRITE_EXTRUDER
+//#define MOTHERBOARD BOARD_CREALITY_V427
+
+//#define ENDER_3_422_CR_BL_TOUCH_SPRITE_EXTRUDER
+//#define MOTHERBOARD BOARD_CREALITY_V422
+
+//#define ENDER_3_427_CR_BL_TOUCH_WITH_THERMISTOR_61
+//#define MOTHERBOARD BOARD_CREALITY_V427
+
+//#define ENDER_3_422_CR_BL_TOUCH_WITH_THERMISTOR_61
+//#define MOTHERBOARD BOARD_CREALITY_V422
+
+//#define ENDER_3_427_Z_SWITCH
+//#define MOTHERBOARD BOARD_CREALITY_V427
+
+//#define ENDER_3_422_Z_SWITCH
 //#define MOTHERBOARD BOARD_CREALITY_V422
 
 //#define ENDER_3_SKR_MNI_E3_V3_CR_BL_TOUCH
@@ -400,29 +382,28 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define BLTOUCH
   #define USE_PROBE_FOR_Z_HOMING
   #define AUTO_BED_LEVELING_BILINEAR
-  #define NOZZLE_TO_PROBE_OFFSET { -58, -19, 0 } // Measured - Post-it dot for probe, 
+  #define NOZZLE_TO_PROBE_OFFSET { -54, -19, 0 }
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
   #define BABYSTEP_ZPROBE_OFFSET
-  #define LCD_BED_LEVELING
 
   // TEMPERATURE SETTINGS
   #define TEMP_SENSOR_0 1047
-  #define HEATER_0_MAXTEMP 500 // Based on hot end, not thermistor or heating element 
+  #define HEATER_0_MAXTEMP 350
 
   // BED + POSITION
   // The size of the printable area
-  #define X_BED_SIZE 227 // 235 - 8, as the nozzle cannot reach the full bed on the left side, 8mm off from edge
-  #define Y_BED_SIZE 222 // Cannot reach full bed in the back
+  #define X_BED_SIZE 220
+  #define Y_BED_SIZE 220
 
   // Travel limits after homing, corresponding to endstop positions.
   #define X_MIN_POS 0
-  #define Y_MIN_POS -16 // 16mm to far infront of the bed, so can reach full bed in front
+  #define Y_MIN_POS 0
   #define Z_MIN_POS 0
 
-  #define X_MAX_POS 247 // The most the nozzle can reach on the right side. Can reach full bed
-  #define Y_MAX_POS 222 // Cannot reach full bed in the back
-  #define Z_MAX_POS 200 // Cables are too short at the moment
+  #define X_MAX_POS 235
+  #define Y_MAX_POS 235
+  #define Z_MAX_POS 250
   
   // EXTRAS
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95.10 }
@@ -431,8 +412,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
 
   // MACHINE NAME
   #define CUSTOM_MACHINE_NAME "Marlin 2.1.2.1"
-
-  #define E0_AUTO_FAN_PIN -1
 #endif
 #if ENABLED(ENDER_3_427_CR_BL_TOUCH)
 
@@ -450,7 +429,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
   #define BABYSTEP_ZPROBE_OFFSET
-  #define LCD_BED_LEVELING
 
   // TEMPERATURE SETTINGS
   #define TEMP_SENSOR_0 1
@@ -477,8 +455,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
 
   // MACHINE NAME
   #define CUSTOM_MACHINE_NAME "Ender-3 4.2.7 - Marlin 2.1.2.1"
-
-  #define E0_AUTO_FAN_PIN -1
 #endif
 #if ENABLED(ENDER_3_422_CR_BL_TOUCH)
 
@@ -496,7 +472,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
   #define BABYSTEP_ZPROBE_OFFSET
-  #define LCD_BED_LEVELING
 
   // TEMPERATURE SETTINGS
   #define TEMP_SENSOR_0 1
@@ -523,8 +498,260 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
 
   // MACHINE NAME
   #define CUSTOM_MACHINE_NAME "Ender-3 4.2.2 - Marlin 2.1.2.1"
+#endif
+#if ENABLED(ENDER_3_427_CR_BL_TOUCH_SPRITE_EXTRUDER)
 
-  #define E0_AUTO_FAN_PIN -1
+  // DRIVERS
+  #define X_DRIVER_TYPE  TMC2208_STANDALONE
+  #define Y_DRIVER_TYPE  TMC2208_STANDALONE
+  #define Z_DRIVER_TYPE  TMC2208_STANDALONE
+  #define E0_DRIVER_TYPE TMC2208_STANDALONE
+
+  // BED LEVELING
+  #define BLTOUCH
+  #define USE_PROBE_FOR_Z_HOMING
+  #define AUTO_BED_LEVELING_BILINEAR
+  #define NOZZLE_TO_PROBE_OFFSET { -32, -40, 0 }
+  #define ASSISTED_TRAMMING
+  #define BED_TRAMMING_USE_PROBE
+  #define BABYSTEP_ZPROBE_OFFSET
+
+  // TEMPERATURE SETTINGS
+  #define TEMP_SENSOR_0 13
+  #define HEATER_0_MAXTEMP 285
+
+  // BED + POSITION
+  // The size of the printable area
+  #define X_BED_SIZE 220
+  #define Y_BED_SIZE 220
+
+  // Travel limits after homing, corresponding to endstop positions.
+  #define X_MIN_POS 0
+  #define Y_MIN_POS 0
+  #define Z_MIN_POS 0
+
+  #define X_MAX_POS 235
+  #define Y_MAX_POS 235
+  #define Z_MAX_POS 250
+
+  // EXTRAS
+  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 430 }
+  //#define LIN_ADVANCE
+  //#define NO_CREALITY_422_DRIVER_WARNING 
+
+  // MACHINE NAME
+  #define CUSTOM_MACHINE_NAME "Ender-3 4.2.7 - Marlin 2.1.2.1"
+#endif
+#if ENABLED(ENDER_3_422_CR_BL_TOUCH_SPRITE_EXTRUDER)
+
+  // DRIVERS
+  #define X_DRIVER_TYPE  A4988
+  #define Y_DRIVER_TYPE  A4988
+  #define Z_DRIVER_TYPE  A4988
+  #define E0_DRIVER_TYPE A4988
+
+  // BED LEVELING
+  #define BLTOUCH
+  #define USE_PROBE_FOR_Z_HOMING
+  #define AUTO_BED_LEVELING_BILINEAR
+  #define NOZZLE_TO_PROBE_OFFSET { -32, -40, 0 }
+  #define ASSISTED_TRAMMING
+  #define BED_TRAMMING_USE_PROBE
+  #define BABYSTEP_ZPROBE_OFFSET
+
+  // TEMPERATURE SETTINGS
+  #define TEMP_SENSOR_0 13
+  #define HEATER_0_MAXTEMP 285
+
+  // BED + POSITION
+  // The size of the printable area
+  #define X_BED_SIZE 220
+  #define Y_BED_SIZE 220
+
+  // Travel limits after homing, corresponding to endstop positions.
+  #define X_MIN_POS 0
+  #define Y_MIN_POS 0
+  #define Z_MIN_POS 0
+
+  #define X_MAX_POS 235
+  #define Y_MAX_POS 235
+  #define Z_MAX_POS 250
+
+  // EXTRAS
+  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 430 }
+  //#define LIN_ADVANCE
+  #define NO_CREALITY_422_DRIVER_WARNING
+
+  // MACHINE NAME
+  #define CUSTOM_MACHINE_NAME "Ender-3 4.2.2 - Marlin 2.1.2.1"
+#endif
+#if ENABLED(ENDER_3_427_CR_BL_TOUCH_WITH_THERMISTOR_61)
+  // DRIVERS
+  #define X_DRIVER_TYPE  TMC2208_STANDALONE
+  #define Y_DRIVER_TYPE  TMC2208_STANDALONE
+  #define Z_DRIVER_TYPE  TMC2208_STANDALONE
+  #define E0_DRIVER_TYPE TMC2208_STANDALONE
+
+  // BED LEVELING
+  #define BLTOUCH
+  #define USE_PROBE_FOR_Z_HOMING
+  #define AUTO_BED_LEVELING_BILINEAR
+  #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
+  #define ASSISTED_TRAMMING
+  #define BED_TRAMMING_USE_PROBE
+  #define BABYSTEP_ZPROBE_OFFSET
+
+  // TEMPERATURE SETTINGS
+  #define TEMP_SENSOR_0 61
+  #define HEATER_0_MAXTEMP 350
+
+  // BED + POSITION
+  // The size of the printable area
+  #define X_BED_SIZE 220
+  #define Y_BED_SIZE 220
+
+  // Travel limits after homing, corresponding to endstop positions.
+  #define X_MIN_POS 0
+  #define Y_MIN_POS 0
+  #define Z_MIN_POS 0
+
+  #define X_MAX_POS 235
+  #define Y_MAX_POS 235
+  #define Z_MAX_POS 250
+
+  // EXTRAS
+  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 97 }
+  //#define LIN_ADVANCE
+  //#define NO_CREALITY_422_DRIVER_WARNING
+
+  // MACHINE NAME
+  #define CUSTOM_MACHINE_NAME "Ender-3 4.2.7 - Marlin 2.1.2.1"
+#endif
+#if ENABLED(ENDER_3_422_CR_BL_TOUCH_WITH_THERMISTOR_61)
+  // DRIVERS
+  #define X_DRIVER_TYPE  A4988
+  #define Y_DRIVER_TYPE  A4988
+  #define Z_DRIVER_TYPE  A4988
+  #define E0_DRIVER_TYPE A4988
+
+  // BED LEVELING
+  #define BLTOUCH
+  #define USE_PROBE_FOR_Z_HOMING
+  #define AUTO_BED_LEVELING_BILINEAR
+  #define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
+  #define ASSISTED_TRAMMING
+  #define BED_TRAMMING_USE_PROBE
+  #define BABYSTEP_ZPROBE_OFFSET
+
+  // TEMPERATURE SETTINGS
+  #define TEMP_SENSOR_0 61
+  #define HEATER_0_MAXTEMP 350
+
+  // BED + POSITION
+  // The size of the printable area
+  #define X_BED_SIZE 220
+  #define Y_BED_SIZE 220
+
+  // Travel limits after homing, corresponding to endstop positions.
+  #define X_MIN_POS 0
+  #define Y_MIN_POS 0
+  #define Z_MIN_POS 0
+
+  #define X_MAX_POS 235
+  #define Y_MAX_POS 235
+  #define Z_MAX_POS 250
+
+  // EXTRAS
+  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 97 }
+  //#define LIN_ADVANCE
+  #define NO_CREALITY_422_DRIVER_WARNING
+
+  // MACHINE NAME
+  #define CUSTOM_MACHINE_NAME "Ender-3 4.2.2 - Marlin 2.1.2.1"
+#endif
+#if ENABLED(ENDER_3_427_Z_SWITCH)
+  // DRIVERS
+  #define X_DRIVER_TYPE  TMC2208_STANDALONE
+  #define Y_DRIVER_TYPE  TMC2208_STANDALONE
+  #define Z_DRIVER_TYPE  TMC2208_STANDALONE
+  #define E0_DRIVER_TYPE TMC2208_STANDALONE
+
+  // BED LEVELING
+  //#define BLTOUCH
+  //#define USE_PROBE_FOR_Z_HOMING
+  //#define AUTO_BED_LEVELING_BILINEAR
+  //#define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
+  //#define ASSISTED_TRAMMING
+  //#define BED_TRAMMING_USE_PROBE
+  //#define BABYSTEP_ZPROBE_OFFSET
+
+  // TEMPERATURE SETTINGS
+  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 97 }
+  #define TEMP_SENSOR_0 1
+  #define HEATER_0_MAXTEMP 275
+
+  // BED + POSITION
+  // The size of the printable area
+  #define X_BED_SIZE 220
+  #define Y_BED_SIZE 220
+
+  // Travel limits after homing, corresponding to endstop positions.
+  #define X_MIN_POS 0
+  #define Y_MIN_POS 0
+  #define Z_MIN_POS 0
+
+  #define X_MAX_POS 235
+  #define Y_MAX_POS 235
+  #define Z_MAX_POS 250
+
+  // EXTRAS
+  //#define LIN_ADVANCE
+  //#define NO_CREALITY_422_DRIVER_WARNING
+
+  // MACHINE NAME
+  #define CUSTOM_MACHINE_NAME "Ender-3 4.2.7 - Marlin 2.1.2.1"
+#endif
+#if ENABLED(ENDER_3_422_Z_SWITCH)
+  // DRIVERS
+  #define X_DRIVER_TYPE  A4988
+  #define Y_DRIVER_TYPE  A4988
+  #define Z_DRIVER_TYPE  A4988
+  #define E0_DRIVER_TYPE A4988
+
+  // BED LEVELING
+  //#define BLTOUCH
+  //#define USE_PROBE_FOR_Z_HOMING
+  //#define AUTO_BED_LEVELING_BILINEAR
+  //#define NOZZLE_TO_PROBE_OFFSET { -40, -8, 0 }
+  //#define ASSISTED_TRAMMING
+  //#define BED_TRAMMING_USE_PROBE
+  //#define BABYSTEP_ZPROBE_OFFSET
+
+  // TEMPERATURE SETTINGS
+  #define TEMP_SENSOR_0 1
+  #define HEATER_0_MAXTEMP 275
+
+  // BED + POSITION
+  // The size of the printable area
+  #define X_BED_SIZE 220
+  #define Y_BED_SIZE 220
+
+  // Travel limits after homing, corresponding to endstop positions.
+  #define X_MIN_POS 0
+  #define Y_MIN_POS 0
+  #define Z_MIN_POS 0
+
+  #define X_MAX_POS 235
+  #define Y_MAX_POS 235
+  #define Z_MAX_POS 250
+
+  // EXTRAS
+  //#define LIN_ADVANCE
+  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 97 }
+  #define NO_CREALITY_422_DRIVER_WARNING
+
+  // MACHINE NAME
+  #define CUSTOM_MACHINE_NAME "Ender-3 4.2.2 - Marlin 2.1.2.1"
 #endif
 #if ENABLED(ENDER_3_SKR_MNI_E3_V3_CR_BL_TOUCH)
   // DRIVERS
@@ -541,7 +768,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
   #define BABYSTEP_ZPROBE_OFFSET
-  #define LCD_BED_LEVELING
 
   // TEMPERATURE SETTINGS
   #define TEMP_SENSOR_0 1
@@ -568,8 +794,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
 
   // MACHINE NAME
   #define CUSTOM_MACHINE_NAME "Ender-3 SKR Mini E3 V3 - Marlin 2.1.2.1"
-
-  #define E0_AUTO_FAN_PIN -1
 #endif
 #if ENABLED(ENDER_3_SKR_MNI_E3_V3_Z_SWITCH)
   // DRIVERS
@@ -612,8 +836,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
 
   // MACHINE NAME
   #define CUSTOM_MACHINE_NAME "Ender-3 SKR Mini E3 V3 - Marlin 2.1.2.1"
-
-  #define E0_AUTO_FAN_PIN -1
 #endif
 
 // TEMPLATE
@@ -634,7 +856,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define ASSISTED_TRAMMING
   #define BED_TRAMMING_USE_PROBE
   #define BABYSTEP_ZPROBE_OFFSET
-  #define LCD_BED_LEVELING
 
   // TEMPERATURE SETTINGS
   #define TEMP_SENSOR_0 1
