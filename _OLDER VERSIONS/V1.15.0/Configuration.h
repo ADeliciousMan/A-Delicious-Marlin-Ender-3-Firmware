@@ -70,7 +70,7 @@
 //#define HAS_SPRITE_EXTRUDER //                        Creality Sprite Extruder
 //#define HAS_H2_V2s //                                 BIQU H2 V2s
 //#define HAS_ORBITER_V2 //                             Orbiter Extruder V2.0
-//#define HAS_MICRO_SWISS_BOWDEN_DUEL_GEAR //           Micro Swiss Bowden Duel Gear
+//define HAS_MICRO_SWISS_BOWDEN_DUEL_GEAR //            Micro Swiss Bowden Duel Gear
 
 //===========================================================================
 //================================= XY-STEPS ================================
@@ -95,12 +95,11 @@
 //================================= BED SIZE ================================
 //===========================================================================
 
-//#define BEDSIZE_220x220x250 //                        Ender 3 / Pro / 3 V2 Bed Size
-//#define BEDSIZE_300x300x340 //                        Ender 3 Max
-//#define BEDSIZE_300x300x320 //                        Ender 3 Max Neo
-//#define BEDSIZE_400x400x450 //                        Anycubic Kobra Max
-//#define BEDSIZE_300x225x380 //                        CR 5 Pro
-//#define BEDSIZE_220x220x300 //                        Ender 5
+//#define BEDSIZE_220x220x250 //                         Ender 3 / Pro / 3 V2 Bed Size
+//#define BEDSIZE_300x300x340 //                         Ender 3 Max
+//#define BEDSIZE_300x300x320 //                         Ender 3 Max Neo
+//#define BEDSIZE_400x400x450 //                         Anycubic Kobra Max
+//#define BEDSIZE_300x225x380 //                         CR 5 Pro
 
 //===========================================================================
 //================================= SCREENS =================================
@@ -339,18 +338,6 @@ DO NOT TOUCH UNLESS IF YOU KNOW WHAT YOU ARE DOING
   #define X_MAX_POS X_BED_SIZE
   #define Y_MAX_POS Y_BED_SIZE
   #define Z_MAX_POS 380
-#elif ENABLED(BEDSIZE_220x220x300)
-  #define X_BED_SIZE 220
-  #define Y_BED_SIZE 220
-
-  // Travel limits after homing, corresponding to endstop positions.
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
-  #define Z_MIN_POS 0
-
-  #define X_MAX_POS X_BED_SIZE
-  #define Y_MAX_POS Y_BED_SIZE
-  #define Z_MAX_POS 300
 #endif
 
 // Pins

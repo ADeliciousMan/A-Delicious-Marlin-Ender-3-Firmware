@@ -139,8 +139,16 @@ This firmware and all other files is provided free of charge with no warranty or
 * Remove LEVEL BED in the menu, as people are confused as what that does. Clicking the button does NOT level the bed, it generates a mesh using during printing
 * Special Z steps
   - Ender 5 = 800 steps
+* Add dynamic Name + Marlin versioning
 
 ## CHANGELOG:
+
+#### 2023-11-01 - V1.15.1
+* Added BEDSIZE_220x220x300 for "Customize Printer" section, Ender 5
+* Added ENDER_3_MAX_422_CR_BL_TOUCH to precompiled firmware
+* Added ENDER_3_MAX_422_Z_SWITCH to precompiled firmware
+* Updated ENDER_3_SKR_MNI_E3_V3_Z_SWITCH - Fixed PIN issue for Hot End Fan
+* Updated ENDER_3_SKR_MNI_E3_V3_CR_BL_TOUCH - Fixed PIN issue for Hot End Fan
 
 #### 2023-10-26 - V1.15.0
 * READ ME updates, major change to "What Steps To Take After Installing This Firmware"
